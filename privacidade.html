@@ -1,0 +1,459 @@
+<!-- ════════════════════════════════════════════════════════════════
+     HONOR GROWTH · Política de Privacidade
+     ════════════════════════════════════════════════════════════════ -->
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+    .hg-root {
+        --bg: #0a0a0a;
+        --bg-2: #111111;
+        --surface: #161616;
+        --line: rgba(255, 255, 255, 0.07);
+        --line-strong: rgba(255, 255, 255, 0.16);
+        --text: #F5F5F0;
+        --text-2: rgba(245, 245, 240, 0.66);
+        --text-3: rgba(245, 245, 240, 0.42);
+        --accent: #A8D5FF;
+        --accent-2: #C5E3FF;
+        --accent-glow: rgba(168, 213, 255, 0.22);
+
+        font-family: 'DM Sans', system-ui, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .hg-display { font-family: 'Sora', sans-serif; letter-spacing: -0.03em; }
+    .hg-mono { font-family: 'DM Mono', monospace; }
+    .hg-italic { font-style: italic; }
+
+    .hg-grid-bg {
+        background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+        background-size: 64px 64px;
+    }
+
+    .hg-orb {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(120px);
+        pointer-events: none;
+    }
+
+    .hg-btn-primary {
+        background: var(--accent);
+        color: #0a0a0a;
+        font-weight: 500;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 32px -6px var(--accent-glow);
+        cursor: pointer;
+        border: none;
+    }
+    .hg-btn-primary:hover {
+        background: var(--accent-2);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 40px -6px rgba(168, 213, 255, 0.45);
+    }
+
+    .hg-btn-ghost {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--line);
+        color: var(--text);
+        transition: all 0.25s ease;
+        cursor: pointer;
+    }
+    .hg-btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--line-strong);
+    }
+
+    .hg-divider { height: 1px; background: var(--line); width: 100%; }
+
+    /* ── PROSE LEGAL ── */
+    .hg-legal h2 {
+        font-family: 'Sora', sans-serif;
+        letter-spacing: -0.02em;
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+    .hg-legal h2:first-of-type { margin-top: 0; }
+    .hg-legal h3 {
+        font-family: 'Sora', sans-serif;
+        letter-spacing: -0.01em;
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-top: 2rem;
+        margin-bottom: 0.75rem;
+        color: var(--text);
+    }
+    .hg-legal p {
+        color: var(--text-2);
+        line-height: 1.75;
+        margin-bottom: 1rem;
+    }
+    .hg-legal ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1rem 0;
+    }
+    .hg-legal ul li {
+        position: relative;
+        padding-left: 1.5rem;
+        color: var(--text-2);
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+    }
+    .hg-legal ul li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.7rem;
+        width: 6px;
+        height: 1px;
+        background: var(--accent);
+    }
+    .hg-legal strong { color: var(--text); font-weight: 500; }
+    .hg-legal a { color: var(--accent); text-decoration: none; }
+    .hg-legal a:hover { text-decoration: underline; }
+
+    .hg-info-box {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.005) 100%);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .hg-link-underline { position: relative; }
+    .hg-link-underline::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--accent);
+        transition: width 0.3s ease;
+    }
+    .hg-link-underline:hover::after { width: 100%; }
+
+    /* ── ANIMATIONS (alinhadas com index.html) ── */
+    @keyframes hg-fade-up {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .hg-reveal { animation: hg-fade-up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+    .hg-d-1 { animation-delay: 0.1s; }
+    .hg-d-2 { animation-delay: 0.22s; }
+    .hg-d-3 { animation-delay: 0.34s; }
+    .hg-d-4 { animation-delay: 0.46s; }
+
+    @keyframes hg-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hg-pulse { animation: hg-pulse 2s ease-in-out infinite; }
+
+    .scroll-hidden {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
+            transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .scroll-visible { opacity: 1; transform: translateY(0); }
+
+    .hg-headline-accent {
+        background: linear-gradient(110deg, var(--accent) 30%, var(--accent-2) 60%, var(--text) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hg-info-box { transition: border-color 0.35s ease, transform 0.35s ease, background 0.35s ease; }
+    .hg-info-box:hover {
+        border-color: var(--line-strong);
+        transform: translateY(-2px);
+        background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+    }
+
+    .hg-legal a { transition: opacity 0.2s ease, text-decoration-color 0.2s ease; }
+    .hg-legal a:hover { opacity: 0.85; }
+
+    .hg-legal h2 { transition: color 0.3s ease; }
+
+    /* Suavização para utilizadores com preferência por menos movimento */
+    @media (prefers-reduced-motion: reduce) {
+        .hg-reveal, .scroll-hidden { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+        .hg-pulse { animation: none !important; }
+    }
+</style>
+
+<div class="hg-root">
+
+    <!-- ════════ NAV ════════ -->
+    <nav class="fixed top-0 left-0 right-0 z-50"
+        style="border-bottom: 1px solid var(--line); background: rgba(10,10,10,0.85); backdrop-filter: blur(12px);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="assets/logo-honor1.png" alt="Honor Growth" class="h-14 w-auto object-contain" />
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm" style="color: var(--text-2);">
+                <a href="index.html#sobre" class="hg-link-underline hover:text-white transition">Sobre</a>
+                <a href="index.html#ecossistema" class="hg-link-underline hover:text-white transition">Ecossistema IA</a>
+                <a href="index.html#formula" class="hg-link-underline hover:text-white transition">Método</a>
+                <a href="index.html#cases" class="hg-link-underline hover:text-white transition">Cases</a>
+                <a href="index.html#equipa" class="hg-link-underline hover:text-white transition">Equipa</a>
+            </div>
+
+            <a href="index.html#contacto"
+                class="hidden sm:inline-flex hg-btn-primary px-4 py-2 rounded-md text-sm items-center gap-2">
+                Testar agente
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ════════ HEADER ════════ -->
+    <section class="relative pt-36 pb-16 overflow-hidden">
+        <div class="absolute inset-0 hg-grid-bg opacity-60 pointer-events-none"></div>
+        <div class="hg-orb"
+            style="top: -10%; left: 60%; width: 600px; height: 600px; background: var(--accent); opacity: 0.12;"></div>
+
+        <div class="relative max-w-4xl mx-auto px-6 lg:px-10">
+            <div class="hg-reveal inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full text-[11px] hg-mono mb-8"
+                style="background: rgba(255,255,255,0.03); border: 1px solid var(--line-strong); color: var(--text-2);">
+                <span class="w-1.5 h-1.5 rounded-full hg-pulse" style="background: var(--accent);"></span>
+                LEGAL · RGPD
+            </div>
+
+            <h1 class="hg-reveal hg-d-1 hg-display text-4xl md:text-5xl mb-6">
+                Política de <span class="hg-italic hg-headline-accent">Privacidade</span>
+            </h1>
+            <p class="hg-reveal hg-d-2 text-base md:text-lg max-w-2xl" style="color: var(--text-2);">
+                Como recolhemos, usamos e protegemos os teus dados pessoais quando interages com o site, o agente de IA
+                ou contactas a Honor Growth.
+            </p>
+            <p class="hg-reveal hg-d-3 hg-mono text-xs mt-6" style="color: var(--text-3);">
+                ÚLTIMA ATUALIZAÇÃO · 13 MAIO 2026
+            </p>
+        </div>
+    </section>
+
+    <!-- ════════ CONTENT ════════ -->
+    <section class="relative pb-24 overflow-hidden">
+        <div class="hg-orb"
+            style="top: 20%; left: -10%; width: 500px; height: 500px; background: var(--accent); opacity: 0.05;"></div>
+        <div class="hg-orb"
+            style="bottom: 10%; right: -5%; width: 450px; height: 450px; background: var(--accent); opacity: 0.05;"></div>
+        <div class="relative max-w-4xl mx-auto px-6 lg:px-10 hg-legal">
+
+            <h2>1. Responsável pelo tratamento</h2>
+            <p>
+                O responsável pelo tratamento dos teus dados pessoais é:
+            </p>
+            <div class="hg-info-box">
+                <p style="margin-bottom: 0.25rem;"><strong>Honor Growth, Unipessoal Lda.</strong></p>
+                <p style="margin-bottom: 0.25rem;">NIF: 518 531 600</p>
+                <p style="margin-bottom: 0.25rem;">Sede: Rua Peneda Gerês, Nº 16, Verdizela, 2855-634 Corroios</p>
+                <p style="margin-bottom: 0;">Email: <a href="mailto:hello@honor-growth.com">hello@honor-growth.com</a></p>
+            </div>
+            <p>
+                Para qualquer questão relacionada com proteção de dados, podes contactar o responsável interno em
+                <a href="mailto:interno@honor-growth.com">interno@honor-growth.com</a>.
+            </p>
+
+            <h2>2. Dados que recolhemos</h2>
+            <p>
+                Tratamos apenas os dados estritamente necessários para te responder e prestar o serviço:
+            </p>
+            <ul>
+                <li><strong>Dados de contacto</strong> — nome, email e número de telefone fornecidos no formulário de contacto.</li>
+                <li><strong>Conteúdo da comunicação</strong> — gravações e transcrições de chamadas com o agente de voz (IA), mensagens trocadas por WhatsApp ou email.</li>
+                <li><strong>Dados profissionais</strong> — empresa, cargo e contexto comercial que partilhares connosco.</li>
+                <li><strong>Dados técnicos</strong> — endereço IP, tipo de dispositivo e dados básicos de navegação (apenas para funcionamento do site).</li>
+            </ul>
+            <p>
+                Não recolhemos categorias especiais de dados (saúde, opiniões políticas, religião, etc.).
+            </p>
+
+            <h2>3. Finalidades e fundamentos legais</h2>
+            <p>
+                Usamos os teus dados exclusivamente para as seguintes finalidades:
+            </p>
+            <ul>
+                <li><strong>Resposta a pedidos de contacto</strong> e agendamento de reuniões — com base na execução de medidas pré-contratuais a teu pedido (art. 6.º, n.º 1, alínea b do RGPD).</li>
+                <li><strong>Prestação dos serviços contratados</strong> de consultoria comercial e implementação de sistemas de IA — base contratual.</li>
+                <li><strong>Comunicação comercial e seguimento de leads</strong> — com base no nosso interesse legítimo em desenvolver atividade comercial B2B (art. 6.º, n.º 1, alínea f).</li>
+                <li><strong>Cumprimento de obrigações legais</strong> (faturação, contabilidade, fiscalidade) — base legal.</li>
+            </ul>
+
+            <h2>4. Subprocessadores</h2>
+            <p>
+                Para operar o ecossistema comercial usamos um conjunto reduzido de ferramentas que processam dados em nosso nome.
+                Todos foram selecionados pelo seu nível de segurança e têm contratos de tratamento de dados em vigor:
+            </p>
+            <ul>
+                <li><strong>GoHighLevel</strong> (CRM e automação de comunicações) — armazenamento e gestão do ciclo de vida da lead.</li>
+                <li><strong>ElevenLabs</strong> (agente de voz com IA) — processamento de voz e geração de chamadas.</li>
+                <li><strong>Make.com</strong> (automação de workflows) — orquestração entre ferramentas.</li>
+            </ul>
+            <p>
+                Alguns destes fornecedores estão sediados fora do Espaço Económico Europeu (nomeadamente nos EUA). Nesses
+                casos, as transferências internacionais são garantidas pelas <strong>Cláusulas Contratuais-Tipo</strong> aprovadas pela
+                Comissão Europeia (Decisão 2021/914) ou por outras garantias adequadas previstas no Capítulo V do RGPD.
+            </p>
+
+            <h2>5. Prazo de conservação</h2>
+            <p>
+                Conservamos os teus dados durante o tempo necessário para cumprir as finalidades acima e enquanto se mantiver
+                o nosso interesse legítimo no contacto comercial. Em concreto:
+            </p>
+            <ul>
+                <li><strong>Leads que não convertem em cliente</strong> — mantidos enquanto considerarmos existir uma relação comercial potencial, sujeito a revisão periódica.</li>
+                <li><strong>Clientes e ex-clientes</strong> — mantidos pelo período necessário para a execução do contrato e cumprimento dos prazos legais de conservação (até 10 anos para documentos contabilísticos e fiscais).</li>
+                <li><strong>Gravações de chamadas com o agente de IA</strong> — conservadas para fins de qualidade, treino e prova do consentimento, durante o tempo que mantivermos o contacto ativo.</li>
+            </ul>
+            <p>
+                Podes, a qualquer momento, pedir a eliminação dos teus dados através do contacto abaixo.
+            </p>
+
+            <h2>6. Os teus direitos</h2>
+            <p>
+                Enquanto titular dos dados, podes exercer a qualquer momento os seguintes direitos:
+            </p>
+            <ul>
+                <li><strong>Acesso</strong> — saber que dados temos sobre ti.</li>
+                <li><strong>Retificação</strong> — corrigir dados incorretos ou incompletos.</li>
+                <li><strong>Apagamento</strong> ("direito ao esquecimento") — pedir a eliminação dos teus dados.</li>
+                <li><strong>Limitação</strong> do tratamento.</li>
+                <li><strong>Oposição</strong> ao tratamento baseado em interesse legítimo.</li>
+                <li><strong>Portabilidade</strong> — receber os teus dados num formato estruturado.</li>
+                <li><strong>Retirada de consentimento</strong>, quando o tratamento se baseie no mesmo.</li>
+            </ul>
+            <p>
+                Para exercer qualquer destes direitos, envia um email para
+                <a href="mailto:interno@honor-growth.com">interno@honor-growth.com</a>. Respondemos no prazo máximo de 30 dias.
+            </p>
+
+            <h2>7. Reclamações</h2>
+            <p>
+                Se considerares que o tratamento dos teus dados não está em conformidade com o RGPD, tens direito a
+                apresentar reclamação à autoridade de controlo competente:
+            </p>
+            <div class="hg-info-box">
+                <p style="margin-bottom: 0.25rem;"><strong>CNPD — Comissão Nacional de Proteção de Dados</strong></p>
+                <p style="margin-bottom: 0.25rem;">Av. D. Carlos I, 134 — 1.º · 1200-651 Lisboa</p>
+                <p style="margin-bottom: 0;">Site: <a href="https://www.cnpd.pt" target="_blank" rel="noopener">www.cnpd.pt</a></p>
+            </div>
+
+            <h2>8. Segurança</h2>
+            <p>
+                Aplicamos medidas técnicas e organizativas adequadas para proteger os teus dados contra acesso não
+                autorizado, perda ou destruição. Os acessos internos são restritos aos colaboradores que necessitam dos
+                dados para desempenhar as suas funções, e todos os fornecedores que usamos são empresas com certificações
+                de segurança reconhecidas.
+            </p>
+
+            <h2>9. Alterações a esta política</h2>
+            <p>
+                Esta política pode ser atualizada para refletir alterações legais, novos serviços ou novos fornecedores. A
+                versão em vigor é sempre a que se encontra publicada nesta página, com a data de atualização visível no
+                topo.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- ════════ FOOTER ════════ -->
+    <footer class="py-14">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid md:grid-cols-12 gap-10 mb-12">
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-3 mb-5">
+                        <img src="assets/logo-honor1.png" alt="Honor Growth" class="h-14 w-auto object-contain" />
+                    </div>
+                    <p class="text-sm leading-relaxed max-w-md" style="color: var(--text-2);">
+                        Empresa de engenharia comercial com IA. Construímos infraestrutura à medida para empresas B2B
+                        que querem crescer sem aumentar a equipa.
+                    </p>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="text-xs hg-mono uppercase tracking-wider mb-4" style="color: var(--text-3);">Empresa</div>
+                    <div class="space-y-2 text-sm">
+                        <a href="index.html#sobre" class="block hover:text-white transition" style="color: var(--text-2);">Sobre</a>
+                        <a href="index.html#ecossistema" class="block hover:text-white transition" style="color: var(--text-2);">Ecossistema IA</a>
+                        <a href="index.html#formula" class="block hover:text-white transition" style="color: var(--text-2);">Método</a>
+                        <a href="index.html#equipa" class="block hover:text-white transition" style="color: var(--text-2);">Equipa</a>
+                        <a href="index.html#cases" class="block hover:text-white transition" style="color: var(--text-2);">Cases</a>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="text-xs hg-mono uppercase tracking-wider mb-4" style="color: var(--text-3);">Legal</div>
+                    <div class="space-y-2 text-sm">
+                        <a href="privacidade.html" class="block hover:text-white transition" style="color: var(--text-2);">Privacidade</a>
+                        <a href="termos.html" class="block hover:text-white transition" style="color: var(--text-2);">Termos</a>
+                        <a href="cookies.html" class="block hover:text-white transition" style="color: var(--text-2);">Cookies</a>
+                    </div>
+                </div>
+                <div class="md:col-span-3">
+                    <div class="text-xs hg-mono uppercase tracking-wider mb-4" style="color: var(--text-3);">Contacto</div>
+                    <div class="space-y-2 text-sm" style="color: var(--text-2);">
+                        <div>hello@honor-growth.com</div>
+                        <div>Lisboa, Portugal</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hg-divider mb-8"></div>
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs"
+                style="color: var(--text-3);">
+                <div>© <span id="hgYear"></span> Honor Growth Lda. Todos os direitos reservados.</div>
+                <div class="hg-mono uppercase tracking-wider">Made in Portugal · Built for B2B</div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    document.getElementById('hgYear').textContent = new Date().getFullYear();
+
+    // ─── SCROLL REVEAL (cascading por secção, igual ao index) ───
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const delay = parseFloat(el.dataset.revealDelay || 0);
+                setTimeout(() => el.classList.add('scroll-visible'), delay);
+                revealObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    const legalRoot = document.querySelector('.hg-legal');
+    if (legalRoot) {
+        let group = [];
+        const flush = () => {
+            group.forEach((el, i) => {
+                el.classList.add('scroll-hidden');
+                el.dataset.revealDelay = i * 60;
+                revealObserver.observe(el);
+            });
+            group = [];
+        };
+        Array.from(legalRoot.children).forEach((el) => {
+            if (el.tagName === 'H2') flush();
+            group.push(el);
+        });
+        flush();
+    }
+</script>

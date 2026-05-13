@@ -1,0 +1,451 @@
+<!-- ════════════════════════════════════════════════════════════════
+     HONOR GROWTH · Política de Cookies
+     ════════════════════════════════════════════════════════════════ -->
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+    .hg-root {
+        --bg: #0a0a0a;
+        --bg-2: #111111;
+        --surface: #161616;
+        --line: rgba(255, 255, 255, 0.07);
+        --line-strong: rgba(255, 255, 255, 0.16);
+        --text: #F5F5F0;
+        --text-2: rgba(245, 245, 240, 0.66);
+        --text-3: rgba(245, 245, 240, 0.42);
+        --accent: #A8D5FF;
+        --accent-2: #C5E3FF;
+        --accent-glow: rgba(168, 213, 255, 0.22);
+
+        font-family: 'DM Sans', system-ui, sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+        width: 100%;
+        min-height: 100vh;
+    }
+
+    .hg-display { font-family: 'Sora', sans-serif; letter-spacing: -0.03em; }
+    .hg-mono { font-family: 'DM Mono', monospace; }
+    .hg-italic { font-style: italic; }
+
+    .hg-grid-bg {
+        background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+        background-size: 64px 64px;
+    }
+
+    .hg-orb {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(120px);
+        pointer-events: none;
+    }
+
+    .hg-btn-primary {
+        background: var(--accent);
+        color: #0a0a0a;
+        font-weight: 500;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 32px -6px var(--accent-glow);
+        cursor: pointer;
+        border: none;
+    }
+    .hg-btn-primary:hover {
+        background: var(--accent-2);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 40px -6px rgba(168, 213, 255, 0.45);
+    }
+
+    .hg-divider { height: 1px; background: var(--line); width: 100%; }
+
+    .hg-legal h2 {
+        font-family: 'Sora', sans-serif;
+        letter-spacing: -0.02em;
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        color: var(--text);
+    }
+    .hg-legal h2:first-of-type { margin-top: 0; }
+    .hg-legal p {
+        color: var(--text-2);
+        line-height: 1.75;
+        margin-bottom: 1rem;
+    }
+    .hg-legal ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1rem 0;
+    }
+    .hg-legal ul li {
+        position: relative;
+        padding-left: 1.5rem;
+        color: var(--text-2);
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+    }
+    .hg-legal ul li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.7rem;
+        width: 6px;
+        height: 1px;
+        background: var(--accent);
+    }
+    .hg-legal strong { color: var(--text); font-weight: 500; }
+    .hg-legal a { color: var(--accent); text-decoration: none; }
+    .hg-legal a:hover { text-decoration: underline; }
+
+    .hg-info-box {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.005) 100%);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    /* ── COOKIE TABLE ── */
+    .hg-cookie-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 1.5rem 0;
+        font-size: 0.9rem;
+    }
+    .hg-cookie-table thead th {
+        text-align: left;
+        font-family: 'DM Mono', monospace;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-3);
+        font-weight: 500;
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid var(--line-strong);
+    }
+    .hg-cookie-table tbody td {
+        padding: 1rem;
+        color: var(--text-2);
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+    }
+    .hg-cookie-table tbody tr:last-child td { border-bottom: none; }
+    .hg-cookie-table tbody td:first-child {
+        color: var(--text);
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    .hg-link-underline { position: relative; }
+    .hg-link-underline::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--accent);
+        transition: width 0.3s ease;
+    }
+    .hg-link-underline:hover::after { width: 100%; }
+
+    /* ── ANIMATIONS (alinhadas com index.html) ── */
+    @keyframes hg-fade-up {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .hg-reveal { animation: hg-fade-up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+    .hg-d-1 { animation-delay: 0.1s; }
+    .hg-d-2 { animation-delay: 0.22s; }
+    .hg-d-3 { animation-delay: 0.34s; }
+    .hg-d-4 { animation-delay: 0.46s; }
+
+    @keyframes hg-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .hg-pulse { animation: hg-pulse 2s ease-in-out infinite; }
+
+    .scroll-hidden {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
+            transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .scroll-visible { opacity: 1; transform: translateY(0); }
+
+    .hg-headline-accent {
+        background: linear-gradient(110deg, var(--accent) 30%, var(--accent-2) 60%, var(--text) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hg-info-box { transition: border-color 0.35s ease, transform 0.35s ease, background 0.35s ease; }
+    .hg-info-box:hover {
+        border-color: var(--line-strong);
+        transform: translateY(-2px);
+        background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
+    }
+
+    .hg-cookie-table { transition: border-color 0.35s ease; }
+    .hg-cookie-table tbody tr { transition: background 0.25s ease; }
+    .hg-cookie-table tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+    .hg-legal a { transition: opacity 0.2s ease, text-decoration-color 0.2s ease; }
+    .hg-legal a:hover { opacity: 0.85; }
+
+    .hg-legal h2 { transition: color 0.3s ease; }
+
+    @media (prefers-reduced-motion: reduce) {
+        .hg-reveal, .scroll-hidden { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
+        .hg-pulse { animation: none !important; }
+    }
+</style>
+
+<div class="hg-root">
+
+    <!-- ════════ NAV ════════ -->
+    <nav class="fixed top-0 left-0 right-0 z-50"
+        style="border-bottom: 1px solid var(--line); background: rgba(10,10,10,0.85); backdrop-filter: blur(12px);">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="assets/logo-honor1.png" alt="Honor Growth" class="h-14 w-auto object-contain" />
+            </a>
+            <div class="hidden md:flex items-center gap-8 text-sm" style="color: var(--text-2);">
+                <a href="index.html#sobre" class="hg-link-underline hover:text-white transition">Sobre</a>
+                <a href="index.html#ecossistema" class="hg-link-underline hover:text-white transition">Ecossistema IA</a>
+                <a href="index.html#formula" class="hg-link-underline hover:text-white transition">Método</a>
+                <a href="index.html#cases" class="hg-link-underline hover:text-white transition">Cases</a>
+                <a href="index.html#equipa" class="hg-link-underline hover:text-white transition">Equipa</a>
+            </div>
+            <a href="index.html#contacto"
+                class="hidden sm:inline-flex hg-btn-primary px-4 py-2 rounded-md text-sm items-center gap-2">
+                Testar agente
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ════════ HEADER ════════ -->
+    <section class="relative pt-36 pb-16 overflow-hidden">
+        <div class="absolute inset-0 hg-grid-bg opacity-60 pointer-events-none"></div>
+        <div class="hg-orb"
+            style="top: -10%; left: 60%; width: 600px; height: 600px; background: var(--accent); opacity: 0.12;"></div>
+
+        <div class="relative max-w-4xl mx-auto px-6 lg:px-10">
+            <div class="hg-reveal inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full text-[11px] hg-mono mb-8"
+                style="background: rgba(255,255,255,0.03); border: 1px solid var(--line-strong); color: var(--text-2);">
+                <span class="w-1.5 h-1.5 rounded-full hg-pulse" style="background: var(--accent);"></span>
+                LEGAL · COOKIES
+            </div>
+
+            <h1 class="hg-reveal hg-d-1 hg-display text-4xl md:text-5xl mb-6">
+                Política de <span class="hg-italic hg-headline-accent">Cookies</span>
+            </h1>
+            <p class="hg-reveal hg-d-2 text-base md:text-lg max-w-2xl" style="color: var(--text-2);">
+                Que tipo de cookies o nosso site utiliza e como podes geri-los.
+            </p>
+            <p class="hg-reveal hg-d-3 hg-mono text-xs mt-6" style="color: var(--text-3);">
+                ÚLTIMA ATUALIZAÇÃO · 13 MAIO 2026
+            </p>
+        </div>
+    </section>
+
+    <!-- ════════ CONTENT ════════ -->
+    <section class="relative pb-24 overflow-hidden">
+        <div class="hg-orb"
+            style="top: 20%; left: -10%; width: 500px; height: 500px; background: var(--accent); opacity: 0.05;"></div>
+        <div class="hg-orb"
+            style="bottom: 10%; right: -5%; width: 450px; height: 450px; background: var(--accent); opacity: 0.05;"></div>
+        <div class="relative max-w-4xl mx-auto px-6 lg:px-10 hg-legal">
+
+            <h2>1. O que são cookies</h2>
+            <p>
+                Cookies são pequenos ficheiros de texto que os sites colocam no teu dispositivo (computador, telemóvel,
+                tablet) quando os visitas. Servem, sobretudo, para que o site funcione corretamente, recordar
+                preferências e, em alguns casos, recolher informação estatística ou de marketing.
+            </p>
+            <p>
+                Esta política explica que cookies o site da Honor Growth usa e como podes desativá-los.
+            </p>
+
+            <h2>2. Que cookies utilizamos</h2>
+            <p>
+                O site da Honor Growth utiliza apenas <strong>cookies estritamente necessários</strong> ao seu
+                funcionamento. Não utilizamos cookies de marketing, publicidade nem pixéis de redes sociais (Meta,
+                LinkedIn, Google Ads). Também não usamos ferramentas de analytics como Google Analytics.
+            </p>
+
+            <div class="overflow-x-auto">
+                <table class="hg-cookie-table">
+                    <thead>
+                        <tr>
+                            <th>Cookie</th>
+                            <th>Finalidade</th>
+                            <th>Duração</th>
+                            <th>Tipo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sessão</td>
+                            <td>Identificar a sessão de navegação para que o site funcione corretamente.</td>
+                            <td>Sessão</td>
+                            <td>Essencial</td>
+                        </tr>
+                        <tr>
+                            <td>Segurança</td>
+                            <td>Prevenção de fraude e proteção do site contra utilizações abusivas.</td>
+                            <td>Sessão</td>
+                            <td>Essencial</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>
+                Cookies estritamente necessários estão isentos da obrigação de consentimento prévio nos termos do
+                Regulamento (UE) 2016/679 (RGPD) e da Diretiva 2002/58/CE ("e-Privacy").
+            </p>
+
+            <h2>3. Cookies de terceiros</h2>
+            <p>
+                Algumas funcionalidades dependem de serviços externos que podem instalar cookies próprios no teu
+                dispositivo:
+            </p>
+            <ul>
+                <li><strong>Fontes Google (fonts.googleapis.com)</strong> — utilizadas para carregamento de tipografia. Não instalam cookies de tracking, mas registam o pedido HTTP. Mais informação em <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</li>
+                <li><strong>Tailwind CDN</strong> — usado para carregamento de estilos do site. Não regista informação pessoal.</li>
+            </ul>
+            <p>
+                Nenhum destes serviços é utilizado para te seguir através de outros sites.
+            </p>
+
+            <h2>4. Como gerir cookies</h2>
+            <p>
+                Podes, a qualquer momento, controlar, eliminar ou bloquear cookies através das definições do teu
+                navegador. Cada navegador tem o seu processo:
+            </p>
+            <ul>
+                <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+                <li><a href="https://support.mozilla.org/pt-PT/kb/ative-e-desative-os-cookies-que-os-websites-usam" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+                <li><a href="https://support.apple.com/pt-pt/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Safari</a></li>
+                <li><a href="https://support.microsoft.com/pt-pt/microsoft-edge" target="_blank" rel="noopener">Microsoft Edge</a></li>
+            </ul>
+            <p>
+                Caso bloqueies cookies essenciais, algumas funcionalidades do site podem deixar de funcionar
+                corretamente.
+            </p>
+
+            <h2>5. Tratamento de dados pessoais</h2>
+            <p>
+                Para mais informação sobre como tratamos os teus dados pessoais — incluindo os recolhidos através de
+                cookies — consulta a nossa <a href="privacidade.html">Política de Privacidade</a>.
+            </p>
+
+            <h2>6. Alterações a esta política</h2>
+            <p>
+                Esta política pode ser atualizada sempre que se justifique, por alterações legais ou por inclusão de
+                novas ferramentas no site. A versão em vigor é sempre a publicada nesta página.
+            </p>
+
+            <h2>7. Contacto</h2>
+            <p>
+                Para qualquer questão sobre a utilização de cookies neste site, contacta-nos em
+                <a href="mailto:interno@honor-growth.com">interno@honor-growth.com</a>.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- ════════ FOOTER ════════ -->
+    <footer class="py-14">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid md:grid-cols-12 gap-10 mb-12">
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-3 mb-5">
+                        <img src="assets/logo-honor1.png" alt="Honor Growth" class="h-14 w-auto object-contain" />
+                    </div>
+                    <p class="text-sm leading-relaxed max-w-md" style="color: var(--text-2);">
+                        Empresa de engenharia comercial com IA. Construímos infraestrutura à medida para empresas B2B
+                        que querem crescer sem aumentar a equipa.
+                    </p>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="text-xs hg-mono uppercase tracking-wider mb-4" style="color: var(--text-3);">Empresa</div>
+                    <div class="space-y-2 text-sm">
+                        <a href="index.html#sobre" class="block hover:text-white transition" style="color: var(--text-2);">Sobre</a>
+                        <a href="index.html#ecossistema" class="block hover:text-white transition" style="color: var(--text-2);">Ecossistema IA</a>
+                        <a href="index.html#formula" class="block hover:text-white transition" style="color: var(--text-2);">Método</a>
+                        <a href="index.html#equipa" class="block hover:text-white transition" style="color: var(--text-2);">Equipa</a>
+                        <a href="index.html#cases" class="block hover:text-white transition" style="color: var(--text-2);">Cases</a>
+                    </div>
+                </div>
+                <div class="md:col-span-2">
+                    <div class="text-xs hg-mono uppercase tracking-wider mb-4" style="color: var(--text-3);">Legal</div>
+                    <div class="space-y-2 text-sm">
+                        <a href="privacidade.html" class="block hover:text-white transition" style="color: var(--text-2);">Privacidade</a>
+                        <a href="termos.html" class="block hover:text-white transition" style="color: var(--text-2);">Termos</a>
+                        <a href="cookies.html" class="block hover:text-white transition" style="color: var(--text-2);">Cookies</a>
+                    </div>
+                </div>
+                <div class="md:col-span-3">
+                    <div class="text-xs hg-mono uppercase tracking-wider mb-4" style="color: var(--text-3);">Contacto</div>
+                    <div class="space-y-2 text-sm" style="color: var(--text-2);">
+                        <div>hello@honor-growth.com</div>
+                        <div>Lisboa, Portugal</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hg-divider mb-8"></div>
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs"
+                style="color: var(--text-3);">
+                <div>© <span id="hgYear"></span> Honor Growth Lda. Todos os direitos reservados.</div>
+                <div class="hg-mono uppercase tracking-wider">Made in Portugal · Built for B2B</div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+    document.getElementById('hgYear').textContent = new Date().getFullYear();
+
+    // ─── SCROLL REVEAL (cascading por secção, igual ao index) ───
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const delay = parseFloat(el.dataset.revealDelay || 0);
+                setTimeout(() => el.classList.add('scroll-visible'), delay);
+                revealObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    const legalRoot = document.querySelector('.hg-legal');
+    if (legalRoot) {
+        let group = [];
+        const flush = () => {
+            group.forEach((el, i) => {
+                el.classList.add('scroll-hidden');
+                el.dataset.revealDelay = i * 60;
+                revealObserver.observe(el);
+            });
+            group = [];
+        };
+        Array.from(legalRoot.children).forEach((el) => {
+            if (el.tagName === 'H2') flush();
+            group.push(el);
+        });
+        flush();
+    }
+</script>
