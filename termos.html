@@ -45,8 +45,11 @@
     .hg-orb {
         position: absolute;
         border-radius: 9999px;
-        filter: blur(120px);
+        filter: blur(90px);
         pointer-events: none;
+        will-change: transform;
+        transform: translateZ(0);
+        contain: layout paint;
     }
 
     .hg-btn-primary {
