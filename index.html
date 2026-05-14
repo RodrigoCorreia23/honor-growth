@@ -354,19 +354,24 @@
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        /* italic + background-clip:text faz com que o slant à direita
-           e os descenders sejam cortados pela bounding-box do glyph.
-           padding-right dá folga sem alterar o fluxo (margem compensa) */
-        padding: 0.05em 0.12em 0.05em 0;
-        margin: -0.05em -0.12em -0.05em 0;
+        /* italic da Sora extende glifos abaixo do baseline → o gradient
+           (clip à bounding box) corta o "o" pela parte de baixo. Padding
+           generoso + margem negativa replica o background além da bbox
+           do glyph sem alterar o fluxo do texto. */
+        padding: 0.12em 0.15em 0.18em 0.04em;
+        margin: -0.12em -0.15em -0.18em -0.04em;
+        /* quando o span quebra para duas linhas, garante que cada line-box
+           recebe o seu próprio padding em vez de ser "fatiado" entre linhas */
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
     }
 
     /* ── CLAMP hero title ── */
     .hg-hero-title {
         font-size: clamp(2.15rem, 9vw, 6.5rem);
-        /* 1.05 em vez de 0.98 — antes a linha seguinte intrudia na anterior
-           e visualmente cortava o italic do "o" em "como" */
-        line-height: 1.05;
+        /* 1.12 — espaço suficiente para o italic da Sora não ser cortado
+           pela linha seguinte quando a span do gradient quebra em multi-linha */
+        line-height: 1.12;
     }
 
     /* ── LINK UNDERLINE ── */
