@@ -860,64 +860,249 @@
     .hg-root { overflow-x: hidden; max-width: 100vw; }
     img, svg, video { max-width: 100%; }
 
+    /* ── MOBILE MENU (drawer) ── */
+    .hg-mobile-menu {
+        background: rgba(8, 8, 8, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid var(--line);
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
+    }
+    .hg-mobile-menu.hg-mobile-menu-open {
+        max-height: 80vh;
+        opacity: 1;
+    }
+    .hg-mobile-menu.hidden { display: none; }
+    .hg-mobile-menu-inner {
+        padding: 0.5rem 1.25rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .hg-mobile-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem 0.5rem;
+        color: var(--text);
+        font-size: 0.95rem;
+        font-family: 'DM Sans', system-ui, sans-serif;
+        text-decoration: none;
+        border-bottom: 1px solid var(--line);
+        transition: color 0.2s ease;
+    }
+    .hg-mobile-link:hover,
+    .hg-mobile-link:active { color: var(--accent); }
+    .hg-mobile-cta {
+        margin-top: 1.25rem;
+        padding: 0.95rem 1rem;
+        background: var(--accent);
+        color: #0a0a0a;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        box-shadow: 0 4px 24px -6px var(--accent-glow);
+        transition: transform 0.2s ease, background 0.2s ease;
+    }
+    .hg-mobile-cta:hover,
+    .hg-mobile-cta:active {
+        background: var(--accent-2);
+        transform: translateY(-1px);
+    }
+
     @media (max-width: 640px) {
-        /* padding lateral mais apertado para aproveitar largura */
+        /* ── PADDING LATERAL ── */
         .hg-root .max-w-7xl,
         .hg-root .max-w-5xl,
         .hg-root .max-w-3xl { padding-left: 1.25rem; padding-right: 1.25rem; }
 
-        /* hero respira menos */
-        #top { padding-top: 6.5rem; padding-bottom: 4rem; }
+        /* ── HERO ── */
+        #top { padding-top: 6rem; padding-bottom: 3.5rem; }
+        #top .hg-hero-title { font-size: clamp(2.25rem, 10vw, 4rem); line-height: 1.02; margin-bottom: 1.5rem; }
+        #top p.text-lg, #top p.text-xl { font-size: 1rem; line-height: 1.6; margin-bottom: 2rem; }
+        #top .mb-20 { margin-bottom: 3rem; }
+        #top .mb-8 { margin-bottom: 1.5rem; }
 
-        /* secções com menos padding vertical no mobile */
-        #vsl, #sobre, #promessa, #pilares, #ecossistema,
-        #formula, #testemunhos, #cases, #equipa { padding-top: 4rem; padding-bottom: 4rem; }
-        #contacto { padding-top: 4.5rem; padding-bottom: 5rem; }
+        /* hero — botões full-width */
+        #top a.hg-btn-primary, #top a.hg-btn-ghost {
+            width: 100%;
+            padding-top: 0.95rem;
+            padding-bottom: 0.95rem;
+        }
 
-        /* H2 mais comportáveis em ecrã estreito */
-        .hg-display.text-4xl { font-size: 2rem; line-height: 1.05; }
+        /* hero stats — 2x2 mais respirado */
+        #top .hg-stat-val { font-size: 1.4rem; }
+        #top [class*="grid-cols-2"] > .px-6 {
+            padding: 1.1rem 1rem;
+        }
+        #top [class*="grid-cols-2"] .text-\[10px\] { font-size: 9px; line-height: 1.3; }
 
-        /* hero stats — padding mais apertado */
-        #top .hg-stat-val { font-size: 1.5rem; }
-        #top [class*="grid-cols-2"] > .px-6 { padding-left: 1rem; padding-right: 1rem; padding-top: 1.25rem; padding-bottom: 1.25rem; }
+        /* ── SECÇÕES — padding vertical mais comportável ── */
+        #vsl { padding-top: 3rem; padding-bottom: 3rem; }
+        #sobre { padding-top: 3rem; padding-bottom: 3rem; }
+        #promessa, #pilares, #ecossistema,
+        #formula, #testemunhos, #cases, #equipa { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+        #contacto { padding-top: 3.5rem; padding-bottom: 4rem; }
 
-        /* cards principais com padding mobile-friendly */
-        .hg-card.p-10, .hg-card.p-8 { padding: 1.5rem; }
-        .hg-card.p-10.md\:p-12 { padding: 1.75rem; }
+        /* ── H2 ── */
+        .hg-display.text-4xl,
+        .hg-display.md\:text-5xl { font-size: 2.1rem; line-height: 1.04; }
 
-        /* CTA form respira melhor */
-        #contacto .rounded-2xl { padding: 1.25rem; }
+        /* ── EYEBROW — mais legível no mobile ── */
+        .hg-eyebrow {
+            font-size: 11px;
+            letter-spacing: 0.14em;
+            line-height: 1.4;
+            display: block;
+        }
 
-        /* nav logo mais pequeno */
-        #hgNav img { height: 2.5rem; }
+        /* hero badge */
+        #top .hg-mono.mb-8 { font-size: 10px; letter-spacing: 0.1em; padding: 0.4rem 0.75rem; }
 
-        /* marquee mais lento e tipografia menor */
-        .hg-marquee { gap: 3rem; animation-duration: 40s; }
-        .hg-marquee > div { font-size: 1.25rem !important; }
+        /* ── HEADER COM EYEBROW + H2 — espaço entre eles ── */
+        section .hg-eyebrow.mb-6 { margin-bottom: 1rem; }
+        section .grid.mb-16 { margin-bottom: 2.5rem; }
+        section .max-w-3xl.mb-16 { margin-bottom: 2.25rem; }
+        section .grid.gap-12 { gap: 1.5rem; }
+        section .lg\:pt-4, section .lg\:pt-10 { padding-top: 0; }
 
-        /* VSL com menos shadow no mobile (perf) */
-        .hg-vsl-frame { border-radius: 12px; box-shadow: 0 16px 50px -20px var(--accent-glow); }
+        /* ── PROMESSA — números menores ── */
+        #promessa .hg-num-accent.text-5xl { font-size: 2.5rem; margin-bottom: 1rem; }
+        #promessa .hg-display.text-xl { font-size: 1.1rem; }
 
-        /* cases — métrica grande primeiro, mais visível */
-        #hgCases .hg-card .grid { gap: 1.5rem; }
+        /* ── PILARES — números enormes shrink ── */
+        #pilares .hg-num.text-7xl { font-size: 3.25rem; }
+        #pilares .hg-display.text-3xl { font-size: 1.4rem; }
+        #pilares .flex.items-start.justify-between.mb-10 { margin-bottom: 1.5rem; }
+        #pilares .w-12.h-12 { width: 2.5rem; height: 2.5rem; }
+        #pilares .hg-card.p-10.md\:p-12 { padding: 1.5rem 1.35rem; }
+        #pilares ul.space-y-2\.5 > li + li { margin-top: 0.6rem; }
+        #pilares p.text-base { font-size: 0.9rem; margin-bottom: 1.25rem; }
+        #pilares .hg-tag { font-size: 9px !important; padding: 3px 8px; }
+
+        /* ── ECOSSISTEMA — cards mais compactos ── */
+        #ecossistema .hg-num.text-5xl { font-size: 2.25rem; }
+        #ecossistema .hg-display.text-xl { font-size: 1.05rem; }
+        #ecossistema .hg-card.p-8 { padding: 1.5rem 1.35rem; }
+        #ecossistema .hg-tag { font-size: 9px !important; padding: 3px 8px; }
+        #ecossistema p.text-sm { font-size: 0.85rem; }
+        #ecossistema p.text-lg { font-size: 1rem; }
+        #ecossistema .flex.items-start.justify-between.mb-8 { margin-bottom: 1.25rem; }
+        #ecossistema .w-10.h-10 { width: 2.25rem; height: 2.25rem; }
+
+        /* fluxo "→ Prospecção → Gestão → ..." — pílulas mais limpas */
+        #ecossistema .flex.flex-wrap.items-center.justify-center {
+            gap: 0.45rem;
+            font-size: 11px;
+            margin-top: 2rem;
+            line-height: 1.6;
+        }
+
+        /* ── MÉTODO ── */
+        #formula p.text-lg { font-size: 0.95rem; }
+        #formula .hg-method-step { padding: 1.25rem 0; }
+        #formula .hg-method-circle { width: 44px; height: 44px; font-size: 0.95rem; }
+        #formula .hg-method-title { font-size: 1rem; }
+        #formula .hg-method-desc { font-size: 0.8rem; line-height: 1.5; }
+        #formula .hg-method-mobile-phase {
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px dashed rgba(168, 213, 255, 0.18);
+        }
+        #formula .hg-method-phase-tag { font-size: 9px; letter-spacing: 0.16em; }
+        #formula .hg-method-phase-sub { font-size: 11px; }
+        #formula .hg-method-suporte {
+            margin-top: 2rem;
+            padding: 1rem 1.25rem;
+            font-size: 12px;
+            text-align: left;
+            line-height: 1.7;
+        }
+        #formula .hg-method-suporte strong { display: block; margin-bottom: 4px; margin-right: 0; }
+
+        /* ── TESTEMUNHO ── */
+        #testemunhos #hgFeaturedTestimonial { max-width: 320px !important; }
+
+        /* ── CASES ── */
+        #hgCases .hg-card { padding: 1.5rem 1.35rem !important; }
+        #hgCases .hg-card .grid { gap: 1.25rem; }
         #hgCases .hg-card .md\:col-span-3.text-center { order: -1; text-align: left; }
-        #hgCases .hg-display.text-4xl { font-size: 2.5rem; }
+        #hgCases .hg-display.text-4xl { font-size: 2.25rem; }
+        #hgCases .hg-case-logo:not([alt="Honor"]) { max-width: 120px; height: 32px; }
+        #hgCases .hg-case-logo[alt="Honor"] { max-width: 150px !important; height: 42px !important; }
+        #hgCases p.text-lg { font-size: 0.95rem; line-height: 1.5; }
+        #hgCases p.text-sm { font-size: 0.82rem; }
+        #hgCases .text-xs.hg-mono { font-size: 9px; letter-spacing: 0.16em; }
 
-        /* footer empilha mais apertado */
-        footer .grid { gap: 2rem; }
+        /* ── EQUIPA ── */
+        #equipa .hg-team-bg { font-size: 3rem; }
+        #equipa .hg-team-info { padding: 0.85rem; }
+        #equipa .hg-team-info .text-sm { font-size: 0.82rem; }
+        #equipa .hg-team-info .text-xs { font-size: 9px; letter-spacing: 0.14em; }
+
+        /* ── CTA / CONTACTO ── */
+        #contacto .text-center.mb-12 { margin-bottom: 2rem; }
+        #contacto .hg-display.text-4xl { font-size: 1.95rem; line-height: 1.08; }
+        #contacto .rounded-2xl { padding: 1.25rem 1.1rem; border-radius: 14px; }
+        #contacto .grid.md\:grid-cols-2 { gap: 1rem; }
+        #contacto form .space-y-5 > * + * { margin-top: 1rem; }
+        #contacto .text-base.md\:text-lg { font-size: 0.95rem; line-height: 1.55; }
+        #contacto .hg-mono.text-\[10px\] { font-size: 9px; letter-spacing: 0.14em; }
 
         /* form labels e inputs ligeiramente menores */
         #hgVoiceForm label { font-size: 0.65rem; }
-        #hgVoiceForm .hg-input { font-size: 0.875rem; }
+        #hgVoiceForm .hg-input { font-size: 0.92rem; padding-top: 0.7rem; padding-bottom: 0.7rem; }
+        #hgVoiceForm button[type="submit"] { padding: 0.95rem 1rem; font-size: 0.78rem; letter-spacing: 0.1em; }
 
-        /* orbs ligeiramente reduzidos (perf + estética) */
+        /* contactos abaixo do form — quebrar linha */
+        #contacto .mt-14 { margin-top: 2rem; padding-top: 1.5rem; gap: 0.5rem 1rem; }
+        #contacto .mt-14 .text-sm { font-size: 0.82rem; }
+
+        /* ── NAV ── */
+        #hgNav img { height: 2.25rem; }
+        #hgNav .max-w-7xl { padding-left: 1.25rem; padding-right: 1.25rem; }
+
+        /* ── TRUST STRIP / MARQUEE ── */
+        .hg-marquee { gap: 2.5rem; animation-duration: 38s; }
+        .hg-marquee > div { font-size: 1.1rem !important; }
+
+        /* ── VSL ── */
+        .hg-vsl-frame { border-radius: 12px; box-shadow: 0 16px 50px -20px var(--accent-glow); }
+        .hg-vsl-play { width: 56px; height: 56px; }
+        .hg-vsl-placeholder .hg-mono { font-size: 10px; }
+
+        /* ── FOOTER ── */
+        footer { padding-top: 3rem; padding-bottom: 2.5rem; }
+        footer .grid { gap: 2rem; }
+        footer .mb-12 { margin-bottom: 2rem; }
+        footer img { height: 2.5rem; }
+        footer .flex.flex-col.md\:flex-row { gap: 0.75rem; }
+
+        /* ── DEFAULT CARDS ── */
+        .hg-card.p-8 { padding: 1.5rem 1.35rem; }
+        .hg-card.p-10 { padding: 1.5rem 1.35rem; }
+
+        /* ── ORBS ── */
         .hg-orb { filter: blur(80px); }
     }
 
     @media (max-width: 380px) {
-        .hg-display.text-4xl { font-size: 1.75rem; }
-        #top .hg-stat-val { font-size: 1.35rem; }
-        .hg-hero-title { font-size: clamp(1.95rem, 11vw, 6.5rem) !important; }
+        .hg-display.text-4xl,
+        .hg-display.md\:text-5xl { font-size: 1.85rem; }
+        #top .hg-hero-title { font-size: clamp(2rem, 10vw, 3.5rem) !important; }
+        #top .hg-stat-val { font-size: 1.25rem; }
+        #pilares .hg-num.text-7xl { font-size: 2.75rem; }
+        #ecossistema .hg-num.text-5xl { font-size: 2rem; }
+        #hgCases .hg-display.text-4xl { font-size: 2rem; }
+        #contacto .hg-display.text-4xl { font-size: 1.75rem; }
     }
 </style>
 
@@ -964,17 +1149,20 @@
             </div>
         </div>
 
-        <div id="hgMobileMenu" class="hidden md:hidden border-t"
-            style="border-color: var(--line); background: rgba(10,10,10,0.96);">
-            <div class="px-6 py-4 flex flex-col gap-4 text-sm">
-                <a href="#sobre" data-mobile-link>Sobre</a>
-                <a href="#ecossistema" data-mobile-link>Ecossistema IA</a>
-                <a href="#formula" data-mobile-link>Método</a>
-                <a href="#cases" data-mobile-link>Cases</a>
-                <a href="#equipa" data-mobile-link>Equipa</a>
-                <a href="#contacto" data-mobile-link
-                    class="hg-btn-primary px-4 py-2 rounded-md text-sm inline-flex items-center gap-2 w-fit">
+        <div id="hgMobileMenu" class="hidden md:hidden hg-mobile-menu">
+            <div class="hg-mobile-menu-inner">
+                <a href="#sobre" data-mobile-link class="hg-mobile-link">Sobre</a>
+                <a href="#ecossistema" data-mobile-link class="hg-mobile-link">Ecossistema IA</a>
+                <a href="#formula" data-mobile-link class="hg-mobile-link">Método</a>
+                <a href="#cases" data-mobile-link class="hg-mobile-link">Cases</a>
+                <a href="#equipa" data-mobile-link class="hg-mobile-link">Equipa</a>
+                <a href="#contacto" data-mobile-link class="hg-mobile-cta">
                     Testar agente
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                    </svg>
                 </a>
             </div>
         </div>
@@ -1795,19 +1983,42 @@
         const mobileMenu = document.getElementById('hgMobileMenu');
         const menuOpen = document.getElementById('hgMenuOpen');
         const menuClose = document.getElementById('hgMenuClose');
+
+        const openMobileMenu = () => {
+            mobileMenu.classList.remove('hidden');
+            // next frame para garantir a transição
+            requestAnimationFrame(() => mobileMenu.classList.add('hg-mobile-menu-open'));
+            menuOpen.classList.add('hidden');
+            menuClose.classList.remove('hidden');
+            menuBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        };
+        const closeMobileMenu = () => {
+            mobileMenu.classList.remove('hg-mobile-menu-open');
+            menuOpen.classList.remove('hidden');
+            menuClose.classList.add('hidden');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+            // esconder após animação (compatível com transitionend ou fallback)
+            setTimeout(() => {
+                if (!mobileMenu.classList.contains('hg-mobile-menu-open')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }, 350);
+        };
+
         if (menuBtn) {
             menuBtn.addEventListener('click', () => {
-                const isOpen = !mobileMenu.classList.contains('hidden');
-                mobileMenu.classList.toggle('hidden', isOpen);
-                menuOpen.classList.toggle('hidden', !isOpen);
-                menuClose.classList.toggle('hidden', isOpen);
+                if (mobileMenu.classList.contains('hg-mobile-menu-open')) {
+                    closeMobileMenu();
+                } else {
+                    openMobileMenu();
+                }
             });
         }
         document.querySelectorAll('[data-mobile-link]').forEach(a => {
             a.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuOpen.classList.remove('hidden');
-                menuClose.classList.add('hidden');
+                closeMobileMenu();
             });
         });
 
