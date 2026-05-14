@@ -1,4 +1,6 @@
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
 <!-- ════════════════════════════════════════════════════════════════
      HONOR GROWTH · v3 — Design melhorado
      Melhorias: Cabinet Grotesk + Sora, scroll animations,
@@ -339,8 +341,8 @@
 
     /* ── CLAMP hero title ── */
     .hg-hero-title {
-        font-size: clamp(2.6rem, 9vw, 6.5rem);
-        line-height: 0.96;
+        font-size: clamp(2.15rem, 9vw, 6.5rem);
+        line-height: 0.98;
     }
 
     /* ── LINK UNDERLINE ── */
@@ -847,6 +849,71 @@
         margin-bottom: 6px;
         transition: color 0.3s;
     }
+
+    /* ── MOBILE GUARDS & REFINOS ── */
+    html, body { overflow-x: hidden; }
+    .hg-root { overflow-x: hidden; max-width: 100vw; }
+    img, svg, video { max-width: 100%; }
+
+    @media (max-width: 640px) {
+        /* padding lateral mais apertado para aproveitar largura */
+        .hg-root .max-w-7xl,
+        .hg-root .max-w-5xl,
+        .hg-root .max-w-3xl { padding-left: 1.25rem; padding-right: 1.25rem; }
+
+        /* hero respira menos */
+        #top { padding-top: 6.5rem; padding-bottom: 4rem; }
+
+        /* secções com menos padding vertical no mobile */
+        #vsl, #sobre, #promessa, #pilares, #ecossistema,
+        #formula, #testemunhos, #cases, #equipa { padding-top: 4rem; padding-bottom: 4rem; }
+        #contacto { padding-top: 4.5rem; padding-bottom: 5rem; }
+
+        /* H2 mais comportáveis em ecrã estreito */
+        .hg-display.text-4xl { font-size: 2rem; line-height: 1.05; }
+
+        /* hero stats — padding mais apertado */
+        #top .hg-stat-val { font-size: 1.5rem; }
+        #top [class*="grid-cols-2"] > .px-6 { padding-left: 1rem; padding-right: 1rem; padding-top: 1.25rem; padding-bottom: 1.25rem; }
+
+        /* cards principais com padding mobile-friendly */
+        .hg-card.p-10, .hg-card.p-8 { padding: 1.5rem; }
+        .hg-card.p-10.md\:p-12 { padding: 1.75rem; }
+
+        /* CTA form respira melhor */
+        #contacto .rounded-2xl { padding: 1.25rem; }
+
+        /* nav logo mais pequeno */
+        #hgNav img { height: 2.5rem; }
+
+        /* marquee mais lento e tipografia menor */
+        .hg-marquee { gap: 3rem; animation-duration: 40s; }
+        .hg-marquee > div { font-size: 1.25rem !important; }
+
+        /* VSL com menos shadow no mobile (perf) */
+        .hg-vsl-frame { border-radius: 12px; box-shadow: 0 16px 50px -20px var(--accent-glow); }
+
+        /* cases — métrica grande primeiro, mais visível */
+        #hgCases .hg-card .grid { gap: 1.5rem; }
+        #hgCases .hg-card .md\:col-span-3.text-center { order: -1; text-align: left; }
+        #hgCases .hg-display.text-4xl { font-size: 2.5rem; }
+
+        /* footer empilha mais apertado */
+        footer .grid { gap: 2rem; }
+
+        /* form labels e inputs ligeiramente menores */
+        #hgVoiceForm label { font-size: 0.65rem; }
+        #hgVoiceForm .hg-input { font-size: 0.875rem; }
+
+        /* orbs ligeiramente reduzidos (perf + estética) */
+        .hg-orb { filter: blur(80px); }
+    }
+
+    @media (max-width: 380px) {
+        .hg-display.text-4xl { font-size: 1.75rem; }
+        #top .hg-stat-val { font-size: 1.35rem; }
+        .hg-hero-title { font-size: clamp(1.95rem, 11vw, 6.5rem) !important; }
+    }
 </style>
 
 <div class="hg-root">
@@ -1236,7 +1303,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-10">
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 mb-16">
                 <div class="lg:col-span-6">
-                    <div class="hg-eyebrow mb-6">· Consultoria Comercial · O nosso método</div>
+                    <div class="hg-eyebrow mb-6">· Consultoria comercial com inteligência artificial</div>
                     <h2 class="hg-display text-4xl md:text-5xl lg:text-[64px] font-medium leading-[1.02]">
                         Como <span class="hg-italic hg-accent-text">funciona.</span>
                     </h2>

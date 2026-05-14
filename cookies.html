@@ -1,4 +1,6 @@
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0a">
 <!-- ════════════════════════════════════════════════════════════════
      HONOR GROWTH · Política de Cookies
      ════════════════════════════════════════════════════════════════ -->
@@ -205,6 +207,37 @@
     @media (prefers-reduced-motion: reduce) {
         .hg-reveal, .scroll-hidden { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
         .hg-pulse { animation: none !important; }
+    }
+
+    /* ── MOBILE GUARDS & REFINOS ── */
+    html, body { overflow-x: hidden; }
+    .hg-root { overflow-x: hidden; max-width: 100vw; }
+    img, svg { max-width: 100%; }
+
+    @media (max-width: 640px) {
+        .hg-root .max-w-7xl,
+        .hg-root .max-w-5xl,
+        .hg-root .max-w-4xl,
+        .hg-root .max-w-3xl { padding-left: 1.25rem; padding-right: 1.25rem; }
+
+        .hg-legal h1, .hg-display.text-5xl, .hg-display.text-4xl { font-size: 2rem; line-height: 1.1; }
+        .hg-legal h2 { font-size: 1.35rem; line-height: 1.2; }
+        .hg-legal h3 { font-size: 1.05rem; }
+        .hg-legal p, .hg-legal li { font-size: 0.95rem; line-height: 1.65; }
+
+        .hg-info-box { padding: 1.25rem; }
+        nav img { height: 2.5rem; }
+
+        section { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+        /* tabela de cookies — scroll horizontal em vez de partir o layout */
+        .hg-cookie-table { font-size: 0.85rem; }
+        .hg-cookie-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    }
+
+    @media (max-width: 380px) {
+        .hg-legal h1, .hg-display.text-5xl, .hg-display.text-4xl { font-size: 1.7rem; }
+        .hg-legal h2 { font-size: 1.2rem; }
     }
 </style>
 
