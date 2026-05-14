@@ -297,20 +297,27 @@
 
     @keyframes hg-marquee {
         from {
-            transform: translateX(0);
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
         }
 
         to {
-            transform: translateX(-50%);
+            -webkit-transform: translate3d(-50%, 0, 0);
+            transform: translate3d(-50%, 0, 0);
         }
     }
 
     .hg-marquee {
         display: flex;
         gap: 5rem;
+        -webkit-animation: hg-marquee 50s linear infinite;
         animation: hg-marquee 50s linear infinite;
         white-space: nowrap;
-        width: max-content;
+        /* min-width em vez de width: iOS Safari calcula max-content como 0
+           quando dentro de overflow:hidden — min-width força o conteúdo a ditar
+           a largura final */
+        min-width: max-content;
+        will-change: transform;
     }
 
     @keyframes hg-spin {
