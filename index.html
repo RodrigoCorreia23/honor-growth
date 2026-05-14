@@ -1846,6 +1846,25 @@
             marquee.appendChild(div);
         });
 
+        // Velocidade constante (px/s) em todos os devices.
+        // Sem isto, devices com font fallback (iOS quando Sora ainda não chegou)
+        // ficam com largura diferente → o `50s linear` percorre mais ou menos
+        // pixels por segundo e a velocidade visual varia entre browsers.
+        const setMarqueeDuration = () => {
+            if (!marquee || !marquee.scrollWidth) return;
+            const isMobile = window.innerWidth < 640;
+            const pxPerSec = isMobile ? 95 : 80;
+            const duration = (marquee.scrollWidth / 2) / pxPerSec;
+            marquee.style.animationDuration = duration.toFixed(1) + 's';
+            marquee.style.webkitAnimationDuration = duration.toFixed(1) + 's';
+        };
+        // recalcula quando as fontes Google chegam (largura real muda)
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(setMarqueeDuration);
+        }
+        requestAnimationFrame(setMarqueeDuration);
+        window.addEventListener('resize', setMarqueeDuration, { passive: true });
+
         // ─── MÉTODO ───
         const methodEl = document.getElementById('hgMethod');
         phases.forEach((p, i) => {
