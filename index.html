@@ -59,16 +59,17 @@
         color: var(--accent);
     }
 
-    /* ── GRID BG — discreto, sem efeito "papel quadriculado" ── */
+    /* ── GRID BG — só uma textura subtil, sem efeito "papel quadriculado" ── */
     .hg-grid-bg {
         background-image:
-            linear-gradient(to right, rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
-        background-size: 80px 80px;
-        /* máscara radial: o grid desvanece nos cantos, dando ar atmosférico
-           em vez de uma malha uniforme que parece graph-paper */
-        -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
-        mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+            linear-gradient(to right, rgba(255, 255, 255, 0.014) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.014) 1px, transparent 1px);
+        background-size: 96px 96px;
+        /* fade agressivo: o grid só "respira" no centro e desaparece nos
+           cantos. Em browsers sem mask-image, simplesmente fica muito
+           ténue (0.014 alpha) sem virar papel quadriculado */
+        -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 10%, transparent 80%);
+        mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 10%, transparent 80%);
     }
 
     .hg-orb {
@@ -353,6 +354,11 @@
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
+        /* italic + background-clip:text faz com que o slant à direita
+           e os descenders sejam cortados pela bounding-box do glyph.
+           padding-right dá folga sem alterar o fluxo (margem compensa) */
+        padding: 0.05em 0.12em 0.05em 0;
+        margin: -0.05em -0.12em -0.05em 0;
     }
 
     /* ── CLAMP hero title ── */
