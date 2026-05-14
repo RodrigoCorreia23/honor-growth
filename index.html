@@ -717,6 +717,8 @@
 
     .hg-vsl-frame video,
     .hg-vsl-frame iframe {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -725,6 +727,7 @@
     .hg-vsl-placeholder {
         position: absolute;
         inset: 0;
+        z-index: 2;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -732,6 +735,11 @@
         cursor: pointer;
         flex-direction: column;
         gap: 1rem;
+        transition: opacity 0.3s ease;
+    }
+    .hg-vsl-placeholder.hg-vsl-hidden {
+        opacity: 0;
+        pointer-events: none;
     }
 
     .hg-vsl-play {
@@ -1256,6 +1264,9 @@
     <section id="vsl" class="relative py-20 md:py-28 border-b" style="border-color: var(--line);">
         <div class="max-w-5xl mx-auto px-6 lg:px-10">
             <div class="hg-vsl-frame">
+                <video id="hgVslVideo" controls muted playsinline preload="metadata" poster="assets/mov2-poster.jpg">
+                    <source src="assets/mov2-web.mp4" type="video/mp4">
+                </video>
                 <div id="hgVslPlaceholder" class="hg-vsl-placeholder">
                     <div class="hg-vsl-play">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"
@@ -1266,9 +1277,6 @@
                     <div class="hg-mono text-xs uppercase tracking-wider" style="color: var(--text-3);">Reproduzir vídeo
                         · 2 min</div>
                 </div>
-                <video id="hgVslVideo" class="hidden" controls muted playsinline preload="auto" poster="assets/mov2-poster.jpg">
-                    <source src="assets/mov2-web.mp4" type="video/mp4">
-                </video>
             </div>
         </div>
     </section>
@@ -2026,23 +2034,20 @@
         const vslPlaceholder = document.getElementById('hgVslPlaceholder');
         const vslVideo = document.getElementById('hgVslVideo');
         if (vslPlaceholder && vslVideo) {
-            const startVsl = () => {
-                if (!vslVideo.querySelector('source').src) return;
-                vslVideo.classList.remove('hidden');
-                vslVideo.addEventListener('playing', () => {
-                    vslPlaceholder.classList.add('hidden');
-                }, { once: true });
-                vslVideo.play().catch(() => {
-                    vslPlaceholder.classList.add('hidden');
-                });
-            };
+            const hidePlaceholder = () => vslPlaceholder.classList.add('hg-vsl-hidden');
+
+            // qualquer um destes eventos esconde o placeholder com fade
+            ['play', 'playing', 'loadeddata'].forEach(evt =>
+                vslVideo.addEventListener(evt, hidePlaceholder, { once: true })
+            );
 
             vslPlaceholder.addEventListener('click', () => {
-                if (!vslVideo.querySelector('source').src) { alert('Adiciona o URL do vídeo no elemento <source src="...">'); return; }
                 vslVideo.muted = false;
-                startVsl();
+                hidePlaceholder();
+                vslVideo.play().catch(() => {/* user pode usar os controls nativos */});
             });
 
+            // autoplay muted quando o user faz scroll até à secção
             const vslSection = document.getElementById('vsl');
             if (vslSection && 'IntersectionObserver' in window) {
                 const vslObserver = new IntersectionObserver((entries) => {
@@ -2050,7 +2055,9 @@
                         if (entry.isIntersecting && vslVideo.paused) {
                             vslVideo.muted = true;
                             vslVideo.playsInline = true;
-                            startVsl();
+                            vslVideo.play().then(hidePlaceholder).catch(() => {
+                                // autoplay bloqueado: deixa o placeholder à espera do clique
+                            });
                             vslObserver.disconnect();
                         }
                     });
