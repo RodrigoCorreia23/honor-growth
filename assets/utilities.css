@@ -307,6 +307,63 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 }
 
 /* ────────────────────────────────────────────────────────────
+   SITE CHROME — mobile menu drawer (shared by index + legal pages)
+   ──────────────────────────────────────────────────────────── */
+.hg-mobile-menu {
+    background: rgba(8, 8, 8, 0.98);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border-top: 1px solid var(--line, rgba(255, 255, 255, 0.07));
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
+}
+.hg-mobile-menu.hg-mobile-menu-open { max-height: 80vh; opacity: 1; }
+.hg-mobile-menu.hidden { display: none; }
+.hg-mobile-menu-inner {
+    padding: 0.5rem 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+.hg-mobile-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 0.5rem;
+    color: var(--text, #F5F5F0);
+    font-size: 0.95rem;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    text-decoration: none;
+    border-bottom: 1px solid var(--line, rgba(255, 255, 255, 0.07));
+    transition: color 0.2s ease;
+}
+.hg-mobile-link:hover,
+.hg-mobile-link:active { color: var(--accent, #A8D5FF); }
+.hg-mobile-cta {
+    margin-top: 1.25rem;
+    padding: 0.95rem 1rem;
+    background: var(--accent, #A8D5FF);
+    color: #0a0a0a;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    box-shadow: 0 4px 24px -6px var(--accent-glow, rgba(168, 213, 255, 0.22));
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+.hg-mobile-cta:hover,
+.hg-mobile-cta:active {
+    background: var(--accent-2, #C5E3FF);
+    transform: translateY(-1px);
+}
+
+/* ────────────────────────────────────────────────────────────
    RESPONSIVE: lg 1024px
    ──────────────────────────────────────────────────────────── */
 @media (min-width: 1024px) {
