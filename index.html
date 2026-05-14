@@ -364,7 +364,9 @@
     /* ── CLAMP hero title ── */
     .hg-hero-title {
         font-size: clamp(2.15rem, 9vw, 6.5rem);
-        line-height: 0.98;
+        /* 1.05 em vez de 0.98 — antes a linha seguinte intrudia na anterior
+           e visualmente cortava o italic do "o" em "como" */
+        line-height: 1.05;
     }
 
     /* ── LINK UNDERLINE ── */
