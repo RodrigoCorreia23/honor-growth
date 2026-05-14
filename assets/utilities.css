@@ -190,7 +190,7 @@ ul, ol { list-style: none; margin: 0; padding: 0; }
 .max-w-3xl { max-width: 48rem; }
 .max-w-4xl { max-width: 56rem; }
 .max-w-5xl { max-width: 64rem; }
-.max-w-7xl { max-width: 80rem; }
+.max-w-7xl { max-width: 90rem; }
 
 .min-h-screen { min-height: 100vh; }
 
