@@ -667,6 +667,15 @@
         background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.95) 70%);
     }
 
+    /* Desktop: fotos da equipa mais pequenas (grelha mais estreita e centrada) */
+    @media (min-width: 1024px) {
+        #hgTeam {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
     /* ── VIDEO CARD ── */
     .hg-video-card {
         aspect-ratio: 9/16;
@@ -738,6 +747,20 @@
         object-fit: cover;
         position: absolute;
         inset: 0;
+    }
+
+    .hg-video-corner-logo {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        height: 26px;
+        width: auto;
+        max-width: 110px;
+        object-fit: contain;
+        z-index: 5;
+        pointer-events: none;
+        filter: brightness(0) invert(1) drop-shadow(0 1px 4px rgba(0, 0, 0, 0.5));
+        opacity: 0.95;
     }
 
     /* ── VSL ── */
@@ -1581,7 +1604,10 @@
             <h2 class="hg-display text-4xl md:text-5xl lg:text-[64px] font-medium leading-[1.02] mb-12">
                 Deixamos os <br><span class="hg-italic hg-accent-text">clientes falar por nós.</span>
             </h2>
-            <div id="hgFeaturedTestimonial" class="mx-auto" style="max-width: 380px;"></div>
+            <div class="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-stretch">
+                <div id="hgFeaturedTestimonial" class="w-full mx-auto" style="max-width: 340px;"></div>
+                <div id="hgFlaviocarTestimonial" class="w-full mx-auto" style="max-width: 340px;"></div>
+            </div>
         </div>
     </section>
 
@@ -1829,6 +1855,7 @@
 
         const testimonials = [
             { name: "Rodrigo", company: "Eleve Scale", metric: "", metricLabel: "", poster: "assets/mov1-poster.jpg", videoUrl: "assets/mov1-web.mp4" },
+            { name: "Flaviocar", company: "Stand Automóvel B2C", metric: "", metricLabel: "", poster: "", videoUrl: "assets/flaviocar-video.mp4", cornerLogo: "assets/flaviocarsvg.svg" },
         ];
 
         const cases = [
@@ -1911,18 +1938,19 @@
             modulesEl.appendChild(div);
         });
 
-        // ─── FEATURED TESTIMONIAL ───
-        const featuredEl = document.getElementById('hgFeaturedTestimonial');
-        if (featuredEl && testimonials.length > 0) {
-            const t = testimonials[0];
+        // ─── FEATURED TESTIMONIALS (vídeos) ───
+        const renderTestimonialVideo = (mountEl, t, autoplay = true) => {
+            if (!mountEl || !t) return;
             const card = document.createElement('div');
             card.className = "hg-video-card";
             const posterContent = t.poster ? `<img src="${t.poster}" alt="${t.name}" />` : `<div class="hg-display text-7xl font-medium" style="color:var(--text-3);opacity:0.4;">${t.name.charAt(0)}</div>`;
+            const cornerLogo = t.cornerLogo ? `<img src="${t.cornerLogo}" alt="${t.name}" class="hg-video-corner-logo" />` : '';
             card.innerHTML = `
       <div class="hg-video-poster">${posterContent}</div>
       <div class="hg-video-play" style="width:72px;height:72px;">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="color:#0a0a0a;margin-left:4px;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
       </div>
+      ${cornerLogo}
       <div class="hg-video-overlay">
         <div class="text-base font-medium" style="color:var(--text);">${t.name}</div>
         <div class="text-xs hg-mono uppercase tracking-wider" style="color:var(--text-3);">${t.company}</div>
@@ -1965,9 +1993,31 @@
                 card.removeEventListener('click', cardClickHandler);
             };
             card.addEventListener('click', cardClickHandler);
-            featuredEl.appendChild(card);
+            mountEl.appendChild(card);
 
-            if ('IntersectionObserver' in window) {
+            // Sem poster definido → captura o 1º frame do vídeo como thumbnail
+            if (!t.poster && t.videoUrl) {
+                const posterEl = card.querySelector('.hg-video-poster');
+                const probe = document.createElement('video');
+                probe.src = t.videoUrl;
+                probe.muted = true;
+                probe.playsInline = true;
+                probe.preload = 'metadata';
+                probe.addEventListener('loadeddata', () => {
+                    try { probe.currentTime = Math.min(0.1, (probe.duration || 1) - 0.01); } catch (e) {}
+                });
+                probe.addEventListener('seeked', () => {
+                    try {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = probe.videoWidth;
+                        canvas.height = probe.videoHeight;
+                        canvas.getContext('2d').drawImage(probe, 0, 0, canvas.width, canvas.height);
+                        if (posterEl && !testimonialVideo) posterEl.innerHTML = `<img src="${canvas.toDataURL('image/jpeg', 0.82)}" alt="${t.name}" />`;
+                    } catch (e) {}
+                }, { once: true });
+            }
+
+            if (autoplay && 'IntersectionObserver' in window) {
                 const testObserver = new IntersectionObserver((entries) => {
                     entries.forEach((entry) => {
                         if (entry.isIntersecting && !testimonialVideo) {
@@ -1978,7 +2028,9 @@
                 }, { threshold: 0.5 });
                 testObserver.observe(card);
             }
-        }
+        };
+        renderTestimonialVideo(document.getElementById('hgFeaturedTestimonial'), testimonials[0], true);
+        renderTestimonialVideo(document.getElementById('hgFlaviocarTestimonial'), testimonials[1], false);
 
         // ─── CASES ───
         const casesEl = document.getElementById('hgCases');
