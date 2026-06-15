@@ -16,6 +16,16 @@
         src="https://www.facebook.com/tr?id=736478694950337&ev=PageView&noscript=1" /></noscript>
 <!-- ════════ /Meta Pixel ════════ -->
 
+<!-- ════════ Google Analytics (GA4) ════════ -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EJP76F6H8R"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EJP76F6H8R');
+</script>
+<!-- ════════ /Google Analytics ════════ -->
+
 <!-- ════════════════════════════════════════════════════════════════
      HONOR GROWTH · v3 — Design melhorado
      Melhorias: Cabinet Grotesk + Sora, scroll animations,
@@ -2213,6 +2223,50 @@
         }, { threshold: 0.5 });
 
         counterEls.forEach(el => counterObserver.observe(el));
+
+        // ════════════════════════════════════════════════
+        // GA4 — EVENTOS PERSONALIZADOS
+        // ════════════════════════════════════════════════
+
+        // CTA clicks → #contacto
+        document.querySelectorAll('a[href="#contacto"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                gtag('event', 'cta_click', {
+                    event_category: 'engagement',
+                    event_label: btn.textContent.trim().substring(0, 50),
+                });
+            });
+        });
+
+        // Video plays (testemunhos)
+        document.addEventListener('click', (e) => {
+            const card = e.target.closest('.hg-video-card');
+            if (!card || card.querySelector('video')) return;
+            const name = card.querySelector('.text-base')?.textContent || 'unknown';
+            gtag('event', 'video_play', {
+                event_category: 'engagement',
+                event_label: name,
+            });
+        });
+
+        // VSL play
+        const vslPlaceholder = document.getElementById('hgVslPlaceholder');
+        if (vslPlaceholder) {
+            vslPlaceholder.addEventListener('click', () => {
+                gtag('event', 'vsl_play', { event_category: 'engagement' });
+            }, { once: true });
+        }
+
+        // GHL iframe form submission
+        window.addEventListener('message', (e) => {
+            if (e.data && (e.data.type === 'form:submit' || e.data.action === 'formSubmit' ||
+                (typeof e.data === 'string' && e.data.includes('formSubmit')))) {
+                gtag('event', 'generate_lead', {
+                    event_category: 'conversion',
+                    event_label: 'ghl_form',
+                });
+            }
+        });
 
     })();
 </script>
