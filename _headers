@@ -1,0 +1,19 @@
+# Cloudflare Pages — security headers (aplicados a todas as rotas)
+# Docs: https://developers.cloudflare.com/pages/configuration/headers/
+#
+# A Content-Security-Policy abaixo está construída a partir das origens REAIS do site:
+#   Meta Pixel (connect.facebook.net / facebook.com), Umami (cloud.umami.is),
+#   intl-tel-input (cdn.jsdelivr.net), GoHighLevel (link.msgsndr.com / api.leadconnectorhq.com),
+#   Google Fonts (fonts.googleapis.com / fonts.gstatic.com).
+#
+# Se algo partir (ex: formulário GHL ou input de telefone), troca temporariamente
+# "Content-Security-Policy:" por "Content-Security-Policy-Report-Only:" para ver os
+# erros na consola do browser (DevTools) sem bloquear, e ajusta a origem em falta.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://connect.facebook.net https://cloud.umami.is https://cdn.jsdelivr.net https://link.msgsndr.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.facebook.com https://cdn.jsdelivr.net; media-src 'self' data: blob:; connect-src 'self' https://cloud.umami.is https://connect.facebook.net https://www.facebook.com https://api.leadconnectorhq.com https://link.msgsndr.com https://cdn.jsdelivr.net; frame-src 'self' https://api.leadconnectorhq.com https://link.msgsndr.com https://www.facebook.com https://cloud.umami.is; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin
