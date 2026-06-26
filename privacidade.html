@@ -1,245 +1,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0a">
-<!-- ════════════════════════════════════════════════════════════════
-     HONOR GROWTH · Política de Privacidade
-     ════════════════════════════════════════════════════════════════ -->
+
 
 <link rel="stylesheet" href="assets/utilities.css">
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap');
-
-    .hg-root {
-        --bg: #0a0a0a;
-        --bg-2: #111111;
-        --surface: #161616;
-        --line: rgba(255, 255, 255, 0.07);
-        --line-strong: rgba(255, 255, 255, 0.16);
-        --text: #F5F5F0;
-        --text-2: rgba(245, 245, 240, 0.66);
-        --text-3: rgba(245, 245, 240, 0.42);
-        --accent: #A8D5FF;
-        --accent-2: #C5E3FF;
-        --accent-glow: rgba(168, 213, 255, 0.22);
-
-        font-family: 'DM Sans', system-ui, sans-serif;
-        color: var(--text);
-        background: var(--bg);
-        -webkit-font-smoothing: antialiased;
-        width: 100%;
-        min-height: 100vh;
-    }
-
-    .hg-display { font-family: 'Sora', sans-serif; letter-spacing: -0.03em; }
-    .hg-mono { font-family: 'DM Mono', monospace; }
-    .hg-italic { font-style: italic; }
-
-    .hg-grid-bg {
-        background-image:
-            linear-gradient(to right, rgba(255, 255, 255, 0.014) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.014) 1px, transparent 1px);
-        background-size: 96px 96px;
-        -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 10%, transparent 80%);
-        mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 10%, transparent 80%);
-    }
-
-    .hg-orb {
-        position: absolute;
-        border-radius: 9999px;
-        filter: blur(90px);
-        pointer-events: none;
-        will-change: transform;
-        transform: translateZ(0);
-        contain: layout paint;
-    }
-
-    .hg-btn-primary {
-        background: var(--accent);
-        color: #0a0a0a;
-        font-weight: 500;
-        transition: all 0.25s ease;
-        box-shadow: 0 4px 32px -6px var(--accent-glow);
-        cursor: pointer;
-        border: none;
-    }
-    .hg-btn-primary:hover {
-        background: var(--accent-2);
-        transform: translateY(-1px);
-        box-shadow: 0 8px 40px -6px rgba(168, 213, 255, 0.45);
-    }
-
-    .hg-btn-ghost {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--line);
-        color: var(--text);
-        transition: all 0.25s ease;
-        cursor: pointer;
-    }
-    .hg-btn-ghost:hover {
-        background: rgba(255, 255, 255, 0.06);
-        border-color: var(--line-strong);
-    }
-
-    .hg-divider { height: 1px; background: var(--line); width: 100%; }
-
-    /* ── PROSE LEGAL ── */
-    .hg-legal h2 {
-        font-family: 'Sora', sans-serif;
-        letter-spacing: -0.02em;
-        font-size: 1.5rem;
-        font-weight: 500;
-        margin-top: 3rem;
-        margin-bottom: 1rem;
-        color: var(--text);
-    }
-    .hg-legal h2:first-of-type { margin-top: 0; }
-    .hg-legal h3 {
-        font-family: 'Sora', sans-serif;
-        letter-spacing: -0.01em;
-        font-size: 1.1rem;
-        font-weight: 500;
-        margin-top: 2rem;
-        margin-bottom: 0.75rem;
-        color: var(--text);
-    }
-    .hg-legal p {
-        color: var(--text-2);
-        line-height: 1.75;
-        margin-bottom: 1rem;
-    }
-    .hg-legal ul {
-        list-style: none;
-        padding: 0;
-        margin: 0 0 1rem 0;
-    }
-    .hg-legal ul li {
-        position: relative;
-        padding-left: 1.5rem;
-        color: var(--text-2);
-        line-height: 1.7;
-        margin-bottom: 0.5rem;
-    }
-    .hg-legal ul li::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0.7rem;
-        width: 6px;
-        height: 1px;
-        background: var(--accent);
-    }
-    .hg-legal strong { color: var(--text); font-weight: 500; }
-    .hg-legal a { color: var(--accent); text-decoration: none; }
-    .hg-legal a:hover { text-decoration: underline; }
-
-    .hg-info-box {
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.005) 100%);
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        padding: 1.5rem;
-        margin: 1.5rem 0;
-    }
-
-    .hg-link-underline { position: relative; }
-    .hg-link-underline::after {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 0;
-        height: 1px;
-        background: var(--accent);
-        transition: width 0.3s ease;
-    }
-    .hg-link-underline:hover::after { width: 100%; }
-
-    /* ── ANIMATIONS (alinhadas com index.html) ── */
-    @keyframes hg-fade-up {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    .hg-reveal { animation: hg-fade-up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
-    .hg-d-1 { animation-delay: 0.1s; }
-    .hg-d-2 { animation-delay: 0.22s; }
-    .hg-d-3 { animation-delay: 0.34s; }
-    .hg-d-4 { animation-delay: 0.46s; }
-
-    @keyframes hg-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .hg-pulse { animation: hg-pulse 2s ease-in-out infinite; }
-
-    .scroll-hidden {
-        opacity: 0;
-        transform: translateY(28px);
-        transition: opacity 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
-            transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
-    }
-    .scroll-visible { opacity: 1; transform: translateY(0); }
-
-    .hg-headline-accent {
-        background: linear-gradient(110deg, var(--accent) 30%, var(--accent-2) 60%, var(--text) 100%);
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-
-    .hg-info-box { transition: border-color 0.35s ease, transform 0.35s ease, background 0.35s ease; }
-    .hg-info-box:hover {
-        border-color: var(--line-strong);
-        transform: translateY(-2px);
-        background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
-    }
-
-    .hg-legal a { transition: opacity 0.2s ease, text-decoration-color 0.2s ease; }
-    .hg-legal a:hover { opacity: 0.85; }
-
-    .hg-legal h2 { transition: color 0.3s ease; }
-
-    /* Suavização para utilizadores com preferência por menos movimento */
-    @media (prefers-reduced-motion: reduce) {
-        .hg-reveal, .scroll-hidden { animation: none !important; transition: none !important; opacity: 1 !important; transform: none !important; }
-        .hg-pulse { animation: none !important; }
-    }
-
-    /* ── MOBILE GUARDS & REFINOS ── */
-    html, body {
-        overflow-x: hidden;
-        background: #0a0a0a;
-        color: #F5F5F0;
-        min-height: 100%;
-    }
-    .hg-root { overflow-x: hidden; max-width: 100vw; }
-    img, svg { max-width: 100%; }
-
-    @media (max-width: 640px) {
-        .hg-root .max-w-7xl,
-        .hg-root .max-w-5xl,
-        .hg-root .max-w-4xl,
-        .hg-root .max-w-3xl { padding-left: 1.25rem; padding-right: 1.25rem; }
-
-        .hg-legal h1, .hg-display.text-5xl, .hg-display.text-4xl { font-size: 2rem; line-height: 1.1; }
-        .hg-legal h2 { font-size: 1.35rem; line-height: 1.2; }
-        .hg-legal h3 { font-size: 1.05rem; }
-        .hg-legal p, .hg-legal li { font-size: 0.95rem; line-height: 1.65; }
-
-        .hg-info-box { padding: 1.25rem; }
-        nav img { height: 2.5rem; }
-
-        /* secções com menos padding (sem !important para não esmagar o pt-36 do header) */
-        section.pb-16, section.pb-24 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
-        /* header: clarar a nav fixa (h-16 = 64px) sem ser excessivo */
-        section.pt-36 { padding-top: 6rem; padding-bottom: 2rem; }
-    }
-
-    @media (max-width: 380px) {
-        .hg-legal h1, .hg-display.text-5xl, .hg-display.text-4xl { font-size: 1.7rem; }
-        .hg-legal h2 { font-size: 1.2rem; }
-    }
-</style>
+<link rel="stylesheet" href="assets/privacidade.css">
 
 <div class="hg-root">
 
-    <!-- ════════ NAV ════════ -->
+    
     <nav class="fixed top-0 left-0 right-0 z-50"
         style="border-bottom: 1px solid var(--line); background: rgba(10,10,10,0.85); backdrop-filter: blur(12px);">
         <div class="max-w-7xl mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
@@ -298,7 +68,7 @@
         </div>
     </nav>
 
-    <!-- ════════ HEADER ════════ -->
+    
     <section class="relative pt-36 pb-16 overflow-hidden">
         <div class="hg-orb"
             style="top: -10%; left: 60%; width: 600px; height: 600px; background: var(--accent); opacity: 0.12;"></div>
@@ -323,7 +93,7 @@
         </div>
     </section>
 
-    <!-- ════════ CONTENT ════════ -->
+    
     <section class="relative pb-24 overflow-hidden">
         <div class="hg-orb"
             style="top: 20%; left: -10%; width: 500px; height: 500px; background: var(--accent); opacity: 0.05;"></div>
@@ -448,7 +218,7 @@
         </div>
     </section>
 
-    <!-- ════════ FOOTER ════════ -->
+    
     <footer class="py-14">
         <div class="max-w-7xl mx-auto px-6 lg:px-10">
             <div class="grid md:grid-cols-12 gap-10 mb-12">
@@ -498,74 +268,4 @@
 
 </div>
 
-<script>
-    document.getElementById('hgYear').textContent = new Date().getFullYear();
-
-    // ─── MOBILE MENU ───
-    (function () {
-        const menuBtn = document.getElementById('hgMenuBtn');
-        const mobileMenu = document.getElementById('hgMobileMenu');
-        const menuOpen = document.getElementById('hgMenuOpen');
-        const menuClose = document.getElementById('hgMenuClose');
-        if (!menuBtn || !mobileMenu) return;
-
-        const openMenu = () => {
-            mobileMenu.classList.remove('hidden');
-            requestAnimationFrame(() => mobileMenu.classList.add('hg-mobile-menu-open'));
-            menuOpen.classList.add('hidden');
-            menuClose.classList.remove('hidden');
-            menuBtn.setAttribute('aria-expanded', 'true');
-            document.body.style.overflow = 'hidden';
-        };
-        const closeMenu = () => {
-            mobileMenu.classList.remove('hg-mobile-menu-open');
-            menuOpen.classList.remove('hidden');
-            menuClose.classList.add('hidden');
-            menuBtn.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
-            setTimeout(() => {
-                if (!mobileMenu.classList.contains('hg-mobile-menu-open')) {
-                    mobileMenu.classList.add('hidden');
-                }
-            }, 350);
-        };
-
-        menuBtn.addEventListener('click', () => {
-            if (mobileMenu.classList.contains('hg-mobile-menu-open')) closeMenu();
-            else openMenu();
-        });
-        document.querySelectorAll('[data-mobile-link]').forEach(a => {
-            a.addEventListener('click', closeMenu);
-        });
-    })();
-
-    // ─── SCROLL REVEAL (cascading por secção, igual ao index) ───
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                const el = entry.target;
-                const delay = parseFloat(el.dataset.revealDelay || 0);
-                setTimeout(() => el.classList.add('scroll-visible'), delay);
-                revealObserver.unobserve(el);
-            }
-        });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-    const legalRoot = document.querySelector('.hg-legal');
-    if (legalRoot) {
-        let group = [];
-        const flush = () => {
-            group.forEach((el, i) => {
-                el.classList.add('scroll-hidden');
-                el.dataset.revealDelay = i * 60;
-                revealObserver.observe(el);
-            });
-            group = [];
-        };
-        Array.from(legalRoot.children).forEach((el) => {
-            if (el.tagName === 'H2') flush();
-            group.push(el);
-        });
-        flush();
-    }
-</script>
+<script src="assets/legal.js"></script>

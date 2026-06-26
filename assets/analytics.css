@@ -1,0 +1,12 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0a; font-family: 'Sora', sans-serif; }
+    .back {
+        position: fixed; top: 1rem; left: 1rem; z-index: 10;
+        color: #888; text-decoration: none; font-size: 0.85rem;
+        font-family: 'DM Mono', monospace; letter-spacing: 0.08em;
+        text-transform: uppercase; transition: color 0.2s;
+    }
+    .back:hover { color: #fff; }
+    iframe {
+        width: 100vw; height: 100vh; border: none; display: block;
+    }
