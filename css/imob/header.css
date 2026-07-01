@@ -1,0 +1,30 @@
+﻿.hg-header-004 { position:relative; z-index:110; border-bottom-width:1px; border-bottom-style:solid; border-bottom-color:transparent; transition:background .35s ease, border-color .35s ease, backdrop-filter .35s ease; }
+.hg-header-005 { max-width:1280px; margin:0 auto; padding:16px clamp(20px,5vw,56px); display:flex; align-items:center; justify-content:center; gap:24px; }
+.hg-header-006 { display:flex; align-items:center; gap:10px; }
+.hg-header-007 { height:90px; width:auto; }
+.hg-header-008 { display:flex; align-items:center; gap:34px; }
+.hg-header-009 { font-size:14.5px; font-weight:500; color:#b6b9c2; letter-spacing:.01em; }
+.hg-header-hover-009:hover { color:#ffffff }
+.hg-header-010 { font-size:14.5px; font-weight:500; color:#b6b9c2; }
+.hg-header-hover-010:hover { color:#ffffff }
+.hg-header-011 { font-size:14.5px; font-weight:500; color:#b6b9c2; }
+.hg-header-hover-011:hover { color:#ffffff }
+.hg-header-012 { font-size:14.5px; font-weight:500; color:#b6b9c2; }
+.hg-header-hover-012:hover { color:#ffffff }
+.hg-header-013 { display:inline-flex; align-items:center; gap:9px; padding:11px 20px; background:var(--accent,#3a7dff); color:#fff; font-weight:600; font-size:14.5px; border-radius:9px; box-shadow:0 8px 26px rgba(58,125,255,.32); }
+.hg-header-hover-013:hover { background:#5b95ff; transform:translateY(-1px) }
+.hg-header-014 { display:flex; align-items:center; gap:12px; }
+.hg-header-015 { display:inline-flex; align-items:center; padding:9px 16px; background:var(--accent,#3a7dff); color:#fff; font-weight:600; font-size:13.5px; border-radius:8px; }
+.hg-header-015:hover { background:#5b95ff; }
+.hg-header-016 { width:42px; height:42px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:9px; }
+.hg-header-016:hover { background:rgba(58,125,255,.18); border-color:rgba(58,125,255,.42); }
+.hg-header-017 { display:flex; flex-direction:column; gap:4px; }
+.hg-header-018 { display:block; width:18px; height:2px; background:#fff; }
+.hg-header-019 { display:block; width:18px; height:2px; background:#fff; }
+.hg-header-020 { display:block; width:18px; height:2px; background:#fff; }
+.hg-header-021 { background:rgba(10,15,30,.97); backdrop-filter:blur(14px); border-top:1px solid rgba(255,255,255,.07); padding:14px clamp(20px,5vw,56px) 26px; display:flex; flex-direction:column; gap:4px; }
+.hg-header-022 { padding:13px 0; font-size:17px; font-weight:600; border-bottom:1px solid rgba(255,255,255,.06); }
+.hg-header-023 { padding:13px 0; font-size:17px; font-weight:600; border-bottom:1px solid rgba(255,255,255,.06); }
+.hg-header-024 { padding:13px 0; font-size:17px; font-weight:600; border-bottom:1px solid rgba(255,255,255,.06); }
+.hg-header-025 { padding:13px 0; font-size:17px; font-weight:600; border-bottom:1px solid rgba(255,255,255,.06); }
+.hg-header-026 { padding:13px 0; font-size:17px; font-weight:600; }

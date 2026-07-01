@@ -1,0 +1,62 @@
+.video-overlay-disabled { pointer-events: none; }
+[data-video-toggle] { pointer-events: auto; }
+
+.video-icon { display: block; }
+.video-icon-play { width: 0; height: 0; border-left: 16px solid #fff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px; }
+.video-icon-pause { width: 18px; height: 22px; border-left: 6px solid #fff; border-right: 6px solid #fff; }
+
+.video-mute-indicator { position: absolute; top: 12px; left: 12px; display: flex; align-items: center; gap: 6px; background: rgba(0,0,0,.62); color: #fff; font-size: 12px; font-weight: 500; padding: 6px 12px; border-radius: 20px; cursor: pointer; border: 1px solid rgba(255,255,255,.18); z-index: 10; backdrop-filter: blur(6px); transition: background .2s; pointer-events: auto; font-family: inherit; letter-spacing: .01em; }
+.video-mute-indicator:hover { background: rgba(0,0,0,.82); }
+.video-mute-indicator.is-hidden { display: none; }
+
+.hg-video-controls {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+
+.hg-modal-ctrl {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px 6px 9px;
+  background: rgba(10, 14, 28, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  font-family: inherit;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: background 0.18s, border-color 0.18s, transform 0.12s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.hg-modal-ctrl:hover {
+  background: rgba(10, 14, 28, 0.92);
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
+}
+.hg-modal-ctrl:active {
+  transform: translateY(0);
+}
+.hg-modal-ctrl:focus-visible {
+  outline: 2px solid var(--accent, #3a7dff);
+  outline-offset: 2px;
+}
+.hg-modal-ctrl svg {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+/* No vídeo de testemunho o texto fica no fundo — controles vão para o topo */
+.hg-videos-239 .hg-video-controls {
+  bottom: auto;
+  top: 10px;
+}
