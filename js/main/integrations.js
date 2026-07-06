@@ -19,6 +19,7 @@ window.HonorIntegrations = (function () {
   var _umamiLoaded     = false;
   var _pixelLoaded     = false;
   var _ghlEmbedLoaded  = false;
+  var _ghlExplicitLoad = {};
 
   var GHL_TARGETS = [
     { containerId: 'hg-ghl-inline', iframeId: 'page-' + CONFIG.ghlFormId },
@@ -118,16 +119,32 @@ window.HonorIntegrations = (function () {
     iframe.setAttribute('data-height',             '713');
     iframe.setAttribute('data-layout-iframe-id',   iframeId);
     iframe.setAttribute('data-form-id',            CONFIG.ghlFormId);
-    iframe.setAttribute('title',                   'Diagnóstico comercial Honor Growth');
+    iframe.setAttribute('title',                   'Case Study Gratuito Honor Growth');
     iframe.addEventListener('load', function () {
       iframe.dataset.honorLoaded = 'true';
     }, { once: true });
     return iframe;
   }
 
-  function loadGhlContainer(containerId, iframeId) {
+  function _shouldLoadGhl(containerId, options) {
+    // O formulário é sempre carregado independentemente de consentimento
+    return true;
+  }
+
+  function loadGhlContainer(containerId, iframeId, options) {
     var container = document.getElementById(containerId);
     if (!container) return;
+
+    if (options && options.force === true) {
+      _ghlExplicitLoad[containerId] = true;
+    }
+
+    if (!_shouldLoadGhl(containerId, options)) {
+      if (!container.querySelector('.hg-ghl-placeholder')) {
+        container.innerHTML = _placeholderHTML(containerId, iframeId);
+      }
+      return;
+    }
 
     if (document.getElementById(iframeId)) return;
 
@@ -139,7 +156,16 @@ window.HonorIntegrations = (function () {
   function resetGhlContainer(containerId, iframeId) {
     var container = document.getElementById(containerId);
     if (!container) return;
+    _ghlExplicitLoad[containerId] = false;
     container.innerHTML = _placeholderHTML(containerId, iframeId);
+  }
+
+  function isGhlSubmitMessage(data) {
+    if (!data) return false;
+    if (data.type === 'form:submit') return true;
+    if (data.action === 'formSubmit') return true;
+    if (typeof data === 'string' && data.includes('formSubmit')) return true;
+    return false;
   }
 
   function refreshGhlContainers() {
@@ -154,7 +180,8 @@ window.HonorIntegrations = (function () {
       if (loadBtn) {
         loadGhlContainer(
           loadBtn.getAttribute('data-container-id'),
-          loadBtn.getAttribute('data-iframe-id')
+          loadBtn.getAttribute('data-iframe-id'),
+          { force: true }
         );
         return;
       }
@@ -186,7 +213,11 @@ window.HonorIntegrations = (function () {
 
   return {
     trackAnalytics:       trackAnalytics,
+    loadUmamiOnce:        loadUmamiOnce,
+    loadMetaPixelOnce:    loadMetaPixelOnce,
     loadGhlContainer:     loadGhlContainer,
+    refreshGhlContainers: refreshGhlContainers,
+    isGhlSubmitMessage:   isGhlSubmitMessage,
     CONFIG: CONFIG
   };
 }());

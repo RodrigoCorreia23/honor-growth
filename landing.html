@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="pt-PT">
   <head>
     <meta charset="utf-8" />
@@ -36,23 +36,28 @@
     <link rel="stylesheet" href="css/main/authority.css" />
     <link rel="stylesheet" href="css/main/cta.css" />
     <link rel="stylesheet" href="css/main/footer.css" />
+    <link rel="stylesheet" href="css/main/reference-layout.css" />
+    <link rel="stylesheet" href="css/main/video.css" />
     <link rel="stylesheet" href="css/main/modal.css" />
+    <link rel="stylesheet" href="css/main/modal-split.css" />
     <link rel="stylesheet" href="css/main/consent.css" />
+    <script src="js/main/data.js" defer></script>
+    <script src="js/main/menu.js" defer></script>
     <script src="js/main/navigation.js" defer></script>
     <script src="js/main/animations.js" defer></script>
     <script src="js/main/videos.js" defer></script>
-    <script src="js/main/form.js" defer></script>
+    <script src="js/main/form-modal-text.js" defer></script>
     <script src="js/main/integrations.js" defer></script>
     <script src="js/main/consent.js" defer></script>
     <script src="js/main/main.js" defer></script>
   </head>
   <body>
     <div data-honor-root="" class="hg-layout-001">
+      <div class="hg-planet-bg" aria-hidden="true"></div>
+      <div class="hg-beam" aria-hidden="true"></div>
+      <div class="hg-grain" aria-hidden="true"></div>
       <!-- ============ HERO ============ -->
       <section id="topo" class="hg-hero-027">
-        <div class="hg-hero-028"></div>
-        <div class="hg-hero-029"></div>
-
         <div class="hg-hero-030">
           <!-- LOGO -->
           <div class="hg-hero-logo">
@@ -67,35 +72,28 @@
             <div class="hg-hero-032">
               <span class="hg-hero-033"></span>
               <span style="font-size:13px;line-height:1;">⚠️</span>
-              <span class="hg-hero-034">Para empresas B2B que faturam +300K/ano</span>
+              <span class="hg-hero-034">Apenas para negócios B2B acima de 300K€/ano sem processo comercial que procuram previsibilidade de crescimento</span>
             </div>
             <h1 class="hg-hero-035">
-              A tua equipa existe para vender.<br>
-              <span class="hg-hero-036">Então porque é que não está?</span>
+              Como estruturámos +50 departamentos comerciais B2B<br>
+              <span class="hg-hero-036">para vender com previsibilidade.</span>
             </h1>
             <p class="hg-hero-037">
-             Faz a tua auditoria gratuita de 30 minutos e descobre exatamente <span class="hg-hero-049">o que está a bloquear o crescimento</span>, 
-             onde estás a perder oportunidades e quais os próximos passos para construir um sistema comercial mais previsível, 
-             eficiente e escalável.
+              Acede ao case study e vê o processo, as métricas e os ajustes
+              que usamos para transformar operação comercial em crescimento
+              consistente.
             </p>
             <div class="hg-hero-pills">
-              <span class="hg-hero-pill">+ Leads qualificadas</span>
-              <span class="hg-hero-pill">+ Conversão comercial</span>
-              <span class="hg-hero-pill">+ Margem líquida</span>
+              <span class="hg-hero-pill">Métricas que importam</span>
+              <span class="hg-hero-pill">Processo comercial</span>
+              <span class="hg-hero-pill">IA aplicada à execução</span>
             </div>
             <div class="hg-hero-038">
               <a
                 href="#contacto"
                 data-modal-trigger
                 class="hg-hero-039 hg-hero-hover-039"
-                >Quero aumentar as vendas<span class="hg-hero-040">→</span></a
-              >
-              <a
-                href="#cases"
-                data-scroll-link
-                data-target="cases"
-                class="hg-hero-041 hg-hero-hover-041"
-                >Ver casos de estudo</a
+                >Quero aceder ao case study gratuito<span class="hg-hero-040">→</span></a
               >
             </div>
           </div>
@@ -114,7 +112,7 @@
               <div class="hg-video-controls">
                 <button
                   data-mute-toggle
-                  aria-label="Habilitar som"
+                  aria-label="Ativar som"
                   aria-pressed="false"
                   class="hg-modal-ctrl"
                 >
@@ -135,7 +133,7 @@
                     <line x1="23" y1="9" x2="17" y2="15" />
                     <line x1="17" y1="9" x2="23" y2="15" />
                   </svg>
-                  <span class="hg-ctrl-sound-label">Habilitar som</span>
+                  <span class="hg-ctrl-sound-label">Ativar som</span>
                 </button>
                 <button
                   data-play-toggle
@@ -162,16 +160,20 @@
                 </button>
               </div>
             </div>
-            <div class="hg-hero-046">
-              <p class="hg-hero-047">
-                João Honório, fundador da Honor Growth, já ajudou a estruturar
-                <strong>+50 departamentos comerciais no último ano</strong> em
-                empresas B2B, com <span class="hg-hero-048">9,3/10</span> de
-                satisfação média. Auditamos os teus processos, formamos a tua
-                equipa e replicamos com IA as tarefas repetitivas de contacto,
-                chamadas e mensagens ao longo do ciclo comercial, para que a tua
-                equipa se foque no que realmente fecha negócios: criar relações
-                de confiança com potenciais clientes.
+            <div class="hg-hero-proof-copy">
+              <p>
+                <span class="hg-hero-proof-highlight">João Honório, fundador da Honor Growth</span>,
+                já ajudou a estruturar
+                <span class="hg-hero-proof-highlight">+50 departamentos comerciais</span>
+                no último ano em empresas B2B, com
+                <span class="hg-hero-proof-highlight">9,3/10 de satisfação média</span>.
+              </p>
+              <p>
+                Auditamos os teus processos, formamos a tua equipa e replicamos com
+                <span class="hg-hero-proof-highlight">IA</span> as tarefas repetitivas de contacto,
+                chamadas e mensagens ao longo do ciclo comercial, para que a tua equipa se foque no
+                que realmente fecha negócios:
+                <span class="hg-hero-proof-highlight">criar relações de confiança com potenciais clientes</span>.
               </p>
             </div>
           </div>
@@ -185,7 +187,7 @@
             <div class="hg-results-055">
               <div data-count="50" data-pre="+" class="hg-results-056">+50</div>
               <div class="hg-results-057">
-                Departamentos comerciais consultados
+                Departamentos comerciais estruturados no último ano
               </div>
             </div>
             <div class="hg-results-058">
@@ -219,7 +221,7 @@
               </div>
             </div>
           </div>
-          <p class="hg-results-067">EMPRESAS B2B A PARTIR DE 100K/ANO</p>
+          <p class="hg-results-067">EMPRESAS B2B A PARTIR DE 300K/ANO</p>
         </div>
       </section>
 
@@ -230,7 +232,7 @@
             <div data-reveal="" class="hg-layout-071">
               <div class="hg-layout-072">O que resolvemos</div>
               <h2 class="hg-layout-073">
-                Não vendemos serviços. Construímos o motor de crescimento B2B da sua empresa.
+                Não vendemos serviços. Construímos o motor de crescimento B2B da tua empresa.
               </h2>
               <p class="hg-layout-074">
                 Diagnóstico, implementação e resultado medível em cada etapa.
@@ -240,9 +242,9 @@
 
             <div class="hg-cert-cards">
               <div data-reveal="" class="hg-cert-card">
-                <div class="hg-cert-headline">+ Leads qualificados</div>
+                <div class="hg-cert-headline">+ Leads qualificadas</div>
                 <div class="hg-cert-how">Como</div>
-                <p class="hg-cert-desc">Pipeline alimentado com prospeção automatizada, tráfego qualificado e nutrição de leads — o comercial recebe apenas contactos com intenção real de compra, sem volume inútil.</p>
+                <p class="hg-cert-desc">Funil comercial alimentado com prospeção automatizada, tráfego qualificado e nutrição de leads — o comercial recebe apenas contactos com intenção real de compra, sem volume inútil.</p>
               </div>
               <div data-reveal="" class="hg-cert-card">
                 <div class="hg-cert-headline">+ Conversão</div>
@@ -270,18 +272,18 @@
               <em class="hg-ecosystem-120em">tudo<br />automatizado.</em>
             </h2>
             <p class="hg-ecosystem-121">
-              Quatro pilares que cobrem todo o ciclo da lead, desde o primeiro
-              contacto até à reativação. Nenhuma lead se perde no caminho.
+              Quatro pilares que cobrem todo o ciclo comercial, desde a geração de oportunidades até 
+              à reativação de contactos perdidos. Nenhuma oportunidade se perde pelo caminho.
             </p>
           </div>
           <div class="hg-ecosystem-122">
             <div data-reveal="" class="hg-ecos-card hg-ecos-card-hover">
               <div class="hg-ecos-num">01</div>
-              <div class="hg-ecos-label">Prospecção</div>
+              <div class="hg-ecos-label">Prospeção</div>
               <h3 class="hg-ecos-title">Aquisição automática.</h3>
               <p class="hg-ecos-desc">
-                A IA gera oportunidades sem o teu comercial ter de ligar à mão,
-                só fecha.
+                A IA gera oportunidades para que o teu comercial deixe de ligar
+                a frio e se concentre apenas em fechar.
               </p>
               <ul class="hg-ecos-list">
                 <li>A IA faz a prospeção automaticamente</li>
@@ -292,13 +294,13 @@
             <div data-reveal="" class="hg-ecos-card hg-ecos-card-hover">
               <div class="hg-ecos-num">02</div>
               <div class="hg-ecos-label">Gestão de Leads</div>
-              <h3 class="hg-ecos-title">Agendamento automático Inbound.</h3>
+              <h3 class="hg-ecos-title">Agendamento automático de leads.</h3>
               <p class="hg-ecos-desc">
                 Qualquer lead que entre no CRM é qualificada e agendada
                 automaticamente, venha de onde vier.
               </p>
               <ul class="hg-ecos-list">
-                <li>Qualquer fonte de inbound: anúncios, parcerias, referências</li>
+                <li>Qualquer canal de entrada: anúncios, parcerias, referências</li>
                 <li>Agendamento sem intervenção humana</li>
               </ul>
             </div>
@@ -306,15 +308,15 @@
             <div data-reveal="" class="hg-ecos-card hg-ecos-card-hover">
               <div class="hg-ecos-num">03</div>
               <div class="hg-ecos-label">Nutrição</div>
-              <h3 class="hg-ecos-title">Confirmação &amp; aparecimento.</h3>
+              <h3 class="hg-ecos-title">Confirmação e comparência.</h3>
               <p class="hg-ecos-desc">
-                Sistema construído contigo para garantir que as leads aparecem
-                mesmo à reunião.
+                Sistema construído contigo para garantir que as leads comparecem
+                às reuniões.
               </p>
               <ul class="hg-ecos-list">
                 <li>Sequências de confirmação</li>
                 <li>Aquecimento automático da lead</li>
-                <li>Taxa de aparecimento mais alta</li>
+                <li>Taxa de comparência mais elevada</li>
               </ul>
             </div>
 
@@ -323,33 +325,15 @@
               <div class="hg-ecos-label">Reativação</div>
               <h3 class="hg-ecos-title">Nenhuma lead se perde.</h3>
               <p class="hg-ecos-desc">
-                Comercial preenche o relatório no fim da reunião. O sistema
+                O comercial preenche o relatório no fim da reunião. O sistema
                 dispara o agente certo.
               </p>
               <ul class="hg-ecos-list">
-                <li>Agente "no-show" liga</li>
-                <li>Agente "cancelamento" liga</li>
-                <li>Reativações trazem leads à pipeline</li>
+                <li>Agente de não comparência contacta a lead</li>
+                <li>Agente de cancelamentos contacta a lead</li>
+                <li>Reativações trazem leads de volta ao funil comercial</li>
               </ul>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ CTA INTERMEDIO ============ -->
-      <section data-reveal="" class="hg-cta-165">
-        <div class="hg-cta-166">
-          <div class="hg-cta-167">
-            <div class="hg-cta-168">
-              Cada mês sem um sistema comercial estruturado é faturação que não
-              volta.
-            </div>
-            <a
-              href="#contacto"
-              data-modal-trigger
-              class="hg-cta-169 hg-cta-hover-169"
-              >Quero aumentar as vendas <span class="hg-cta-170">→</span></a
-            >
           </div>
         </div>
       </section>
@@ -361,341 +345,186 @@
             <div class="hg-layout-174">
               <div class="hg-layout-175">Casos de estudo</div>
               <h2 class="hg-layout-176">
-                Resultados reais, com números reais.
+                Resultados reais, com <em class="hg-accent-purple">números reais.</em>
               </h2>
             </div>
-            <p class="hg-layout-177">
-              Empresas B2B que reestruturaram o comercial com a Honor e passaram
-              a vender com previsibilidade.
-            </p>
           </div>
 
           <div class="hg-layout-178">
+
+            <!-- Eleve Scale -->
             <article data-reveal="" class="hg-layout-179 hg-layout-hover-179">
               <div class="hg-layout-180">
                 <div class="hg-layout-181">
                   <div class="hg-layout-182">
-                    <img
-                      src="assets/eleve_scale_logo.png"
-                      alt="Eleve Scale"
-                      class="hg-layout-183"
-                    />
+                    <img src="assets/eleve_scale_logo.png" alt="Eleve Scale" class="hg-layout-183" />
                   </div>
                   <div>
                     <div class="hg-layout-184">Eleve Scale</div>
                     <div class="hg-layout-185">Equipas comerciais</div>
                   </div>
                 </div>
-                <h3 class="hg-layout-186">
-                  De 4.000€ para 16.000€ em 2 meses
-                </h3>
-                <p class="hg-layout-187">
-                  Equipa a vender sem processo nem método definido. Reduzimos a
-                  janela de agendamento, requalificámos as leads na chamada e
-                  reposicionámos a oferta de 2.000€ para 5.500€ de ticket médio.
-                </p>
+                <h3 class="hg-layout-186">De 4.000€ para 16.000€ em 2 meses</h3>
+                <p class="hg-layout-187">Equipa a vender sem processo nem método definido. Reduzimos a janela de agendamento, requalificámos as leads na chamada e reposicionámos a oferta de 2.000€ para 5.500€ de ticket médio.</p>
                 <div class="hg-layout-188">
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Estruturação dos
-                    canais de aquisição de clientes</span
-                  >
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Recrutamento e
-                    formação comercial</span
-                  >
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Equipa a converter
-                    mais</span
-                  >
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Estruturação dos canais de aquisição de clientes</span>
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Recrutamento e formação comercial</span>
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Equipa a converter mais</span>
                 </div>
-                <a
-                  href="#contacto"
-                  data-scroll-link
-                  data-target="contacto"
-                  class="hg-layout-227 hg-layout-hover-227"
-                  >Falar sobre este caso <span>→</span></a
-                >
               </div>
               <div class="hg-layout-228">
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">4K→16K€</div>
-                  <div class="hg-layout-231">faturação coletada</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">+300%</div>
-                  <div class="hg-layout-231">de faturação em 2 meses</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">2K→5,5K€</div>
-                  <div class="hg-layout-231">ticket médio</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">16→30%</div>
-                  <div class="hg-layout-231">taxa de fecho</div>
-                </div>
+                <div class="hg-layout-229"><div class="hg-layout-230">4K→16K€</div><div class="hg-layout-231">faturação coletada</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">+300%</div><div class="hg-layout-231">de faturação em 2 meses</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">2K→5,5K€</div><div class="hg-layout-231">ticket médio</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">16→30%</div><div class="hg-layout-231">taxa de fecho</div></div>
               </div>
+              <a href="#contacto" data-scroll-link data-target="contacto" class="hg-layout-227 hg-layout-hover-227">Falar sobre este caso <span>→</span></a>
             </article>
 
+            <!-- Easy Growth -->
             <article data-reveal="" class="hg-layout-179 hg-layout-hover-179">
               <div class="hg-layout-180">
                 <div class="hg-layout-181">
                   <div class="hg-layout-182" style="background: #000">
-                    <img
-                      src="assets/easy growth .webp"
-                      alt="Easy Growth"
-                      class="hg-layout-183"
-                    />
+                    <img src="assets/easy growth .webp" alt="Easy Growth" class="hg-layout-183" />
                   </div>
                   <div>
                     <div class="hg-layout-184">Easy Growth</div>
                     <div class="hg-layout-185">Agência de crescimento</div>
                   </div>
                 </div>
-                <h3 class="hg-layout-186">
-                  Triplicou a faturação em 4 meses
-                </h3>
-                <p class="hg-layout-187">
-                  Faturação estagnada e margem apertada, com leads que não
-                  compareciam. Reestruturámos o processo comercial, montámos
-                  aquisição multicanal e melhorámos a nutrição de leads.
-                </p>
+                <h3 class="hg-layout-186">Triplicou a faturação em 4 meses</h3>
+                <p class="hg-layout-187">Faturação estagnada e margem apertada, com leads que não compareciam. Reestruturámos o processo comercial, montámos aquisição multicanal e melhorámos a nutrição de leads.</p>
                 <div class="hg-layout-188">
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Mais leads
-                    qualificadas</span
-                  >
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Equipa a converter
-                    mais</span
-                  >
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Oferta
-                    reposicionada</span
-                  >
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Mais leads qualificadas</span>
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Equipa a converter mais</span>
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Oferta reposicionada</span>
                 </div>
-                <a
-                  href="#contacto"
-                  data-scroll-link
-                  data-target="contacto"
-                  class="hg-layout-227 hg-layout-hover-227"
-                  >Falar sobre este caso <span>→</span></a
-                >
               </div>
               <div class="hg-layout-228">
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">3x</div>
-                  <div class="hg-layout-231">faturação triplicada</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">+40%</div>
-                  <div class="hg-layout-231">margem líquida</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">30→60%</div>
-                  <div class="hg-layout-231">comparência de leads</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">4 meses</div>
-                  <div class="hg-layout-231">de parceria</div>
-                </div>
+                <div class="hg-layout-229"><div class="hg-layout-230">3x</div><div class="hg-layout-231">faturação triplicada</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">+40%</div><div class="hg-layout-231">margem líquida</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">30→60%</div><div class="hg-layout-231">comparência de leads</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">4 meses</div><div class="hg-layout-231">de parceria</div></div>
               </div>
+              <a href="#contacto" data-scroll-link data-target="contacto" class="hg-layout-227 hg-layout-hover-227">Falar sobre este caso <span>→</span></a>
             </article>
 
+            <!-- Click 2 Connect -->
             <article data-reveal="" class="hg-layout-179 hg-layout-hover-179">
               <div class="hg-layout-180">
                 <div class="hg-layout-181">
                   <div class="hg-layout-182">
-                    <img
-                      src="assets/click2connect.png"
-                      alt="Click 2 Connect"
-                      class="hg-layout-183"
-                    />
+                    <img src="assets/click2connect.png" alt="Click 2 Connect" class="hg-layout-183" />
                   </div>
                   <div>
                     <div class="hg-layout-184">Click 2 Connect</div>
                     <div class="hg-layout-185">Serviços B2B</div>
                   </div>
                 </div>
-                <h3 class="hg-layout-186">
-                  Duplicou as marcações diárias em 4 meses
-                </h3>
-                <p class="hg-layout-187">
-                  Conversão baixa e poucas marcações diárias no comercial.
-                  Criámos um novo processo de qualificação, argumentário
-                  comercial e uma cadência de marcação.
-                </p>
+                <h3 class="hg-layout-186">Duplicou as marcações diárias em 4 meses</h3>
+                <p class="hg-layout-187">Conversão baixa e poucas marcações diárias no comercial. Criámos um novo processo de qualificação, argumentário comercial e uma cadência de marcação.</p>
                 <div class="hg-layout-188">
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Mais leads
-                    qualificadas</span
-                  >
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Equipa a converter
-                    mais</span
-                  >
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Oferta
-                    reposicionada</span
-                  >
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Mais leads qualificadas</span>
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Equipa a converter mais</span>
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Oferta reposicionada</span>
                 </div>
-                <a
-                  href="#contacto"
-                  data-scroll-link
-                  data-target="contacto"
-                  class="hg-layout-227 hg-layout-hover-227"
-                  >Falar sobre este caso <span>→</span></a
-                >
               </div>
               <div class="hg-layout-228">
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">1.4x</div>
-                  <div class="hg-layout-231">faturação</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">+20%</div>
-                  <div class="hg-layout-231">conversão de lead</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">2→4</div>
-                  <div class="hg-layout-231">marcações / dia</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">4 meses</div>
-                  <div class="hg-layout-231">até duplicar</div>
-                </div>
+                <div class="hg-layout-229"><div class="hg-layout-230">1,4x</div><div class="hg-layout-231">faturação</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">+20%</div><div class="hg-layout-231">conversão de lead</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">2→4</div><div class="hg-layout-231">marcações / dia</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">4 meses</div><div class="hg-layout-231">até duplicar</div></div>
               </div>
+              <a href="#contacto" data-scroll-link data-target="contacto" class="hg-layout-227 hg-layout-hover-227">Falar sobre este caso <span>→</span></a>
             </article>
 
+            <!-- Neuronium -->
             <article data-reveal="" class="hg-layout-179 hg-layout-hover-179">
               <div class="hg-layout-180">
                 <div class="hg-layout-181">
                   <div class="hg-layout-182">
-                    <img
-                      src="assets/logo-site neuronium.svg"
-                      alt="Neuronium"
-                      class="hg-layout-183"
-                    />
+                    <img src="assets/logo-site neuronium.svg" alt="Neuronium" class="hg-layout-183" />
                   </div>
                   <div>
                     <div class="hg-layout-184">Neuronium</div>
                     <div class="hg-layout-185">Agência de marketing B2B</div>
                   </div>
                 </div>
-                <h3 class="hg-layout-186">
-                  +62% de pricing médio e 12.400€ em contratos fechados
-                </h3>
-                <p class="hg-layout-187">
-                  Sócio único e pricing baixo. Operação totalmente centrada no
-                  fundador, sem leverage comercial. Após o reposicionamento,
-                  +62% de pricing médio e 12.400€ em contratos fechados.
-                </p>
+                <h3 class="hg-layout-186">+62% de pricing médio e 12.400€ em contratos fechados</h3>
+                <p class="hg-layout-187">Sócio único e pricing baixo. Operação totalmente centrada no fundador, sem leverage comercial. Após o reposicionamento, +62% de pricing médio e 12.400€ em contratos fechados.</p>
                 <div class="hg-layout-188">
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Mais leads
-                    qualificadas</span
-                  >
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Equipa a converter
-                    mais</span
-                  >
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Oferta
-                    reposicionada</span
-                  >
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Mais leads qualificadas</span>
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Equipa a converter mais</span>
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Oferta reposicionada</span>
                 </div>
-                <a
-                  href="#contacto"
-                  data-scroll-link
-                  data-target="contacto"
-                  class="hg-layout-227 hg-layout-hover-227"
-                  >Falar sobre este caso <span>→</span></a
-                >
               </div>
               <div class="hg-layout-228">
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">+62%</div>
-                  <div class="hg-layout-231">de pricing médio</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">12.400€</div>
-                  <div class="hg-layout-231">em contratos fechados</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">One-man-show</div>
-                  <div class="hg-layout-231">operação antes</div>
-                </div>
+                <div class="hg-layout-229"><div class="hg-layout-230">+62%</div><div class="hg-layout-231">de pricing médio</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">12.400€</div><div class="hg-layout-231">em contratos fechados</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">One-man-show</div><div class="hg-layout-231">operação antes</div></div>
               </div>
+              <a href="#contacto" data-scroll-link data-target="contacto" class="hg-layout-227 hg-layout-hover-227">Falar sobre este caso <span>→</span></a>
             </article>
 
+            <!-- Flávio Car -->
             <article data-reveal="" class="hg-layout-179 hg-layout-hover-179">
               <div class="hg-layout-180">
                 <div class="hg-layout-181">
                   <div class="hg-layout-182">
-                    <img
-                      src="assets/yas.png"
-                      alt="Yas Automóveis"
-                      class="hg-layout-183"
-                    />
+                    <img src="assets/flavio_car.png" alt="Flávio Car" class="hg-layout-183" />
+                  </div>
+                  <div>
+                    <div class="hg-layout-184">Flávio Car</div>
+                    <div class="hg-layout-185">Stand automóvel B2C</div>
+                  </div>
+                </div>
+                <h3 class="hg-layout-186">+120.000€ faturados no 2º mês de parceria</h3>
+                <p class="hg-layout-187">Sem processo comercial nem método replicável, o stand vendia abaixo do seu potencial. Estruturámos a venda da primeira chamada ao financiamento, gerámos leads qualificadas e formámos a equipa para fechar mais.</p>
+                <div class="hg-layout-188">
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Mais leads qualificadas</span>
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Equipa a converter mais</span>
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Oferta reposicionada</span>
+                </div>
+              </div>
+              <div class="hg-layout-228">
+                <div class="hg-layout-229"><div class="hg-layout-230">120.000€</div><div class="hg-layout-231">faturados no 2º mês</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">20.000€</div><div class="hg-layout-231">valor médio por venda</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">14.000€</div><div class="hg-layout-231">gerados via financiamento</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">7 viaturas</div><div class="hg-layout-231">vendidas no período</div></div>
+              </div>
+              <a href="#contacto" data-scroll-link data-target="contacto" class="hg-layout-227 hg-layout-hover-227">Falar sobre este caso <span>→</span></a>
+            </article>
+
+            <!-- Yas Automóveis -->
+            <article data-reveal="" class="hg-layout-179 hg-layout-hover-179">
+              <div class="hg-layout-180">
+                <div class="hg-layout-181">
+                  <div class="hg-layout-182">
+                    <img src="assets/yas.png" alt="Yas Automóveis" class="hg-layout-183" />
                   </div>
                   <div>
                     <div class="hg-layout-184">Yas Automóveis</div>
                     <div class="hg-layout-185">Automóvel</div>
                   </div>
                 </div>
-                <h3 class="hg-layout-186">
-                  15K€ líquidos no primeiro mês com operação comercial estruturada
-                </h3>
-                <p class="hg-layout-187">
-                  Sem estratégia de marketing nem processo comercial definido.
-                  Estruturámos os canais de aquisição de clientes, recrutámos e
-                  formámos a equipa comercial e montámos um processo de vendas
-                  que aumentou a conversão logo desde o primeiro mês.
-                </p>
+                <h3 class="hg-layout-186">15K€ líquidos no primeiro mês de parceria</h3>
+                <p class="hg-layout-187">Sem estratégia de marketing nem processo comercial definido. Estruturámos os canais de aquisição, recrutámos e formámos a equipa comercial.</p>
                 <div class="hg-layout-188">
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Formação
-                    comercial</span
-                  >
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Estruturação dos
-                    canais de aquisição de clientes</span
-                  >
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Recrutamento e
-                    formação</span
-                  >
-                  <span class="hg-layout-189"
-                    ><span class="hg-layout-190">✓</span>Equipa a converter
-                    mais</span
-                  >
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Formação comercial</span>
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Estruturação de canais</span>
+                  <span class="hg-layout-189"><span class="hg-layout-190">✓</span>Equipa a converter mais</span>
                 </div>
-                <a
-                  href="#contacto"
-                  data-scroll-link
-                  data-target="contacto"
-                  class="hg-layout-227 hg-layout-hover-227"
-                  >Falar sobre este caso <span>→</span></a
-                >
               </div>
               <div class="hg-layout-228">
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">−50%</div>
-                  <div class="hg-layout-231">custo de aquisição</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">15K€</div>
-                  <div class="hg-layout-231">líquidos no 1º mês</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">9+ meses</div>
-                  <div class="hg-layout-231">de parceria ativa</div>
-                </div>
-                <div class="hg-layout-229">
-                  <div class="hg-layout-230">#1</div>
-                  <div class="hg-layout-231">referência em Odivelas</div>
-                </div>
+                <div class="hg-layout-229"><div class="hg-layout-230">−50%</div><div class="hg-layout-231">custo de aquisição</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">15K€</div><div class="hg-layout-231">líquidos no 1º mês</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">9+ meses</div><div class="hg-layout-231">de parceria ativa</div></div>
+                <div class="hg-layout-229"><div class="hg-layout-230">#1</div><div class="hg-layout-231">referência em Odivelas</div></div>
               </div>
+              <a href="#contacto" data-scroll-link data-target="contacto" class="hg-layout-227 hg-layout-hover-227">Falar sobre este caso <span>→</span></a>
             </article>
+
           </div>
         </div>
       </section>
@@ -705,173 +534,105 @@
         <div class="hg-videos-233">
           <div data-reveal="" class="hg-videos-234">
             <div class="hg-videos-235">Provas reais</div>
-            <h2 class="hg-videos-236">As pessoas por trás dos resultados.</h2>
+            <h2 class="hg-videos-236">O que dizem os nossos <em class="hg-accent-purple">parceiros.</em></h2>
           </div>
 
-          <div class="hg-videos-237">
-            <div data-reveal="" class="hg-videos-238">
-              <div class="hg-videos-239">
+          <div class="hg-tstrip">
+
+            <!-- 1: Rodrigo — Eleve Scale — vídeo -->
+            <div data-reveal="" class="hg-tstrip-card">
+              <div class="hg-tstrip-thumb">
                 <video
                   data-video-surface
-                  src="assets/mov1-web.mp4"
+                  src="assets/rodrigo-eleve-scale.mp4"
                   poster="assets/mov1-poster.jpg"
                   preload="metadata"
                   playsinline
                   muted
-                  class="hg-videos-240"
+                  class="hg-tstrip-media"
                 ></video>
-                <div class="hg-videos-241"></div>
+                <div class="hg-tstrip-fade"></div>
                 <div class="hg-video-controls">
-                  <button
-                    data-mute-toggle
-                    aria-label="Habilitar som"
-                    aria-pressed="false"
-                    class="hg-modal-ctrl"
-                  >
-                    <svg
-                      class="hg-ctrl-sound-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="13"
-                      height="13"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                    >
-                      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                      <line x1="23" y1="9" x2="17" y2="15" />
-                      <line x1="17" y1="9" x2="23" y2="15" />
-                    </svg>
-                    <span class="hg-ctrl-sound-label">Habilitar som</span>
+                  <button data-mute-toggle aria-label="Ativar som" aria-pressed="false" class="hg-modal-ctrl">
+                    <svg class="hg-ctrl-sound-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                    <span class="hg-ctrl-sound-label">Ativar som</span>
                   </button>
-                  <button
-                    data-play-toggle
-                    aria-label="Reproduzir"
-                    aria-pressed="false"
-                    class="hg-modal-ctrl"
-                  >
-                    <svg
-                      class="hg-ctrl-play-icon"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="13"
-                      height="13"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      aria-hidden="true"
-                    >
-                      <polygon points="5 3 19 12 5 21 5 3" />
-                    </svg>
+                  <button data-play-toggle aria-label="Reproduzir vídeo" aria-pressed="false" class="hg-modal-ctrl">
+                    <svg class="hg-ctrl-play-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                     <span class="hg-ctrl-play-label">Reproduzir</span>
                   </button>
                 </div>
-                <div class="hg-videos-244">
-                  <div class="hg-videos-245">Rodrigo, Eleve Scale</div>
-                  <div class="hg-videos-246">
-                    "Como é trabalhar com a Honor"
-                  </div>
-                </div>
+              </div>
+              <div class="hg-tstrip-meta">
+                <div class="hg-tstrip-name">Rodrigo</div>
+                <div class="hg-tstrip-role">Eleve Scale</div>
               </div>
             </div>
 
-          <div data-reveal="" class="hg-videos-256">
-            <div class="hg-videos-257">
-              <p class="hg-videos-258">
-                "Passámos a ter um processo comercial que funciona sem depender
-                de mim. Hoje a equipa vende com método."
-              </p>
-              <div class="hg-videos-259">
-                <img
-                  src="assets/joao-web.jpg"
-                  alt="João"
-                  class="hg-videos-260"
-                />
-                <div>
-                  <div class="hg-videos-261">João</div>
-                  <div class="hg-videos-262">CEO da Honor Growth</div>
+            <!-- 2: Flávio Car — vídeo -->
+            <div data-reveal="" class="hg-tstrip-card">
+              <div class="hg-tstrip-thumb">
+                <video
+                  data-video-surface
+                  src="assets/flaviocar-video.mp4"
+                  poster="assets/flavio_car.png"
+                  preload="metadata"
+                  playsinline
+                  muted
+                  class="hg-tstrip-media"
+                ></video>
+                <div class="hg-tstrip-fade"></div>
+                <div class="hg-video-controls">
+                  <button data-mute-toggle aria-label="Ativar som" aria-pressed="false" class="hg-modal-ctrl">
+                    <svg class="hg-ctrl-sound-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                    <span class="hg-ctrl-sound-label">Ativar som</span>
+                  </button>
+                  <button data-play-toggle aria-label="Reproduzir" aria-pressed="false" class="hg-modal-ctrl">
+                    <svg class="hg-ctrl-play-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <span class="hg-ctrl-play-label">Reproduzir</span>
+                  </button>
                 </div>
+              </div>
+              <div class="hg-tstrip-meta">
+                <div class="hg-tstrip-name">Flávio Car</div>
+                <div class="hg-tstrip-role">120.000€ no 2.º mês</div>
               </div>
             </div>
 
-            <div class="hg-videos-263">
-              <p class="hg-videos-264">
-                "Antes sentíamos que trabalhávamos muito, mas o crescimento não
-                era previsível. Depois de estruturar operação, oferta e a área
-                comercial, o negócio ganhou direção."
-              </p>
-              <div class="hg-videos-265">
-                <img
-                  src="assets/eleve_scale_logo.png"
-                  alt="Eleve Scale"
-                  class="hg-videos-266"
-                />
-                <div>
-                  <div class="hg-videos-267">Rodrigo Matos</div>
-                  <div class="hg-videos-268">Eleve Scale</div>
-                </div>
-              </div>
-            </div>
 
-            <div class="hg-videos-269">
-              <p class="hg-videos-270">
-                "Deixámos de depender de esforço individual e passámos a ter
-                sistema e isso mudou completamente a forma como crescemos."
-              </p>
-              <div class="hg-videos-271">
-                <img
-                  src="assets/lourenco-web.jpg"
-                  alt="Lourenço Ligeiro"
-                  class="hg-videos-272"
-                />
-                <div>
-                  <div class="hg-videos-273">Lourenço Ligeiro</div>
-                  <div class="hg-videos-274">Lourenço Ligeiro</div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
 
       <!-- ============ QUALIFICACAO / FORM ============ -->
       <section id="contacto" class="hg-form-275">
-        <div class="hg-form-276"></div>
         <div class="hg-form-277">
           <div data-reveal="" class="hg-form-278">
-            <div class="hg-form-279">Diagnóstico comercial</div>
+            <div class="hg-form-279">Case study gratuito</div>
             <h2 class="hg-form-280">
-              Vamos perceber se faz sentido trabalharmos juntos?
+              Preenche em 15 segundos para receberes o case study e perceberes onde o teu comercial está a perder receita.
             </h2>
             <p class="hg-form-281">
-              A Honor trabalha com um número limitado de empresas B2B com perfil
-              para implementar o ecossistema completo. Preencha os dados e
-              avaliamos a empresa.
+              Mostramos-te o método, os principais bloqueios e, se houver
+              enquadramento, como isto pode ser aplicado à tua operação.
             </p>
             <div class="hg-form-282">
               <div class="hg-form-283">
                 <span class="hg-form-284">✓</span
                 ><span class="hg-form-285"
-                  >Análise do funil comercial e dos principais bloqueios</span
+                  >Os bloqueios mais comuns que travam previsibilidade comercial</span
                 >
               </div>
               <div class="hg-form-286">
                 <span class="hg-form-287">✓</span
                 ><span class="hg-form-288"
-                  >Mapa do que pode ser estruturado, automatizado e potenciado
-                  com IA</span
+                  >As métricas e rotinas que usamos para estruturar o funil</span
                 >
               </div>
               <div class="hg-form-289">
                 <span class="hg-form-290">✓</span
                 ><span class="hg-form-291"
-                  >Sem compromisso. Só avançamos se existir enquadramento
-                  real</span
+                  >Os próximos passos, caso faça sentido avançar contigo</span
                 >
               </div>
             </div>
@@ -922,7 +683,7 @@
               href="#contacto"
               data-modal-trigger
               class="hg-authority-342 hg-authority-hover-342"
-              >Quero aumentar as vendas
+              >Quero ver o case study
               <span class="hg-authority-343">→</span></a
             >
           </div>
@@ -933,14 +694,12 @@
       <section class="hg-cta-344">
         <div class="hg-cta-345">
           <div data-reveal="" class="hg-cta-346">
-            <div class="hg-cta-347"></div>
             <div class="hg-cta-348">
               <h2 class="hg-cta-349">
                 Pronto para tornar as vendas mais previsíveis?
               </h2>
               <p class="hg-cta-350">
-                Estrutura comercial, aquisição de oportunidades e IA aplicada ao
-                que gera receita num só ecossistema.
+                Estrutura comercial, aquisição de oportunidades e IA aplicada ao que gera receita num só ecossistema.
               </p>
               <a
                 href="#contacto"
@@ -1101,108 +860,84 @@
         </button>
 
         <div class="hg-modal-body">
-          <div class="hg-modal-video-wrap">
-            <video
-              id="hg-modal-video"
-              src="assets/mov2-web.mp4"
-              poster="assets/mov2-poster.jpg"
-              preload="auto"
-              muted
-              autoplay
-              playsinline
-              class="hg-modal-video"
-              aria-label="Vídeo — João, CEO Honor Growth"
-            ></video>
-            <div id="hg-modal-sound-overlay" class="hg-modal-sound-overlay">
-              <button
-                type="button"
-                class="hg-modal-sound-cta"
-                aria-label="Ativar som"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-                </svg>
-                <span>Toque para ativar o som</span>
-              </button>
-            </div>
-            <div class="hg-modal-video-controls">
-              <button
-                id="hg-modal-sound"
-                type="button"
-                aria-label="Habilitar som"
-                aria-pressed="false"
-                class="hg-modal-ctrl"
-              >
-                <svg
-                  id="hg-modal-sound-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                  <line x1="23" y1="9" x2="17" y2="15" />
-                  <line x1="17" y1="9" x2="23" y2="15" />
-                </svg>
-                <span id="hg-modal-sound-label">Habilitar som</span>
-              </button>
-              <button
-                id="hg-modal-play"
-                type="button"
-                aria-label="Pausar vídeo"
-                aria-pressed="true"
-                class="hg-modal-ctrl"
-              >
-                <svg
-                  id="hg-modal-play-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  aria-hidden="true"
-                >
-                  <rect x="6" y="4" width="4" height="16" />
-                  <rect x="14" y="4" width="4" height="16" />
-                </svg>
-                <span id="hg-modal-play-label">Pausar</span>
-              </button>
+          <div class="hg-modal-pitch">
+            <div class="hg-modal-pitch-inner">
+              <p class="hg-modal-eyebrow">Para empresas B2B</p>
+              <h2 id="hg-modal-label" class="hg-modal-title">
+                Acede ao case study e vê, passo a passo, como se estrutura um departamento comercial previsível.
+              </h2>
+              <p class="hg-modal-copy">
+                Se hoje as vendas dependem de improviso, o case study mostra-te o método completo, os bloqueios que travam a maioria das equipas e o que tem de existir para o comercial passar a ser previsível.
+              </p>
+
+              <div class="hg-modal-points">
+                <div class="hg-modal-point">
+                  <span class="hg-modal-point-icon">✓</span>
+                  <p class="hg-modal-point-text">
+                    Onde olhar no teu funil para gerar mais reuniões com menos desperdício comercial.
+                  </p>
+                </div>
+                <div class="hg-modal-point">
+                  <span class="hg-modal-point-icon">✓</span>
+                  <p class="hg-modal-point-text">
+                    As métricas e cadências que garantem seguimento a cada oportunidade.
+                  </p>
+                </div>
+                <div class="hg-modal-point">
+                  <span class="hg-modal-point-icon">✓</span>
+                  <p class="hg-modal-point-text">
+                    O que faz sentido aplicar já à tua operação, caso exista enquadramento real.
+                  </p>
+                </div>
+              </div>
+
+              <div class="hg-modal-proof">
+                <div class="hg-modal-proof-avatars">
+                  <img
+                    src="assets/joao-web.jpg"
+                    alt="João, Honor Growth"
+                    class="hg-modal-proof-avatar"
+                  />
+                  <img
+                    src="assets/diogo-web.jpg"
+                    alt=""
+                    aria-hidden="true"
+                    class="hg-modal-proof-avatar"
+                  />
+                  <img
+                    src="assets/david-web.jpg"
+                    alt=""
+                    aria-hidden="true"
+                    class="hg-modal-proof-avatar"
+                  />
+                </div>
+                <p class="hg-modal-proof-text">
+                  Já estruturámos <strong>+50 departamentos comerciais</strong> B2B com o mesmo método que vais ver no case study.
+                </p>
+              </div>
             </div>
           </div>
 
           <div class="hg-modal-form-wrap">
+            <div class="hg-modal-form-head">
+              <img
+                src="assets/logo-honor1.png"
+                alt="Honor Growth"
+                class="hg-modal-brand"
+              />
+              <p class="hg-modal-form-intro">
+                Preenche os dados para receberes o case study e percebermos se existe enquadramento para te ajudar a aplicar o método.
+              </p>
+            </div>
             <div id="hg-ghl-modal" class="hg-ghl-container"></div>
             <div id="ghl-form-success" style="display: none">
               <div class="hg-form-326">
                 <div class="hg-form-327">✓</div>
                 <h3 class="hg-form-328">Recebemos os dados.</h3>
                 <p class="hg-form-329">
-                  Em breve, o nosso agente de IA — ou a equipa Honor —
-                  entrará em contacto para avaliar a empresa e explicar como o
-                  ecossistema pode ser aplicado.
+                  Vais receber o case study e, se houver enquadramento, a equipa
+                  Honor entra em contacto para te mostrar como aplicar o método
+                  à tua operação.
                 </p>
               </div>
             </div>

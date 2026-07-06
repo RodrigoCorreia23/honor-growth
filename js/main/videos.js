@@ -11,8 +11,8 @@ window.HonorVideos = (function () {
     var icon   = btn.querySelector('.hg-ctrl-sound-icon');
     var label  = btn.querySelector('.hg-ctrl-sound-label');
     if (icon)  icon.innerHTML    = muted ? SVG_MUTED : SVG_UNMUTED;
-    if (label) label.textContent = muted ? 'Habilitar som' : 'Silenciar';
-    btn.setAttribute('aria-label',   muted ? 'Habilitar som' : 'Silenciar');
+    if (label) label.textContent = muted ? 'Ativar som' : 'Silenciar';
+    btn.setAttribute('aria-label',   muted ? 'Ativar som' : 'Silenciar');
     btn.setAttribute('aria-pressed', muted ? 'false' : 'true');
   }
 

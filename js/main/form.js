@@ -4,18 +4,8 @@ window.HonorModal = (function () {
   var _opened = false;
   var _prevFocus = null;
   var _el = {};
-  var _soundOverlayDismissed = false;
-  var _pendingOpen = false;
-  var _ready = { video: false, form: false };
   var _iframeLoadTimer = null;
   var _observer = null;
-  var _maxWaitTimer = null;
-  var MAX_WAIT_MS = 5000;
-
-  var SVG_MUTED   = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';
-  var SVG_UNMUTED = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';
-  var SVG_PLAY    = '<polygon points="5 3 19 12 5 21 5 3"/>';
-  var SVG_PAUSE   = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
 
   /* ── focus trap ──────────────────────────────────────────────────────────── */
   function getFocusable() {
@@ -30,8 +20,8 @@ window.HonorModal = (function () {
   function syncSound() {
     var muted = _el.video.muted;
     _el.soundIcon.innerHTML   = muted ? SVG_MUTED : SVG_UNMUTED;
-    _el.soundLabel.textContent = muted ? 'Habilitar som' : 'Silenciar';
-    _el.soundBtn.setAttribute('aria-label',   muted ? 'Habilitar som' : 'Silenciar');
+    _el.soundLabel.textContent = muted ? 'Ativar som' : 'Silenciar';
+    _el.soundBtn.setAttribute('aria-label',   muted ? 'Ativar som' : 'Silenciar');
     _el.soundBtn.setAttribute('aria-pressed', muted ? 'false' : 'true');
     if (_el.soundOverlay) {
       if (!muted) {
@@ -60,44 +50,12 @@ window.HonorModal = (function () {
     return 'inline-' + formId;
   }
 
-  /* ── readiness ───────────────────────────────────────────────────────────── */
-  function _canOpen() {
-    return _ready.video && _ready.form;
-  }
-
-  function _tryPendingOpen() {
-    if (!_pendingOpen || !_canOpen()) return;
-    clearTimeout(_maxWaitTimer);
-    _maxWaitTimer = null;
-    _pendingOpen = false;
-    _openNow();
-  }
-
-  function _markVideoReady() {
-    _ready.video = true;
-    _tryPendingOpen();
-  }
-
-  function _markFormReady() {
-    if (_ready.form) return;
-    _ready.form = true;
-    _tryPendingOpen();
-  }
-
-  /* Revela o iframe (opacity 0→1) e sinaliza prontidão do formulário. */
+  /* Revela o iframe do formulário (opacity 0→1). */
   function _revealFormIframe() {
     var iframe = document.getElementById(_modalIframeId());
     if (!iframe || iframe.dataset.honorRevealed === 'true') return;
     iframe.dataset.honorRevealed = 'true';
     iframe.style.opacity = '1';
-    _markFormReady();
-  }
-
-  /* ── vídeo ───────────────────────────────────────────────────────────────── */
-  function _bindVideoReady() {
-    if (!_el.video) return;
-    if (_el.video.readyState >= 2) { _markVideoReady(); return; }
-    _el.video.addEventListener('loadeddata', _markVideoReady, { once: true });
   }
 
   /* ── formulário ──────────────────────────────────────────────────────────── */
@@ -105,7 +63,6 @@ window.HonorModal = (function () {
     var GHL_ORIGIN = 'https://api.leadconnectorhq.com';
     window.addEventListener('message', function (e) {
       if (e.origin !== GHL_ORIGIN) return;
-      if (_ready.form) return;
       var iframe = document.getElementById(_modalIframeId());
       if (!iframe || e.source !== iframe.contentWindow) return;
       var isSubmit = (
@@ -122,7 +79,7 @@ window.HonorModal = (function () {
   function _bindFormReady() {
     var iframe = document.getElementById(_modalIframeId());
     if (!iframe || iframe.dataset.honorModalLoadBound === 'true') return;
-    if (iframe.dataset.honorRevealed === 'true') { _markFormReady(); return; }
+    if (iframe.dataset.honorRevealed === 'true') return;
     iframe.dataset.honorModalLoadBound = 'true';
     iframe.addEventListener('load', function () {
       clearTimeout(_iframeLoadTimer);
@@ -139,10 +96,15 @@ window.HonorModal = (function () {
   }
 
   /* ── open / close ────────────────────────────────────────────────────────── */
+  function open() {
+    if (_opened) return;
+    _observeFormMount();
+    _openNow();
+  }
+
   function _openNow() {
     if (_opened) return;
     _opened = true;
-    _markSeen();
     _prevFocus = document.activeElement;
 
     _el.modal.removeAttribute('inert');
@@ -231,17 +193,6 @@ window.HonorModal = (function () {
     });
   }
 
-  /* ── sessionStorage guard ────────────────────────────────────────────────── */
-  var MODAL_KEY = 'ghl_lead_modal_seen_v3';
-
-  function _shouldOpen() {
-    try { return sessionStorage.getItem(MODAL_KEY) !== 'true'; } catch (e) { return true; }
-  }
-
-  function _markSeen() {
-    try { sessionStorage.setItem(MODAL_KEY, 'true'); } catch (e) {}
-  }
-
   /* ── init ────────────────────────────────────────────────────────────────── */
   function init() {
     _el.modal = document.getElementById('hg-modal');
@@ -259,7 +210,6 @@ window.HonorModal = (function () {
     _el.playLabel  = document.getElementById('hg-modal-play-label');
     _el.soundOverlay = document.getElementById('hg-modal-sound-overlay');
 
-    _bindVideoReady();
     _observeFormMount();
     _watchGhlPostMessage();
 
@@ -294,29 +244,16 @@ window.HonorModal = (function () {
     _el.video.addEventListener('volumechange', syncSound);
 
     _initAnalytics();
-
-    /* Auto-open na carga inicial — só se o utilizador ainda não viu o modal nesta sessão */
-    if (_shouldOpen()) {
-      _pendingOpen = true;
-      _maxWaitTimer = setTimeout(function () {
-        if (_pendingOpen) {
-          _pendingOpen = false;
-          _openNow();
-        }
-      }, MAX_WAIT_MS);
-    }
   }
 
-  /* Botões CTA: scroll suave até ao formulário fixo na secção #contacto */
+  /* Botões CTA: abrem o modal apenas após interação do utilizador. */
   document.addEventListener('click', function (e) {
     var trigger = e.target.closest('[data-modal-trigger]');
     if (!trigger) return;
     e.preventDefault();
-    var target = document.getElementById('contacto');
-    if (!target) return;
-    var y = target.getBoundingClientRect().top + window.scrollY - 74;
-    window.scrollTo({ top: y, behavior: 'smooth' });
+    if (window.HonorMenu) window.HonorMenu.close();
+    open();
   });
 
-  return { init: init };
+  return { init: init, open: open, close: close };
 }());

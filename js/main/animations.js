@@ -1,12 +1,34 @@
 window.HonorAnimations = {
   init() {
     this.applyAccent();
+    this.initHeader();
     this.initReveal();
     this.initCounters();
   },
   applyAccent() {
     const root = document.querySelector('[data-honor-root]');
     if (root) root.style.setProperty('--accent', '#3a7dff');
+  },
+  initHeader() {
+    const onScroll = () => {
+      const sc = window.scrollY || document.documentElement.scrollTop;
+      const h = document.querySelector('[data-honor-header]');
+      if (h) {
+        if (sc > 14) {
+          h.style.background = 'rgba(10, 15, 30,.82)';
+          h.style.backdropFilter = 'blur(14px)';
+          h.style.webkitBackdropFilter = 'blur(14px)';
+          h.style.borderBottomColor = 'rgba(255,255,255,.08)';
+        } else {
+          h.style.background = 'transparent';
+          h.style.backdropFilter = 'blur(0px)';
+          h.style.webkitBackdropFilter = 'blur(0px)';
+          h.style.borderBottomColor = 'transparent';
+        }
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   },
   initReveal() {
     const els = document.querySelectorAll('[data-reveal]');

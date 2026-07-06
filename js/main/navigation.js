@@ -16,6 +16,7 @@ window.HonorNavigation = {
 
         const y = target.getBoundingClientRect().top + window.scrollY - 74;
         window.scrollTo({ top: y, behavior: 'smooth' });
+        window.HonorMenu.close();
       });
     });
   }

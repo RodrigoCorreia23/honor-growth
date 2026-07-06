@@ -136,10 +136,10 @@ window.HonorConsent = (function () {
     _bannerEl.innerHTML = (
       '<div class="hc-banner-inner">' +
         '<div class="hc-banner-text">' +
-          '<p class="hc-banner-title">Nós usamos cookies</p>' +
+          '<p class="hc-banner-title">Utilizamos cookies</p>' +
           '<p class="hc-banner-desc">' +
             'Utilizamos cookies necessários para o funcionamento da página e, ' +
-            'mediante a sua autorização, recursos funcionais, analytics e marketing.' +
+            'mediante autorização, recursos funcionais, de análise estatística e de marketing.' +
           '</p>' +
         '</div>' +
         '<div class="hc-banner-actions">' +
@@ -174,17 +174,17 @@ window.HonorConsent = (function () {
     {
       id:       'necessary',
       label:    'Necessários',
-      desc:     'Guardam a sua decisão de consentimento. Sem estes cookies a preferência não pode ser gravada entre visitas.',
+      desc:     'Guardam a decisão de consentimento. Sem estes cookies, a preferência não pode ser gravada entre visitas.',
       required: true
     },
     {
       id:    'functional',
       label: 'Funcionais',
-      desc:  'Carregam o formulário GoHighLevel / LeadConnector (serviço externo de captação de leads). Também pode carregar o formulário por ação explícita no próprio placeholder.'
+      desc:  'Carregam o formulário GoHighLevel / LeadConnector (serviço externo de captação de leads). O formulário também pode ser carregado através de uma ação explícita na respetiva área.'
     },
     {
       id:    'analytics',
-      label: 'Analytics',
+      label: 'Análise estatística',
       desc:  'Umami — métricas de visitas, comportamento e eventos de interação. Sem cookies de identificação pessoal.'
     },
     {
@@ -246,7 +246,7 @@ window.HonorConsent = (function () {
         '<div class="hc-modal-body">' +
           '<p class="hc-modal-intro">' +
             'Escolha quais categorias de cookies pretende aceitar. ' +
-            'A sua decisão é guardada por 180 dias e pode ser alterada a qualquer momento.' +
+            'A decisão é guardada por 180 dias e pode ser alterada a qualquer momento.' +
           '</p>' +
           '<div class="hc-categories">' + cats + '</div>' +
           '<div class="hc-modal-legal">' +
