@@ -270,14 +270,7 @@
     <!-- Form inline oculto — mantido para compatibilidade com integrations.js -->
     <div id="hg-ghl-inline" aria-hidden="true" class="hg-ghl-container" style="display:none;"></div>
 
-    <script>
-      document.addEventListener('click', function (e) {
-        var trigger = e.target.closest('[data-modal-trigger]');
-        if (!trigger) return;
-        e.preventDefault();
-        if (window.HonorModal) window.HonorModal.open();
-      });
-    </script>
+    <script src="js/boom/modal-open.js" defer></script>
 
     <!-- ============ MODAL GHL ============ -->
     <div

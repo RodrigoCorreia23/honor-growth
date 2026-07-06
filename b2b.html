@@ -332,14 +332,7 @@
          O comportamento padrão do form.js é scroll para #contacto (form inline);
          como em B2B não existe esse elemento, o form.js retorna cedo sem scroll.
          Este listener (registado antes dos scripts defer) abre o modal em vez disso. -->
-    <script>
-      document.addEventListener('click', function (e) {
-        var trigger = e.target.closest('[data-modal-trigger]');
-        if (!trigger) return;
-        e.preventDefault();
-        if (window.HonorModal) window.HonorModal.open();
-      });
-    </script>
+    <script src="js/landing/modal-open.js" defer></script>
 
     <!-- ============ MODAL GHL ============ -->
     <div
