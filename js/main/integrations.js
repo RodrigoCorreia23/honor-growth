@@ -35,13 +35,12 @@ window.HonorIntegrations = (function () {
   }
 
   function trackAnalytics(eventName, payload) {
-    if (!_hasConsent('analytics')) return;
     if (!window.umami || typeof window.umami.track !== 'function') return;
     window.umami.track(eventName, payload || {});
   }
 
   function loadUmamiOnce() {
-    if (_umamiLoaded || !CONFIG.umamiWebsiteId || !_hasConsent('analytics')) return;
+    if (_umamiLoaded || !CONFIG.umamiWebsiteId) return;
     _umamiLoaded = true;
 
     var s = document.createElement('script');
@@ -210,6 +209,9 @@ window.HonorIntegrations = (function () {
   });
 
   _bindPlaceholderActions();
+
+  /* Umami e analytics sem cookies (RGPD) -> carrega sempre, sem consentimento */
+  loadUmamiOnce();
 
   return {
     trackAnalytics:       trackAnalytics,
