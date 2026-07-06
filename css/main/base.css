@@ -11,10 +11,4 @@
   ::-webkit-scrollbar{width:10px;height:10px}
   ::-webkit-scrollbar-track{background:#0a0f1e}
   ::-webkit-scrollbar-thumb{background:#26282f;border-radius:6px}
-  @keyframes hg-pulse{0%{transform:scale(1);opacity:.55}70%{transform:scale(1.9);opacity:0}100%{opacity:0}}
-  @keyframes hg-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-
 .is-hidden { display: none !important; }
-.desktop-nav { display: contents; }
-.mobile-nav { display: none; }
-@media (max-width: 899px) { .desktop-nav { display: none; } .mobile-nav { display: contents; } }

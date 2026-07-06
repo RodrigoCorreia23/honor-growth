@@ -1,0 +1,19 @@
+.hg-vtx-400 { padding:clamp(56px,8vh,100px) 0; }
+.hg-vtx-401 { max-width:1280px; margin:0 auto; padding:0 clamp(20px,5vw,56px); }
+.hg-vtx-402 { font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--accent,#3a7dff); margin-bottom:20px; }
+.hg-vtx-403 { font-family:'Archivo',sans-serif; font-weight:800; font-size:clamp(2rem,3.6vw,3.2rem); line-height:1.06; letter-spacing:-.025em; margin:0 0 18px; text-wrap:balance; }
+.hg-vtx-404 { font-size:1.1rem; line-height:1.6; color:#a4a8b2; margin:0 0 clamp(36px,5vw,56px); max-width:680px; }
+.hg-vtx-405 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.hg-vtx-406,.hg-vtx-412,.hg-vtx-418 { position:relative; padding:32px 28px; background:#101627; border:1px solid rgba(255,255,255,.08); border-radius:16px; display:flex; flex-direction:column; transition:border-color .2s,transform .2s; }
+.hg-vtx-hover-406:hover,.hg-vtx-hover-412:hover,.hg-vtx-hover-418:hover { border-color:rgba(58,125,255,.45); transform:translateY(-3px); }
+.hg-vtx-407,.hg-vtx-413,.hg-vtx-419 { display:inline-flex; align-self:flex-start; padding:5px 12px; background:rgba(58,125,255,.12); border:1px solid rgba(58,125,255,.3); border-radius:6px; font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:.08em; color:var(--accent,#3a7dff); margin-bottom:20px; }
+.hg-vtx-408,.hg-vtx-414,.hg-vtx-420 { font-family:'Archivo',sans-serif; font-weight:700; font-size:1.3rem; letter-spacing:-.015em; margin:0 0 12px; }
+.hg-vtx-409,.hg-vtx-415,.hg-vtx-421 { font-size:.98rem; line-height:1.6; color:#9499a3; margin:0; flex:1; }
+.hg-vtx-410,.hg-vtx-416,.hg-vtx-422 { margin-top:24px; padding-top:18px; border-top:1px solid rgba(255,255,255,.07); font-size:13px; color:#cdd0d8; }
+.hg-vtx-411,.hg-vtx-417,.hg-vtx-423 { color:var(--accent,#3a7dff); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.1em; }
+
+@media (max-width:900px) { .hg-vtx-405 { grid-template-columns:1fr 1fr; } }
+@media (max-width:600px) {
+  .hg-vtx-405 { grid-template-columns:1fr; }
+  .hg-vtx-406,.hg-vtx-412,.hg-vtx-418 { padding:24px 20px; }
+}

@@ -10,6 +10,7 @@ window.HonorModal = (function () {
   var _iframeLoadTimer = null;
   var _observer = null;
   var _maxWaitTimer = null;
+  var _scrollLockY = 0;
   var MAX_WAIT_MS = 5000;
 
   var SVG_MUTED   = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';
@@ -151,10 +152,10 @@ window.HonorModal = (function () {
     _markSeen();
     _prevFocus = document.activeElement;
 
+    _lockPageScroll();
     _el.modal.removeAttribute('inert');
     _el.modal.removeAttribute('aria-hidden');
     _el.modal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
 
     _soundOverlayDismissed = false;
     if (_el.soundOverlay) _el.soundOverlay.classList.remove('is-hidden');
@@ -179,7 +180,7 @@ window.HonorModal = (function () {
     _el.modal.classList.remove('is-open');
     _el.modal.setAttribute('aria-hidden', 'true');
     _el.modal.setAttribute('inert', '');
-    document.body.style.overflow = '';
+    _unlockPageScroll();
     _el.video.pause();
     document.removeEventListener('keydown', _onKeydown, true);
     if (_prevFocus && typeof _prevFocus.focus === 'function') {
@@ -203,6 +204,28 @@ window.HonorModal = (function () {
     } else {
       if (document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
+  }
+
+  function _lockPageScroll() {
+    _scrollLockY = window.scrollY || window.pageYOffset || 0;
+    document.body.classList.add('hg-modal-open');
+    document.body.style.position = 'fixed';
+    document.body.style.top = '-' + _scrollLockY + 'px';
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function _unlockPageScroll() {
+    document.body.classList.remove('hg-modal-open');
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    window.scrollTo(0, _scrollLockY);
   }
 
   /* ── analytics / postMessage de submit GHL ───────────────────────────────── */

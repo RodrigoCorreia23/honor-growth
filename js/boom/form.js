@@ -138,6 +138,35 @@ window.HonorModal = (function () {
     _observer.observe(container, { childList: true, subtree: true });
   }
 
+  /* ── altura dinâmica do formulário ───────────────────────────────────────────
+     No telemóvel os campos empilham e o formulário fica mais alto que os 713px
+     fixos, cortando o botão de submeter. Ouvimos as mensagens de altura do GHL e
+     deixamos o iframe crescer (nunca encolhe abaixo do mínimo). */
+  function _watchFormResize() {
+    var GHL_ORIGIN = 'https://api.leadconnectorhq.com';
+    var MIN_HEIGHT = 560;
+    window.addEventListener('message', function (e) {
+      if (e.origin !== GHL_ORIGIN) return;
+      var iframe = document.getElementById(_modalIframeId());
+      if (!iframe || e.source !== iframe.contentWindow) return;
+
+      var data = e.data;
+      if (typeof data === 'string') {
+        try { data = JSON.parse(data); } catch (err) { return; }
+      }
+      if (!data || typeof data !== 'object') return;
+
+      var h = parseInt(
+        data.height ||
+        (data.payload && data.payload.height) ||
+        (data.data && data.data.height),
+        10
+      );
+      if (!h || isNaN(h) || h < MIN_HEIGHT) return;
+      iframe.style.height = h + 'px';
+    });
+  }
+
   /* ── open / close ────────────────────────────────────────────────────────── */
   function open() {
     if (_opened) return;
@@ -268,6 +297,7 @@ window.HonorModal = (function () {
     _bindVideoReady();
     _observeFormMount();
     _watchGhlPostMessage();
+    _watchFormResize();
 
     _el.closeBtn.addEventListener('click', close);
     if (_el.soundOverlay) {

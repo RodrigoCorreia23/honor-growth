@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-current-year]').forEach((el) => {
     el.textContent = new Date().getFullYear();
   });
-  window.HonorMenu.init();
   window.HonorNavigation.init();
   window.HonorAnimations.init();
   window.HonorVideos.init();

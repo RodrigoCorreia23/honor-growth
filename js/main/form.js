@@ -139,12 +139,6 @@ window.HonorModal = (function () {
   }
 
   /* ── open / close ────────────────────────────────────────────────────────── */
-  function open() {
-    if (_opened) return;
-    _observeFormMount();
-    _openNow();
-  }
-
   function _openNow() {
     if (_opened) return;
     _opened = true;
@@ -322,8 +316,7 @@ window.HonorModal = (function () {
     if (!target) return;
     var y = target.getBoundingClientRect().top + window.scrollY - 74;
     window.scrollTo({ top: y, behavior: 'smooth' });
-    if (window.HonorMenu) window.HonorMenu.close();
   });
 
-  return { init: init, open: open, close: close };
+  return { init: init };
 }());

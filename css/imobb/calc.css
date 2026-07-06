@@ -707,19 +707,34 @@
   position: relative;
 }
 
-/* Enquanto os dados não são enviados, os resultados ficam ocultos e
-   apenas o formulário é mostrado (logo abaixo das calculadoras). */
 .calc-results--gated {
-  display: none;
+  filter: blur(10px);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.28;
+  transform: scale(0.985);
 }
 
 .calc-gate {
+  position: absolute;
+  inset: 0;
   display: flex;
+  align-items: center;
   justify-content: center;
+  z-index: 12;
+  padding: 28px;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  background:
+    linear-gradient(180deg, rgba(6, 9, 20, 0.30), rgba(6, 9, 20, 0.56));
+  backdrop-filter: blur(4px);
+  overflow-y: auto;
+  border-radius: var(--calc-radius-lg);
 }
 
 .calc-gate--hidden {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .calc-gate__card {
@@ -761,4 +776,88 @@
   line-height: 1.55;
   color: var(--calc-text-muted);
   margin: 0 0 24px;
+}
+
+.calc-gate__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.calc-gate__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.calc-gate__label {
+  font-size: 13px;
+  color: var(--calc-text-muted);
+  font-weight: 500;
+}
+
+.calc-gate__input {
+  padding: 13px 15px;
+  background: var(--calc-surface-input);
+  border: 1px solid var(--calc-border-strong);
+  border-radius: var(--calc-radius-md);
+  color: var(--calc-text);
+  font-size: 15px;
+  width: 100%;
+  transition: border-color var(--calc-t-fast);
+}
+
+.calc-gate__input:focus {
+  outline: none;
+  border-color: var(--calc-accent);
+}
+
+.calc-gate__input.is-invalid {
+  border-color: var(--calc-coral);
+}
+
+.calc-gate__btn {
+  margin-top: 4px;
+  padding: 15px;
+  background: var(--calc-accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  border-radius: var(--calc-radius-md);
+  cursor: pointer;
+  box-shadow: 0 14px 38px rgba(58,125,255,.34);
+  transition: background var(--calc-t-fast);
+}
+
+.calc-gate__btn:hover {
+  background: var(--calc-accent-hover);
+}
+
+.calc-gate__btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.calc-gate__reveal {
+  width: 100%;
+  margin-top: 12px;
+  background: transparent;
+  border: 1px solid rgba(58,125,255,.4);
+  color: var(--calc-accent);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+.calc-gate__reveal:hover {
+  background: rgba(58,125,255,.08);
+  border-color: var(--calc-accent);
+}
+
+.calc-gate__privacy {
+  font-size: 12px;
+  color: var(--calc-text-faint);
+  text-align: center;
+  margin: 0;
 }

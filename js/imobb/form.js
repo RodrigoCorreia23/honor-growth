@@ -4,12 +4,18 @@ window.HonorModal = (function () {
   var _opened = false;
   var _prevFocus = null;
   var _el = {};
+  var _soundOverlayDismissed = false;
   var _pendingOpen = false;
-  var _ready = { form: false };
+  var _ready = { video: false, form: false };
   var _iframeLoadTimer = null;
   var _observer = null;
   var _maxWaitTimer = null;
   var MAX_WAIT_MS = 5000;
+
+  var SVG_MUTED   = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';
+  var SVG_UNMUTED = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';
+  var SVG_PLAY    = '<polygon points="5 3 19 12 5 21 5 3"/>';
+  var SVG_PAUSE   = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
 
   /* ── focus trap ──────────────────────────────────────────────────────────── */
   function getFocusable() {
@@ -18,6 +24,37 @@ window.HonorModal = (function () {
         'button:not([disabled]),a[href],iframe,[tabindex]:not([tabindex="-1"])'
       )
     );
+  }
+
+  /* ── video sync ──────────────────────────────────────────────────────────── */
+  function syncSound() {
+    if (!_el.video) return;
+    var muted = _el.video.muted;
+    if (_el.soundIcon)  _el.soundIcon.innerHTML    = muted ? SVG_MUTED : SVG_UNMUTED;
+    if (_el.soundLabel) _el.soundLabel.textContent = muted ? 'Habilitar som' : 'Silenciar';
+    if (_el.soundBtn) {
+      _el.soundBtn.setAttribute('aria-label',   muted ? 'Habilitar som' : 'Silenciar');
+      _el.soundBtn.setAttribute('aria-pressed', muted ? 'false' : 'true');
+    }
+    if (_el.soundOverlay) {
+      if (!muted) {
+        _soundOverlayDismissed = true;
+        _el.soundOverlay.classList.add('is-hidden');
+      } else if (!_soundOverlayDismissed) {
+        _el.soundOverlay.classList.remove('is-hidden');
+      }
+    }
+  }
+
+  function syncPlay() {
+    if (!_el.video) return;
+    var stopped = _el.video.paused || _el.video.ended;
+    if (_el.playIcon)  _el.playIcon.innerHTML    = stopped ? SVG_PLAY : SVG_PAUSE;
+    if (_el.playLabel) _el.playLabel.textContent = stopped ? 'Continuar' : 'Pausar';
+    if (_el.playBtn) {
+      _el.playBtn.setAttribute('aria-label',   stopped ? 'Continuar reprodução' : 'Pausar vídeo');
+      _el.playBtn.setAttribute('aria-pressed', stopped ? 'false' : 'true');
+    }
   }
 
   function _modalIframeId() {
@@ -31,7 +68,7 @@ window.HonorModal = (function () {
 
   /* ── readiness ───────────────────────────────────────────────────────────── */
   function _canOpen() {
-    return _ready.form;
+    return (_el.video ? _ready.video : true) && _ready.form;
   }
 
   function _tryPendingOpen() {
@@ -40,6 +77,11 @@ window.HonorModal = (function () {
     _maxWaitTimer = null;
     _pendingOpen = false;
     _openNow();
+  }
+
+  function _markVideoReady() {
+    _ready.video = true;
+    _tryPendingOpen();
   }
 
   function _markFormReady() {
@@ -55,6 +97,13 @@ window.HonorModal = (function () {
     iframe.dataset.honorRevealed = 'true';
     iframe.style.opacity = '1';
     _markFormReady();
+  }
+
+  /* ── vídeo ───────────────────────────────────────────────────────────────── */
+  function _bindVideoReady() {
+    if (!_el.video) { _markVideoReady(); return; }
+    if (_el.video.readyState >= 2) { _markVideoReady(); return; }
+    _el.video.addEventListener('loadeddata', _markVideoReady, { once: true });
   }
 
   /* ── formulário ──────────────────────────────────────────────────────────── */
@@ -113,7 +162,17 @@ window.HonorModal = (function () {
     _el.modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
 
+    _soundOverlayDismissed = false;
+    if (_el.soundOverlay) _el.soundOverlay.classList.remove('is-hidden');
+    if (_el.video) _el.video.play().catch(function () {});
+
+    if (window.HonorIntegrations) {
+      window.HonorIntegrations.trackAnalytics('vsl_play');
+    }
+
     requestAnimationFrame(function () {
+      syncPlay();
+      syncSound();
       _el.closeBtn.focus();
     });
 
@@ -127,6 +186,7 @@ window.HonorModal = (function () {
     _el.modal.setAttribute('aria-hidden', 'true');
     _el.modal.setAttribute('inert', '');
     document.body.style.overflow = '';
+    if (_el.video) _el.video.pause();
     document.removeEventListener('keydown', _onKeydown, true);
     if (_prevFocus && typeof _prevFocus.focus === 'function') {
       _prevFocus.focus();
@@ -200,15 +260,59 @@ window.HonorModal = (function () {
     if (!_el.modal) return;
 
     _el.modal.setAttribute('inert', '');
+    _el.container  = _el.modal.querySelector('.hg-modal-container');
     _el.closeBtn   = document.getElementById('hg-modal-close');
+    _el.video      = document.getElementById('hg-modal-video');
+    _el.soundBtn   = document.getElementById('hg-modal-sound');
+    _el.soundIcon  = document.getElementById('hg-modal-sound-icon');
+    _el.soundLabel = document.getElementById('hg-modal-sound-label');
+    _el.playBtn    = document.getElementById('hg-modal-play');
+    _el.playIcon   = document.getElementById('hg-modal-play-icon');
+    _el.playLabel  = document.getElementById('hg-modal-play-label');
+    _el.soundOverlay = document.getElementById('hg-modal-sound-overlay');
 
+    _bindVideoReady();
     _observeFormMount();
     _watchGhlPostMessage();
 
     _el.closeBtn.addEventListener('click', close);
+    if (_el.soundOverlay) {
+      _el.soundOverlay.addEventListener('click', function () {
+        if (!_el.video) return;
+        _el.video.muted = false;
+        syncSound();
+        if (_el.video.paused) _el.video.play().catch(function () {});
+      });
+    }
     _el.modal.addEventListener('click', function (e) {
       if (e.target === _el.modal) close();
     });
+
+    if (_el.soundBtn) {
+      _el.soundBtn.addEventListener('click', function () {
+        if (!_el.video) return;
+        _el.video.muted = !_el.video.muted;
+        syncSound();
+      });
+    }
+    if (_el.playBtn) {
+      _el.playBtn.addEventListener('click', function () {
+        if (!_el.video) return;
+        if (_el.video.paused || _el.video.ended) {
+          _el.video.play().catch(function () {});
+        } else {
+          _el.video.pause();
+        }
+        syncPlay();
+      });
+    }
+
+    if (_el.video) {
+      _el.video.addEventListener('play',         syncPlay);
+      _el.video.addEventListener('pause',        syncPlay);
+      _el.video.addEventListener('ended',        syncPlay);
+      _el.video.addEventListener('volumechange', syncSound);
+    }
 
     _initAnalytics();
 

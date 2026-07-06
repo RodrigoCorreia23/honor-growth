@@ -282,22 +282,39 @@
   );
 }
 
-/* ── Responsive: mobile empilha verticalmente ─────────────────────────────── */
+/* ── Responsive: mobile ecrã-inteiro com um único scroll ──────────────────── */
 @media (max-width: 640px) {
+  .hg-modal-backdrop {
+    padding: 0;
+  }
+  .hg-modal-container {
+    width: 100%;
+    max-width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
+    border: none;
+  }
+  /* O corpo é o único contentor com scroll — evita scroll aninhado que prende o toque */
   .hg-modal-body {
     flex-direction: column;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 0;
   }
   .hg-modal-copy-panel {
     flex: none;
-    border-radius: 20px 20px 0 0;
+    overflow: visible;
+    border-radius: 0;
     border-right: none;
     border-bottom: 1px solid rgba(255,255,255,.07);
-    padding: 28px 20px 24px;
+    padding: 24px 18px 20px;
   }
   .hg-modal-form-wrap {
-    border-radius: 0 0 20px 20px;
     flex: none;
+    overflow: visible;
+    border-radius: 0;
+    padding: 20px 16px 32px;
   }
 }
 
