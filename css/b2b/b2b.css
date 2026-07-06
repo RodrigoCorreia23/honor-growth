@@ -1,0 +1,470 @@
+/* ─── B2B THEME OVERRIDES ─────────────────────────────────────────────────── */
+:root {
+  --b2b-accent:      #3a7dff;
+  --b2b-accent-dark: #2262e8;
+  --b2b-primary:     #101113;
+  --b2b-secondary:   #5b6066;
+  --b2b-border:      rgba(0,0,0,.09);
+}
+
+body {
+  background: #ffffff;
+  color: #101113;
+}
+
+::-webkit-scrollbar-track { background: #f5f6f8; }
+::-webkit-scrollbar-thumb { background: #dde0e4; border-radius: 6px; }
+
+.b2b-root a,
+.b2b-root button {
+  transition: background .2s ease, color .2s ease, border-color .2s ease, transform .15s ease;
+}
+
+/* ─── CONTAINER ───────────────────────────────────────────────────────────── */
+.b2b-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 48px);
+  box-sizing: border-box;
+}
+
+/* ─── HEADER / LOGO ───────────────────────────────────────────────────────── */
+.b2b-header {
+  padding: clamp(28px, 4.5vh, 48px) 0 clamp(24px, 3.5vh, 40px);
+  text-align: center;
+}
+
+.b2b-logo {
+  height: 90px;
+  width: auto;
+  display: inline-block;
+  filter: invert(1);
+}
+
+/* ─── AUTHORITY LINE ──────────────────────────────────────────────────────── */
+.b2b-authority {
+  padding-bottom: clamp(36px, 4.5vh, 52px);
+}
+
+.b2b-authority-text {
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: #5b6066;
+  text-align: center;
+  margin: 0;
+}
+
+.b2b-authority-text strong { color: #101113; font-weight: 700; }
+
+.b2b-acc { color: var(--b2b-accent); font-weight: 700; }
+
+.b2b-authority--post-video {
+  padding-top: clamp(24px, 3.5vh, 36px);
+}
+
+/* ─── HERO ────────────────────────────────────────────────────────────────── */
+.b2b-hero-section {
+  text-align: center;
+  padding-bottom: clamp(48px, 6vh, 72px);
+}
+
+.b2b-h1 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.9rem, 4.5vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.028em;
+  color: #101113;
+  margin: 0 0 clamp(18px, 2.2vh, 24px);
+  text-wrap: balance;
+}
+
+.b2b-h1-cta {
+  font-weight: 800;
+  color: var(--b2b-accent);
+  text-decoration: none;
+}
+
+.b2b-sub {
+  font-size: clamp(1.05rem, 1.55vw, 1.2rem);
+  line-height: 1.65;
+  color: #5b6066;
+  margin: 0 0 clamp(28px, 3.5vh, 36px);
+}
+
+.b2b-key {
+  font-weight: 700;
+  color: var(--b2b-accent);
+  text-decoration: none;
+}
+
+/* ─── CTA BUTTON ──────────────────────────────────────────────────────────── */
+.b2b-cta-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: clamp(18px, 2.5vh, 24px);
+}
+
+.b2b-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 34px;
+  background: var(--b2b-accent);
+  color: #fff;
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+.b2b-btn:hover {
+  background: var(--b2b-accent-dark);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ─── WARNING / QUALIFICATION LINE ───────────────────────────────────────── */
+.b2b-warn {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #101113;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ─── VIDEO SECTION ───────────────────────────────────────────────────────── */
+.b2b-vid-section {
+  padding: clamp(8px, 1.5vh, 16px) 0 clamp(40px, 5.5vh, 64px);
+}
+
+.b2b-video-wrap {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,.12);
+  background: #111;
+}
+
+.b2b-video-el {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+.b2b-vid-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.55) 100%);
+  pointer-events: none;
+}
+
+/* Repositionar pill de som para topo-esquerdo no B2B */
+.b2b-video-wrap .hg-video-controls {
+  bottom: auto;
+  top: 12px;
+  left: 12px;
+}
+
+/* ─── CTA STRIP (CTAs intermédios) ───────────────────────────────────────── */
+.b2b-cta-strip {
+  padding-bottom: clamp(48px, 6vh, 72px);
+}
+
+.b2b-cta-strip--spaced {
+  padding-top: clamp(8px, 1.5vh, 16px);
+}
+
+.b2b-cta-strip-inner {
+  display: flex;
+  justify-content: center;
+}
+
+/* ─── ECOSSISTEMA DE IA ───────────────────────────────────────────────────── */
+.ia-section {
+  padding: clamp(56px, 8vh, 100px) 0;
+  background: #fff;
+  border-top: 1px solid var(--b2b-border);
+}
+
+.ia-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 56px);
+  box-sizing: border-box;
+}
+
+.ia-layout {
+  display: flex;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: flex-start;
+}
+
+.ia-header {
+  flex: 0 0 clamp(260px, 32%, 380px);
+  position: sticky;
+  top: 40px;
+}
+
+.ia-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--b2b-accent);
+  margin-bottom: 20px;
+}
+
+.ia-title {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
+  line-height: 1.06;
+  letter-spacing: -.025em;
+  color: #101113;
+  margin: 0 0 18px;
+}
+
+.ia-title-em {
+  font-style: italic;
+  color: var(--b2b-accent);
+}
+
+.ia-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #5b6066;
+  margin: 0;
+}
+
+.ia-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.ia-card {
+  padding: 18px 22px;
+  background: #fff;
+  border: 1px solid var(--b2b-border);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .25s, box-shadow .25s, transform .25s;
+}
+
+.ia-card:hover {
+  border-color: rgba(58,125,255,.3);
+  box-shadow: 0 4px 20px rgba(58,125,255,.07);
+  transform: translateY(-3px);
+}
+
+.ia-num {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--b2b-accent);
+  letter-spacing: -.04em;
+  margin-bottom: 2px;
+}
+
+.ia-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #9ba0a8;
+  margin-bottom: 10px;
+}
+
+.ia-card-title {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 700;
+  font-size: .97rem;
+  letter-spacing: -.015em;
+  color: #101113;
+  margin: 0 0 6px;
+  line-height: 1.3;
+}
+
+.ia-card-desc {
+  font-size: .85rem;
+  line-height: 1.55;
+  color: #5b6066;
+  margin: 0 0 auto;
+  padding-bottom: 12px;
+  flex-grow: 1;
+}
+
+.ia-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--b2b-border);
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ia-list li {
+  font-size: .82rem;
+  color: #101113;
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.ia-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--b2b-accent);
+  font-size: .78rem;
+  top: 1px;
+}
+
+/* ─── CTA FINAL ───────────────────────────────────────────────────────────── */
+.b2b-cta-final-section {
+  padding: clamp(56px, 7vh, 88px) 0;
+  border-top: 1px solid var(--b2b-border);
+  text-align: center;
+}
+
+.b2b-cta-final-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.b2b-cta-final-h2 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #101113;
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+
+.b2b-cta-final-p {
+  font-size: 1rem;
+  line-height: 1.62;
+  color: #5b6066;
+  margin: 0 0 clamp(24px, 3.5vh, 36px);
+}
+
+/* ─── FOTO DE EQUIPA ──────────────────────────────────────────────────────── */
+.b2b-teamphoto-section {
+  padding: clamp(48px, 6vh, 72px) 0;
+  border-top: 1px solid var(--b2b-border);
+}
+
+.b2b-teamphoto-img {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+  object-fit: cover;
+}
+
+.b2b-teamphoto-caption {
+  font-size: 12px;
+  color: #9ba0a8;
+  text-align: center;
+  margin: 12px 0 0;
+  letter-spacing: 0.03em;
+}
+
+/* ─── FOOTER ──────────────────────────────────────────────────────────────── */
+.b2b-footer {
+  padding: clamp(32px, 4.5vh, 56px) 0 clamp(24px, 3.5vh, 40px);
+}
+
+.b2b-footer-rule {
+  border: none;
+  border-top: 1px dashed rgba(58,125,255,.3);
+  margin-bottom: clamp(18px, 2.5vh, 26px);
+}
+
+.b2b-footer-copy {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #9ba0a8;
+  text-align: center;
+  margin: 0 0 10px;
+}
+
+.b2b-footer-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.b2b-footer-links a,
+.b2b-footer-prefs-btn {
+  font-size: 11px;
+  color: #b8bcc4;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
+
+.b2b-footer-links a:hover,
+.b2b-footer-prefs-btn:hover { color: var(--b2b-accent); }
+
+/* ─── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 820px) {
+  .ia-layout {
+    flex-direction: column;
+  }
+
+  .ia-header {
+    position: static;
+    flex: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .ia-grid {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .b2b-cta-row,
+  .b2b-cta-strip-inner { display: block; }
+
+  .b2b-btn {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .b2b-h1 {
+    font-size: clamp(1.65rem, 7.5vw, 2.2rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+}
