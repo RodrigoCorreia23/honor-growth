@@ -28,6 +28,7 @@
             { logo: "Neuronium", logoImg: "assets/logo-site neuronium.svg", desc: "Agência de marketing B2B que operava em modelo 'one-man-show'.", headline: "+62% de pricing médio e 12.400€ em contratos fechados.", metricBig: "+62%", metricLabel: "de pricing médio", desafios: [{ title: "Sócio único e pricing baixo", desc: "Operação totalmente centrada no fundador, sem leverage comercial." }], solucoes: [], resultados: [{ title: "+62% pricing médio", desc: "12.400€ em contratos fechados após reposicionamento." }] },
             { logo: "Easy Growth", logoImg: "assets/easy growth .webp", desc: "Agência de marketing B2B com operação desalinhada com o potencial dos sócios.", headline: "Faturação ×3 ao 4º mês e +40% de margem líquida.", metricBig: "×3", metricLabel: "faturação ao 4º mês", desafios: [{ title: "Operação desalinhada", desc: "Processos comerciais não acompanhavam o potencial dos sócios." }], solucoes: [], resultados: [{ title: "×3 faturação ao 4º mês", desc: "+40% margem líquida com a mesma equipa." }] },
             { logo: "Click2Connect", logoImg: "assets/click2connect.png", desc: "Agência digital focada em transformar tráfego pago em reuniões qualificadas para clientes B2B.", headline: "Faturação ×1,4 e o dobro de agendamentos diários ao 1º mês de parceria.", metricBig: "×1,4", metricLabel: "de faturação", desafios: [], solucoes: [], resultados: [{ title: "Faturação ×1,4", desc: "Aumento da faturação após implementação do ecossistema." }, { title: "+20% conversão", desc: "Taxa de lead qualificada para negócio fechado, em média." }, { title: "2× agendamentos/dia", desc: "Em 1 mês de parceria: de 2 para 4 reuniões diárias." }] },
+            { logo: "HubNova", logoImg: "assets/hubnova-logo.png", desc: "Consultoria energética que cresceu de 10-15K€ para 40K€ mensais ao estruturar a operação comercial, reduzir no-shows e fazer 11 reuniões qualificadas com IA.", headline: "De 10-15K€ para 40K€ mensais com 11 reuniões qualificadas pela IA.", metricBig: "40K€", metricLabel: "faturação mensal (de ~13K€)", desafios: [{ title: "No-shows elevados", desc: "Muitas reuniões marcadas não se concretizavam." }, { title: "Operação não estruturada", desc: "Faturação estagnada nos 10-15K€ mensais." }], solucoes: [], resultados: [{ title: "11 reuniões qualificadas", desc: "Agendamentos qualificados por IA, com menos no-shows." }, { title: "Oferta reposicionada", desc: "Mais leads qualificadas e equipa a converter mais." }] },
         ];
 
         const team = [
@@ -199,7 +200,8 @@
                 "Flaviocar": "filter:brightness(0) invert(1);object-fit:contain;object-position:center center;",
                 "Click2Connect": "filter:brightness(0) invert(1);object-fit:contain;object-position:center center;height:70px;max-width:220px;",
                 "Neuronium": "filter:invert(1) grayscale(1) brightness(1.15) contrast(1.1);mix-blend-mode:lighten;",
-                "Easy Growth": "mix-blend-mode:lighten;"
+                "Easy Growth": "mix-blend-mode:lighten;",
+                "HubNova": "object-fit:contain;object-position:left center;height:44px;max-width:190px;"
             };
             const logoStyle = logoStylesMap[c.logo] ? ` style="${logoStylesMap[c.logo]}"` : '';
             const logoHtml = c.logoImg ? `<img src="${c.logoImg}" alt="${c.logo}" class="hg-case-logo"${logoStyle} />` : `<div class="hg-display text-2xl font-medium">${c.logo}</div>`;
