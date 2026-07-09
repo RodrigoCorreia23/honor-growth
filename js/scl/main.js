@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.HonorNavigation.init();
   window.HonorAnimations.init();
   window.HonorVideos.init();
+  window.HonorTestimonialCarousel.init();
   if (window.HonorIntegrations) {
     window.HonorIntegrations.loadGhlContainer('hg-ghl-inline', 'page-' + window.HonorIntegrations.CONFIG.ghlFormId);
     window.HonorIntegrations.loadGhlContainer('hg-ghl-modal', 'inline-' + window.HonorIntegrations.CONFIG.ghlFormId);
