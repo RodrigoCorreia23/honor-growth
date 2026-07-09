@@ -20,6 +20,7 @@
         const testimonials = [
             { name: "Rodrigo", company: "Eleve Scale", metric: "", metricLabel: "", poster: "assets/mov1-poster.jpg", videoUrl: "assets/mov1-web.mp4" },
             { name: "Flaviocar", company: "Stand Automóvel B2C", metric: "", metricLabel: "", poster: "", videoUrl: "assets/flaviocar-video.mp4", cornerLogo: "assets/flaviocarsvg.svg" },
+            { name: "Hugo", company: "HubNova · Consultoria Energética", metric: "", metricLabel: "", poster: "", videoUrl: "assets/hubnovahugo.mp4", cornerLogo: "assets/hubnova-logo.png" },
         ];
 
         const cases = [
@@ -189,6 +190,7 @@
         };
         renderTestimonialVideo(document.getElementById('hgFeaturedTestimonial'), testimonials[0], true);
         renderTestimonialVideo(document.getElementById('hgFlaviocarTestimonial'), testimonials[1], false);
+        renderTestimonialVideo(document.getElementById('hgHubnovaTestimonial'), testimonials[2], false);
 
         const casesEl = document.getElementById('hgCases');
         cases.forEach(c => {
