@@ -1,16 +1,13 @@
 (function () {
         const trustLogos = ["FLAVIOCAR", "NEURONIUM", "EASY GROWTH", "AKUAFONTIS", "HUBNOVA", "CENTURY 21 ALPHA", "RICARDO SILVA · RE/MAX VIP"];
 
-        const phases = [
-            { n: "01", title: "Formação Comercial", phase: "FASE 2 · ESCALA & OTIMIZAÇÃO", phaseSub: "Mês 2 → Mês 4", desc: "Documentação de SOPs e padronização de toda a operação comercial e back office.", svg: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>' },
-            { n: "02", title: "Análise de Métricas", phase: "FASE 2 · ESCALA & OTIMIZAÇÃO", phaseSub: "Mês 2 → Mês 4", desc: "Análise de KPIs, otimização de funis e melhorias contínuas, mês após mês.", svg: '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>' },
-        ];
-
         const modules = [
             { n: "01", tag: "Prospecção", title: "Aquisição automática", desc: "A IA gera oportunidades sem o teu comercial ter de ligar à mão — só fecha.", bullets: ["WhatsApp automation", "IA que gere oportunidades", "Reuniões agendadas por IA (texto e voz)"], svg: '<path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>' },
             { n: "02", tag: "Gestão de Leads", title: "Agendamento Inbound", desc: "Qualquer lead que entre no CRM é qualificada e agendada automaticamente.", bullets: ["Anúncios, parcerias, referências", "Qualificação automática", "Sem intervenção humana"], svg: '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>' },
             { n: "03", tag: "Nutrição", title: "Confirmação & aparecimento", desc: "Sistema construído contigo para garantir que as leads aparecem à reunião.", bullets: ["Sequências de confirmação", "Aquecimento automático da lead", "Taxa de aparecimento mais alta"], svg: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>' },
             { n: "04", tag: "Reativação", title: "Nenhuma lead se perde", desc: "Comercial preenche o relatório no fim da reunião. O sistema dispara o agente certo.", bullets: ['Agente "no-show" liga', 'Agente "cancelamento" liga', "Reativações trazem leads à pipeline"], svg: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>' },
+            { n: "05", tag: "Formação", title: "Formação Comercial", desc: "Documentação de SOPs e padronização de toda a operação comercial e back office.", bullets: ["Documentação de SOPs", "Padronização da operação", "Comercial + back office alinhados"], svg: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>' },
+            { n: "06", tag: "Otimização", title: "Análise de Métricas", desc: "Análise de KPIs, otimização de funis e melhorias contínuas, mês após mês.", bullets: ["Análise de KPIs", "Otimização de funis", "Melhorias contínuas mês após mês"], svg: '<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>' },
         ];
 
         const testimonials = [
@@ -47,17 +44,6 @@
         }
         requestAnimationFrame(setMarqueeDuration);
         window.addEventListener('resize', setMarqueeDuration, { passive: true });
-
-        const methodEl = document.getElementById('hgMethod');
-        phases.forEach((p, i) => {
-            const div = document.createElement('div');
-            div.className = "hg-method-step";
-            if (i === 3) div.dataset.phaseStart = "2";
-            const mobilePhase = (i === 0 || i === 3) ? `<div class="hg-method-mobile-phase"><div class="hg-method-phase-tag">${p.phase}</div><div class="hg-method-phase-sub">${p.phaseSub}</div></div>` : '';
-            if (p.link) { div.style.cursor = 'pointer'; div.addEventListener('click', () => document.querySelector(p.link).scrollIntoView({ behavior: 'smooth' })); }
-            div.innerHTML = `${mobilePhase}<div class="hg-method-circle">${p.n}</div><div class="hg-method-content"><h3 class="hg-method-title">${p.title}</h3><p class="hg-method-desc">${p.desc}</p></div>`;
-            methodEl.appendChild(div);
-        });
 
         const modulesEl = document.getElementById('hgModules');
         modules.forEach(m => {
