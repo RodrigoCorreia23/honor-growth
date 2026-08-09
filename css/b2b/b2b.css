@@ -379,6 +379,7 @@ body {
 
 .b2b-teamphoto-img {
   width: 100%;
+  height: auto;
   border-radius: 16px;
   display: block;
   object-fit: cover;

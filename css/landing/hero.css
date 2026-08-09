@@ -17,9 +17,9 @@
 .hg-hero-040 { font-size:18px; }
 .hg-hero-041 { display:inline-flex; align-items:center; gap:10px; padding:16px 28px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.14); color:#f4f5f7; font-weight:600; font-size:16px; border-radius:11px; }
 .hg-hero-hover-041:hover { background:rgba(255,255,255,.09) }
-.hg-hero-042 { position:relative; max-width:1020px; margin:clamp(48px,6vw,72px) auto 0; }
+.hg-hero-042 { position:relative; max-width:300px; margin:clamp(48px,6vw,72px) auto 0; }
 .hg-hero-043 { position:relative; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,.1); box-shadow:none; }
-.hg-hero-044 { width:100%; aspect-ratio:16/9; object-fit:cover; cursor:pointer; }
+.hg-hero-044 { width:100%; aspect-ratio:9/16; object-fit:cover; cursor:pointer; }
 .hg-hero-045 { position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,15,30,.1) 40%, rgba(10,15,30,.7) 100%); }
 .hg-hero-046 { margin-top:20px; }
 .hg-hero-047 { margin:0 auto; max-width:920px; text-align:center; font-size:clamp(.92rem,1.05vw,1rem); line-height:1.8; color:#ffffff; text-wrap:pretty; }

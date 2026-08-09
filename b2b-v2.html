@@ -81,9 +81,11 @@
               data-video-surface
               src="assets/vsl5-video.mp4"
               poster="assets/vsl5-poster.jpg"
-              preload="metadata"
+              preload="auto"
               playsinline
               muted
+              autoplay
+              loop
               class="b2b-video-el"
             ></video>
             <div class="b2b-vid-overlay"></div>
@@ -100,17 +102,6 @@
                   <line x1="17" y1="9" x2="23" y2="15" />
                 </svg>
                 <span class="hg-ctrl-sound-label">Habilitar som</span>
-              </button>
-              <button
-                data-play-toggle
-                aria-label="Reproduzir vídeo"
-                aria-pressed="false"
-                class="hg-modal-ctrl"
-              >
-                <svg class="hg-ctrl-play-icon" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polygon points="5 3 19 12 5 21 5 3" />
-                </svg>
-                <span class="hg-ctrl-play-label">Reproduzir</span>
               </button>
             </div>
           </div>
@@ -211,9 +202,13 @@
               <!-- Equipa Honor Growth -->
               <div data-reveal class="ia-team">
                 <img
-                  src="assets/HONOR_TEAM_6.png"
+                  src="assets/HONOR_TEAM_6-web.jpg"
                   alt="Equipa Honor Growth"
                   class="ia-team-img"
+                  width="1600"
+                  height="1067"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <p class="ia-team-caption">Equipa Honor Growth — Lisboa, Portugal</p>
               </div>

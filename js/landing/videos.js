@@ -32,37 +32,50 @@ window.HonorVideos = (function () {
     var box      = video.parentElement;
     var soundBtn = box.querySelector('[data-mute-toggle]');
     var playBtn  = box.querySelector('[data-play-toggle]');
-    if (!soundBtn || !playBtn) return;
+    if (!soundBtn) return;
 
     syncSound(video, soundBtn);
-    syncPlay(video, playBtn);
+    if (playBtn) syncPlay(video, playBtn);
+
+    /* O atributo HTML "autoplay" nem sempre dispara — o navegador pode
+       bloquear silenciosamente a tentativa nativa (ex.: elemento ainda com
+       opacity:0 da animação de reveal no momento em que os dados ficam
+       prontos). Chamar play() explicitamente por JS contorna isso. */
+    if (video.autoplay && video.paused) {
+      video.play().catch(function () {});
+    }
 
     soundBtn.addEventListener('click', function () {
       video.muted = !video.muted;
       syncSound(video, soundBtn);
     });
 
-    playBtn.addEventListener('click', function () {
-      if (video.paused || video.ended) {
-        video.play().catch(function () {});
-        /* Evento video_play — só dispara se analytics autorizado */
-        if (window.HonorIntegrations) {
-          window.HonorIntegrations.trackAnalytics('video_play', { label: video.currentSrc || video.src });
+    /* Sem botão de pausa: o vídeo (ex.: hero em loop) não tem controlo de
+       play/pause — nem o botão nem o clique no vídeo devem parar. */
+    if (playBtn) {
+      playBtn.addEventListener('click', function () {
+        if (video.paused || video.ended) {
+          video.play().catch(function () {});
+          /* Evento video_play — só dispara se analytics autorizado */
+          if (window.HonorIntegrations) {
+            window.HonorIntegrations.trackAnalytics('video_play', { label: video.currentSrc || video.src });
+          }
+        } else {
+          video.pause();
         }
-      } else {
-        video.pause();
-      }
-      syncPlay(video, playBtn);
-    });
+        syncPlay(video, playBtn);
+      });
 
-    video.addEventListener('click', function () {
-      if (!video.paused) { video.pause(); }
-      syncPlay(video, playBtn);
-    });
+      video.addEventListener('click', function () {
+        if (!video.paused) { video.pause(); }
+        syncPlay(video, playBtn);
+      });
 
-    video.addEventListener('play',         function () { syncPlay(video, playBtn); });
-    video.addEventListener('pause',        function () { syncPlay(video, playBtn); });
-    video.addEventListener('ended',        function () { syncPlay(video, playBtn); });
+      video.addEventListener('play',  function () { syncPlay(video, playBtn); });
+      video.addEventListener('pause', function () { syncPlay(video, playBtn); });
+      video.addEventListener('ended', function () { syncPlay(video, playBtn); });
+    }
+
     video.addEventListener('volumechange', function () { syncSound(video, soundBtn); });
   }
 

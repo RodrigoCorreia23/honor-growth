@@ -8,8 +8,10 @@ window.HonorTestimonialCarousel = (function () {
     if (!cards.length) return;
 
     function updatePadding() {
-      var card = cards[0];
-      var pad = Math.max(0, (track.clientWidth - card.offsetWidth) / 2);
+      var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      var totalWidth = cards.reduce(function (sum, card) { return sum + card.offsetWidth; }, 0);
+      totalWidth += gap * (cards.length - 1);
+      var pad = Math.max(0, (track.clientWidth - totalWidth) / 2);
       track.style.paddingLeft = pad + 'px';
       track.style.paddingRight = pad + 'px';
     }
@@ -35,8 +37,19 @@ window.HonorTestimonialCarousel = (function () {
       cards.forEach(function (card) { card.classList.toggle('is-active', card === closest); });
     }
 
+    /* Calcula o scrollLeft manualmente em vez de usar scrollIntoView:
+       scrollIntoView pode "subir" e rolar um ancestral fora do carrossel
+       (a própria página) se o browser não considerar o track scrollável
+       no momento — mexendo a landing page inteira em vez de só do track. */
+    function scrollLeftFor(card) {
+      var trackRect = track.getBoundingClientRect();
+      var cardRect = card.getBoundingClientRect();
+      var offset = (cardRect.left + cardRect.width / 2) - (trackRect.left + trackRect.width / 2);
+      return track.scrollLeft + offset;
+    }
+
     function centerCardInstant(card) {
-      card.scrollIntoView({ inline: 'center', block: 'nearest' });
+      track.scrollLeft = scrollLeftFor(card);
     }
 
     var rafPending = false;
@@ -106,7 +119,12 @@ window.HonorTestimonialCarousel = (function () {
     track.addEventListener('pointercancel', endDrag);
 
     function centerCard(card) {
-      card.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      var supportsSmooth = 'scrollBehavior' in document.documentElement.style;
+      if (supportsSmooth) {
+        track.scrollTo({ left: scrollLeftFor(card), behavior: 'smooth' });
+      } else {
+        track.scrollLeft = scrollLeftFor(card);
+      }
     }
 
     /* Clicar num vídeo lateral "gira" o carrossel até ele ficar ao centro;
