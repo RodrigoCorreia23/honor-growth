@@ -280,7 +280,7 @@
 
         document.querySelectorAll('a[href="#contacto"]').forEach(btn => {
             btn.addEventListener('click', () => {
-                if (window.umami) umami.track('cta_click', { label: btn.textContent.trim().substring(0, 50) });
+                if (window.umami) umami.track('lp_cta_click', { lp: 'lp', label: btn.textContent.trim().substring(0, 50) });
             });
         });
 
@@ -288,7 +288,7 @@
             const vslPh = document.getElementById('hgVslPlaceholder');
             if (vslPh) {
                 vslPh.addEventListener('click', () => {
-                    if (window.umami) umami.track('vsl_play');
+                    if (window.umami) umami.track('lp_vsl_play', { lp: 'lp' });
                 }, { once: true });
             }
         }
@@ -296,7 +296,7 @@
         window.addEventListener('message', (e) => {
             if (e.data && (e.data.type === 'form:submit' || e.data.action === 'formSubmit' ||
                 (typeof e.data === 'string' && e.data.includes('formSubmit')))) {
-                if (window.umami) umami.track('generate_lead', { form: 'ghl' });
+                if (window.umami) umami.track('lp_generate_lead', { lp: 'lp', form: 'ghl' });
             }
         });
 

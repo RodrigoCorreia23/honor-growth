@@ -366,7 +366,7 @@
 
         document.querySelectorAll('a[href="#contacto"]').forEach(btn => {
             btn.addEventListener('click', () => {
-                if (window.umami) umami.track('cta_click', { label: btn.textContent.trim().substring(0, 50) });
+                if (window.umami) umami.track('home_en_cta_click', { lp: 'home_en', label: btn.textContent.trim().substring(0, 50) });
             });
         });
 
@@ -374,19 +374,19 @@
             const card = e.target.closest('.hg-video-card');
             if (!card || card.querySelector('video')) return;
             const name = card.querySelector('.text-base')?.textContent || 'unknown';
-            if (window.umami) umami.track('video_play', { label: name });
+            if (window.umami) umami.track('home_en_video_play', { lp: 'home_en', label: name });
         });
 
         if (vslPlaceholder) {
             vslPlaceholder.addEventListener('click', () => {
-                if (window.umami) umami.track('vsl_play');
+                if (window.umami) umami.track('home_en_vsl_play', { lp: 'home_en' });
             }, { once: true });
         }
 
         window.addEventListener('message', (e) => {
             if (e.data && (e.data.type === 'form:submit' || e.data.action === 'formSubmit' ||
                 (typeof e.data === 'string' && e.data.includes('formSubmit')))) {
-                if (window.umami) umami.track('generate_lead', { form: 'ghl' });
+                if (window.umami) umami.track('home_en_generate_lead', { lp: 'home_en', form: 'ghl' });
             }
         });
 

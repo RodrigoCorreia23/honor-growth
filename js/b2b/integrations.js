@@ -7,6 +7,9 @@ window.HonorIntegrations = (function () {
    * conta Umami e conta GoHighLevel.
    */
   var CONFIG = {
+    /* Identifica esta landing page nos eventos do Umami — ver trackAnalytics. */
+    lpKey:             'b2b',
+
     metaPixelId:       '736478694950337',
     umamiWebsiteId:    'd0308b96-5f36-4328-86ca-e83f3315d320',
     umamiScriptUrl:    'https://cloud.umami.is/script.js',
@@ -36,7 +39,19 @@ window.HonorIntegrations = (function () {
 
   function trackAnalytics(eventName, payload) {
     if (!window.umami || typeof window.umami.track !== 'function') return;
-    window.umami.track(eventName, payload || {});
+
+    /* O plano do Umami so permite 1 website para o site inteiro, portanto
+     * todas as landing pages reportam ao mesmo dashboard. O prefixo no nome
+     * e a propriedade lp sao o que permite separar conversoes por pagina no
+     * painel de eventos; sem isto as LPs somam todas no mesmo nome. */
+    var data = {};
+    var src  = payload || {};
+    for (var k in src) {
+      if (Object.prototype.hasOwnProperty.call(src, k)) data[k] = src[k];
+    }
+    data.lp = CONFIG.lpKey;
+
+    window.umami.track(CONFIG.lpKey + '_' + eventName, data);
   }
 
   function loadUmamiOnce() {
