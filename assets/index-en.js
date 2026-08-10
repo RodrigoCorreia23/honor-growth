@@ -366,7 +366,7 @@
 
         document.querySelectorAll('a[href="#contacto"]').forEach(btn => {
             btn.addEventListener('click', () => {
-                umami.track('cta_click', { label: btn.textContent.trim().substring(0, 50) });
+                if (window.umami) umami.track('cta_click', { label: btn.textContent.trim().substring(0, 50) });
             });
         });
 
@@ -374,19 +374,19 @@
             const card = e.target.closest('.hg-video-card');
             if (!card || card.querySelector('video')) return;
             const name = card.querySelector('.text-base')?.textContent || 'unknown';
-            umami.track('video_play', { label: name });
+            if (window.umami) umami.track('video_play', { label: name });
         });
 
         if (vslPlaceholder) {
             vslPlaceholder.addEventListener('click', () => {
-                umami.track('vsl_play');
+                if (window.umami) umami.track('vsl_play');
             }, { once: true });
         }
 
         window.addEventListener('message', (e) => {
             if (e.data && (e.data.type === 'form:submit' || e.data.action === 'formSubmit' ||
                 (typeof e.data === 'string' && e.data.includes('formSubmit')))) {
-                umami.track('generate_lead', { form: 'ghl' });
+                if (window.umami) umami.track('generate_lead', { form: 'ghl' });
             }
         });
 
