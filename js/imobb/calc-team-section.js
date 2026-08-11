@@ -26,10 +26,19 @@
     {
       id: "t_currentListings",
       key: "currentListings",
-      label: "Angariações / mês (equipa total)",
+      label: "Angariações atuais/ mês (equipa total)",
       help: "Total de contratos de angariação assinados por toda a equipa por mês.",
       unit: "count",
       min: 0, max: 500, step: 1, default: 8,
+      minLabel: "0", maxLabel: "500"
+    },
+    {
+      id: "t_targetListings",
+      key: "targetListings",
+      label: "Objetivo de Angariações",
+      help: "Quantos contratos de angariação a equipa quer assinar por mês.",
+      unit: "count",
+      min: 0, max: 500, step: 1, default: 16,
       minLabel: "0", maxLabel: "500"
     },
     {
