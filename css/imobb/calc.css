@@ -228,6 +228,7 @@
 
 .control__value {
   flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -247,7 +248,10 @@
 }
 
 .control__input {
+  /* Largura flexível: com largura fixa o "+" era empurrado para fora do cartão. */
   width: 110px;
+  min-width: 0;
+  max-width: 100%;
   text-align: center;
   border: none;
   background: transparent;
@@ -738,6 +742,13 @@
   .hg-calc-section {
     padding: 64px 0;
   }
+
+  /* Em ecrãs estreitos os cartões respiram menos, para caberem na coluna. */
+  .hg-calc-container { padding: 0 16px; }
+  .controls-card     { padding: 18px 16px; }
+  .control           { padding: 14px; }
+  .control__stepper  { gap: 8px; }
+  .control__step     { width: 32px; height: 32px; }
 
   .metric-grid {
     grid-template-columns: 1fr 1fr;
