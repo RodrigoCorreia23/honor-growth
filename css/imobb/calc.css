@@ -938,6 +938,7 @@
   max-width: 560px;
   max-height: 86vh;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 34px 34px 30px;
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
@@ -1002,6 +1003,16 @@
 
 /* Conteúdo centrado — o botão de fechar fica fora do fluxo. */
 .solution-modal__panel { text-align: center; }
+
+/* Nada transborda para os lados; barra vertical discreta. */
+.solution-modal__panel > * { max-width: 100%; }
+.solution-modal__panel { scrollbar-width: thin; }
+.solution-modal__panel::-webkit-scrollbar { width: 4px; }
+.solution-modal__panel::-webkit-scrollbar-track { background: transparent; }
+.solution-modal__panel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
 
 .solution-modal__eyebrow {
   font-family: var(--font-mono);
@@ -1088,7 +1099,8 @@
 }
 
 .solution-modal__outcome {
-  margin-top: 22px;
+  max-width: 46ch;
+  margin: 22px auto 0;
   padding: 14px 18px;
   text-wrap: pretty;
   border: 1px solid var(--border);
@@ -1100,10 +1112,10 @@
 }
 
 .solution-modal__cta {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  max-width: 100%;
   margin-top: 22px;
-  padding: 14px 20px;
+  padding: 14px 30px;
   border-radius: var(--radius-pill);
   background: var(--accent);
   color: #fff;
