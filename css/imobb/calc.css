@@ -273,9 +273,10 @@
   background: linear-gradient(
     to right,
     var(--accent) calc(var(--fill-n, 50) * 1% - var(--fill-n, 50) * 0.2px + 10px),
-    var(--surface-input) calc(var(--fill-n, 50) * 1% - var(--fill-n, 50) * 0.2px + 10px)
+    rgba(255, 255, 255, 0.10) calc(var(--fill-n, 50) * 1% - var(--fill-n, 50) * 0.2px + 10px)
   );
-  margin-bottom: 10px;
+  /* Folga suficiente para o halo do puxador não tapar a escala. */
+  margin-bottom: 16px;
   cursor: pointer;
 }
 
