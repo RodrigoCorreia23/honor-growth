@@ -484,7 +484,39 @@
   transition: border-color var(--t-fast), transform var(--t-fast);
 }
 
+/* Cards clicáveis: abrem o modal "Como resolvemos". */
+.team-loss-card[data-solution] {
+  cursor: pointer;
+}
+
 .team-loss-card:hover { transform: translateY(-2px); }
+
+.team-loss-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Afordância de clique — aparece por baixo da legenda. */
+.team-loss-card__more {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.59rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--t-fast), gap var(--t-fast);
+}
+
+.team-loss-card:hover .team-loss-card__more { gap: 10px; }
+
+.team-loss-card--inactivity:hover .team-loss-card__more { color: var(--coral); }
+.team-loss-card--conversion:hover  .team-loss-card__more { color: var(--amber); }
+.team-loss-card--database:hover    .team-loss-card__more { color: var(--accent); }
+.team-loss-card--listings:hover    .team-loss-card__more { color: var(--mint); }
 
 .team-loss-card::before {
   content: "";
@@ -877,4 +909,213 @@
   color: var(--calc-text-faint);
   text-align: center;
   margin: 0;
+}
+
+/* ── Modal "Como resolvemos" (cards da calculadora) ───────── */
+.solution-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(4, 8, 18, 0.78);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.22s ease, visibility 0.22s ease;
+}
+
+.solution-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.solution-modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  max-height: 86vh;
+  overflow-y: auto;
+  padding: 34px 34px 30px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 34%),
+    var(--calc-surface);
+  box-shadow: var(--shadow-soft);
+  transform: translateY(10px) scale(0.985);
+  transition: transform 0.22s ease;
+}
+
+.solution-modal.is-open .solution-modal__panel {
+  transform: translateY(0) scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solution-modal,
+  .solution-modal__panel { transition: none; }
+}
+
+.solution-modal__panel::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: var(--accent);
+}
+
+.solution-modal[data-theme="inactivity"] .solution-modal__panel::before { background: var(--coral); }
+.solution-modal[data-theme="conversion"] .solution-modal__panel::before { background: var(--amber); }
+.solution-modal[data-theme="database"]   .solution-modal__panel::before { background: var(--accent); }
+.solution-modal[data-theme="listings"]   .solution-modal__panel::before { background: var(--mint); }
+
+.solution-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+}
+
+.solution-modal__close:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.solution-modal__close:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.solution-modal__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 10px;
+  padding-right: 40px;
+}
+
+.solution-modal__title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.solution-modal__lead {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.solution-modal__section-label {
+  font-family: var(--font-mono);
+  font-size: 0.59rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 22px 0 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.solution-modal__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.solution-modal__list li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 0.89rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.solution-modal__list li::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 8px;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+
+.solution-modal[data-theme="inactivity"] .solution-modal__list li::before { background: var(--coral); }
+.solution-modal[data-theme="conversion"] .solution-modal__list li::before { background: var(--amber); }
+.solution-modal[data-theme="database"]   .solution-modal__list li::before { background: var(--accent); }
+.solution-modal[data-theme="listings"]   .solution-modal__list li::before { background: var(--mint); }
+
+.solution-modal__list li strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.solution-modal__outcome {
+  margin-top: 22px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.025);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--text-soft);
+}
+
+.solution-modal__cta {
+  display: block;
+  width: 100%;
+  margin-top: 22px;
+  padding: 14px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background var(--t-fast), transform var(--t-fast);
+}
+
+.solution-modal__cta:hover {
+  background: var(--calc-accent-hover);
+  transform: translateY(-1px);
+}
+
+.solution-modal__cta:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 580px) {
+  .solution-modal { padding: 14px; }
+  .solution-modal__panel { padding: 28px 20px 24px; }
+  .solution-modal__title { font-size: 1.35rem; }
 }

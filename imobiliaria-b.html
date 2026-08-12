@@ -71,6 +71,7 @@
     <script src="js/imobb/calc-team-section.js" defer></script>
     <script src="js/imobb/calc-main.js" defer></script>
     <script src="js/imobb/calc-gate.js" defer></script>
+    <script src="js/imobb/calc-solutions.js" defer></script>
   </head>
   <body>
     <div data-honor-root="" class="hg-layout-001">
@@ -200,37 +201,41 @@
               </div>
             </div>
             <div class="team-loss-grid">
-              <div class="team-loss-card team-loss-card--inactivity">
+              <div class="team-loss-card team-loss-card--inactivity" data-solution="inactivity" role="button" tabindex="0">
                 <p class="team-loss-card__eyebrow"><span>1</span> Equipa inativa</p>
                 <p class="team-loss-card__stat" id="tl-inactive-stat">— inativos</p>
                 <p class="team-loss-card__copy" id="tl-inactivity-copy">Introduz os dados para ver o impacto da inatividade.</p>
                 <hr class="team-loss-card__divider" />
                 <p class="team-loss-card__amount" id="tl-inactivity-amount">0 €</p>
                 <p class="team-loss-card__caption">perdidos / mês por inatividade</p>
+                <span class="team-loss-card__more">Como resolvemos <span aria-hidden="true">→</span></span>
               </div>
-              <div class="team-loss-card team-loss-card--conversion">
+              <div class="team-loss-card team-loss-card--conversion" data-solution="conversion" role="button" tabindex="0">
                 <p class="team-loss-card__eyebrow"><span>2</span> Baixa conversão de leads</p>
                 <p class="team-loss-card__stat" id="tl-conversion-stat">— % taxa atual</p>
                 <p class="team-loss-card__copy" id="tl-conversion-copy">Introduz as leads e vendas mensais para ver o custo da baixa conversão.</p>
                 <hr class="team-loss-card__divider" />
                 <p class="team-loss-card__amount" id="tl-conversion-amount">0 €</p>
                 <p class="team-loss-card__caption">perdidos / mês por conversão abaixo de 4%</p>
+                <span class="team-loss-card__more">Como resolvemos <span aria-hidden="true">→</span></span>
               </div>
-              <div class="team-loss-card team-loss-card--database">
+              <div class="team-loss-card team-loss-card--database" data-solution="database" role="button" tabindex="0">
                 <p class="team-loss-card__eyebrow"><span>3</span> Base de dados adormecida</p>
                 <p class="team-loss-card__stat" id="tl-db-stat">— leads</p>
                 <p class="team-loss-card__copy" id="tl-db-copy">Introduz o total de leads na base de dados para ver o potencial a 1%.</p>
                 <hr class="team-loss-card__divider" />
                 <p class="team-loss-card__amount" id="tl-db-amount">0 €</p>
                 <p class="team-loss-card__caption">potencial a converter 1% da base</p>
+                <span class="team-loss-card__more">Como resolvemos <span aria-hidden="true">→</span></span>
               </div>
-              <div class="team-loss-card team-loss-card--listings">
+              <div class="team-loss-card team-loss-card--listings" data-solution="listings" role="button" tabindex="0">
                 <p class="team-loss-card__eyebrow"><span>4</span> Possibilidade de angariação</p>
                 <p class="team-loss-card__stat" id="tl-listings-stat">— abaixo do objetivo</p>
                 <p class="team-loss-card__copy" id="tl-listings-copy">Define o objetivo de angariações para ver quanto a equipa podia estar a angariar a mais.</p>
                 <hr class="team-loss-card__divider" />
                 <p class="team-loss-card__amount" id="tl-listings-amount">0 €</p>
                 <p class="team-loss-card__caption">potencial / mês ao atingir o objetivo</p>
+                <span class="team-loss-card__more">Como resolvemos <span aria-hidden="true">→</span></span>
               </div>
             </div>
             <div class="team-total-card">
@@ -471,6 +476,40 @@
           </div>
         </div>
       </footer>
+    </div>
+
+    <!-- ============ MODAL SOLUÇÕES (cards da calculadora) ============ -->
+    <div
+      id="hg-solution-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="hg-solution-title"
+      aria-hidden="true"
+      inert
+      class="solution-modal"
+    >
+      <div class="solution-modal__panel" role="document">
+        <button
+          id="hg-solution-close"
+          type="button"
+          aria-label="Fechar"
+          title="Fechar"
+          class="solution-modal__close"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <p class="solution-modal__eyebrow" id="hg-solution-eyebrow"></p>
+        <h3 class="solution-modal__title" id="hg-solution-title"></h3>
+        <p class="solution-modal__lead" id="hg-solution-lead"></p>
+        <p class="solution-modal__section-label">Como resolvemos</p>
+        <ul class="solution-modal__list" id="hg-solution-list"></ul>
+        <p class="solution-modal__outcome" id="hg-solution-outcome"></p>
+        <a class="solution-modal__cta" href="#contacto" data-solution-cta>
+          Quero falar sobre isto →
+        </a>
+      </div>
     </div>
 
     <!-- ============ MODAL GHL ============ -->
