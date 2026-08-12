@@ -396,14 +396,10 @@
 /* ── Metric grid ─────────────────────────────────────────── */
 .metric-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   margin-bottom: 10px;
 }
-
-/* Cada métrica ocupa um terço; as destacadas ocupam metade da linha. */
-.metric { grid-column: span 2; }
-.metric--wide { grid-column: span 3; }
 
 .metric {
   background:
@@ -722,15 +718,6 @@
 @media (max-width: 900px) {
   #hg-team-controls-container {
     grid-template-columns: 1fr;
-  }
-
-  .metric-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .metric,
-  .metric--wide {
-    grid-column: auto;
   }
 
   .team-loss-grid {

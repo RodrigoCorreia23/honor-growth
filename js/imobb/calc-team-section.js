@@ -278,25 +278,8 @@
     if (withPulse) pulse(el);
   }
 
-  function setMetricState(valueId, state) {
-    var el = document.getElementById(valueId);
-    if (!el) return;
-    el.classList.toggle("is-negative", state === "danger");
-    el.classList.toggle("metric__value--ok", state === "ok");
-    var metric = el.closest(".metric");
-    if (metric) {
-      metric.classList.toggle("metric--warning", state === "danger");
-      metric.classList.toggle("metric--ok",      state === "ok");
-    }
-  }
-
   function plural(n, singular, plural) {
     return n === 1 ? singular : plural;
-  }
-
-  function formatDecimal(value, decimals) {
-    var safe = Number.isFinite(value) ? value : 0;
-    return safe.toFixed(decimals).replace(".", ",");
   }
 
   // ── Main render ──────────────────────────────────────────────
@@ -306,37 +289,6 @@
     setText("team-total-loss", formatEUR(d.totalMonthlyLoss), true);
 
     // Metric grid
-    setText("team-inactive-count",
-      d.inactiveConsultants + " " + plural(d.inactiveConsultants, "inativo", "inativos") +
-      " de " + d.totalConsultants);
-    setMetricState("team-inactive-count", d.inactiveConsultants > 0 ? "danger" : "ok");
-
-    setText("team-potential-listings", formatInteger(d.potentialListings));
-
-    setText("team-conversion-rate", formatPercent(d.currentConversionRate, 1));
-    setMetricState("team-conversion-rate",
-      d.monthlyLeads > 0
-        ? (d.currentConversionRate < d.minConversionRate ? "danger" : "ok")
-        : "");
-
-    setText("team-sales-at-rates",
-      d.monthlyLeads > 0
-        ? formatInteger(d.salesAtCurrentRate) + " → " + formatInteger(d.salesAtMinRate)
-        : "— → —");
-    setText("team-sales-at-rates-caption",
-      d.monthlyLeads > 0
-        ? formatInteger(d.monthlyLeads) + " leads: " +
-          formatPercent(d.currentConversionRate, 1) + " → " + formatPercent(d.minConversionRate, 0)
-        : "introduz as leads / mês");
-
-    setText("team-listings-per-consultant", formatDecimal(d.listingsPerConsultant, 1));
-    setText("team-listings-per-consultant-caption",
-      d.totalConsultants > 0
-        ? "a " + d.listingsPerHeadTarget + " por consultor: " +
-          formatInteger(d.listingsAtTwoPerHead) + " angariações / mês"
-        : "introduz o número de consultores");
-
-    setText("team-current-revenue", formatEUR(d.currentMonthlyRevenue));
     setText("team-cost-per-lead",   d.costPerLead > 0 ? formatEUR(d.costPerLead, 2) : "—");
     setText("team-ads-roi",         d.roiFromSales > 0 ? formatMultiplier(d.roiFromSales) : "—");
 
