@@ -21,6 +21,9 @@
   --calc-coral:          #ff8a8a;
   --calc-coral-soft:     rgba(255, 138, 138, 0.11);
   --calc-coral-border:   rgba(255, 138, 138, 0.28);
+  --calc-mint:           #4fd1a5;
+  --calc-mint-soft:      rgba(79, 209, 165, 0.12);
+  --calc-mint-border:    rgba(79, 209, 165, 0.30);
   --calc-shadow-soft:    0 14px 48px rgba(0, 0, 0, 0.42);
   --calc-radius-sm:      8px;
   --calc-radius-md:      12px;
@@ -47,6 +50,9 @@
   --coral:          var(--calc-coral);
   --coral-soft:     var(--calc-coral-soft);
   --coral-border:   var(--calc-coral-border);
+  --mint:           var(--calc-mint);
+  --mint-soft:      var(--calc-mint-soft);
+  --mint-border:    var(--calc-mint-border);
   --shadow-soft:    var(--calc-shadow-soft);
   --positive:       var(--calc-accent);
   --radius-sm:      var(--calc-radius-sm);
@@ -454,7 +460,7 @@
 /* ── Loss cards grid ─────────────────────────────────────── */
 .team-loss-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   margin: 28px 0 20px;
 }
@@ -485,10 +491,12 @@
 }
 
 .team-loss-card--inactivity { border-color: var(--coral-border); }
+.team-loss-card--listings    { border-color: var(--mint-border); }
 .team-loss-card--conversion  { border-color: var(--amber-border); }
 .team-loss-card--database    { border-color: var(--accent-border); }
 
 .team-loss-card--inactivity::before { background: var(--coral); }
+.team-loss-card--listings::before    { background: var(--mint); }
 .team-loss-card--conversion::before  { background: var(--amber); }
 .team-loss-card--database::before    { background: var(--accent); }
 
@@ -528,6 +536,12 @@
   border: 1px solid var(--amber-border);
 }
 
+.team-loss-card--listings .team-loss-card__eyebrow span {
+  background: var(--mint-soft);
+  color: var(--mint);
+  border: 1px solid var(--mint-border);
+}
+
 .team-loss-card--database .team-loss-card__eyebrow span {
   background: var(--accent-soft);
   color: var(--accent);
@@ -543,6 +557,7 @@
 }
 
 .team-loss-card--inactivity .team-loss-card__stat { color: var(--coral); }
+.team-loss-card--listings    .team-loss-card__stat { color: var(--mint); }
 .team-loss-card--conversion  .team-loss-card__stat { color: var(--amber); }
 .team-loss-card--database    .team-loss-card__stat { color: var(--accent); }
 
@@ -569,6 +584,7 @@
 
 .team-loss-card--inactivity .team-loss-card__amount,
 .team-loss-card--conversion  .team-loss-card__amount { color: var(--coral); }
+.team-loss-card--listings    .team-loss-card__amount { color: var(--mint); }
 .team-loss-card--database    .team-loss-card__amount { color: var(--accent); }
 
 .team-loss-card__caption {
@@ -674,10 +690,6 @@
   .team-loss-grid {
     grid-template-columns: 1fr 1fr;
   }
-
-  .team-loss-card:last-child {
-    grid-column: 1 / -1;
-  }
 }
 
 @media (max-width: 580px) {
@@ -691,10 +703,6 @@
 
   .team-loss-grid {
     grid-template-columns: 1fr;
-  }
-
-  .team-loss-card:last-child {
-    grid-column: auto;
   }
 
   .team-total-card {

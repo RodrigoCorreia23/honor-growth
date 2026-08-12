@@ -345,7 +345,36 @@
     setText("tl-inactivity-copy", inactiveCopy);
     setText("tl-inactivity-amount", formatEUR(d.lostFromInactivity), true);
 
-    // ── Card 2: Conversion ───────────────────────────────────
+    // ── Card 2: Listings target ──────────────────────────────
+    setText("tl-listings-stat",
+      d.listingsGapToTarget > 0
+        ? formatInteger(d.listingsGapToTarget) + " abaixo do objetivo"
+        : "Objetivo atingido");
+
+    var listingsCopy;
+    if (d.targetListings === 0) {
+      listingsCopy = "Define o objetivo de angariações/mês para ver quanto vale a distância até lá.";
+    } else if (d.listingsGapToTarget === 0) {
+      listingsCopy =
+        "Estás a assinar " + formatInteger(d.currentListings) +
+        " angariações/mês, no ou acima do objetivo de " + formatInteger(d.targetListings) +
+        ". Sobe a fasquia para continuares a crescer.";
+    } else if (d.listingsToSalesRatio === 0) {
+      listingsCopy =
+        "Faltam " + formatInteger(d.listingsGapToTarget) + " angariações/mês para chegares ao objetivo de " +
+        formatInteger(d.targetListings) + ". Introduz as vendas concretizadas para calcular quanto isso vale.";
+    } else {
+      var targetSales = Math.ceil(d.salesFromTargetGap);
+      listingsCopy =
+        "O teu objetivo é " + formatInteger(d.targetListings) + " angariações/mês e estás em " +
+        formatInteger(d.currentListings) + ". Faltam " + formatInteger(d.listingsGapToTarget) +
+        " imóveis, que à taxa atual valem ≈ " + formatInteger(targetSales) +
+        plural(targetSales, " venda", " vendas") + "/mês.";
+    }
+    setText("tl-listings-copy", listingsCopy);
+    setText("tl-listings-amount", formatEUR(d.potentialFromTarget), true);
+
+    // ── Card 3: Conversion ───────────────────────────────────
     setText("tl-conversion-stat", formatPercent(d.currentConversionRate, 1) + " taxa atual");
 
     var convCopy;
@@ -367,7 +396,7 @@
     setText("tl-conversion-copy", convCopy);
     setText("tl-conversion-amount", formatEUR(d.lostFromConversion), true);
 
-    // ── Card 3: Database ─────────────────────────────────────
+    // ── Card 4: Database ─────────────────────────────────────
     setText("tl-db-stat", formatInteger(d.totalLeadsDB) + " leads acumuladas");
 
     var dbCopy;

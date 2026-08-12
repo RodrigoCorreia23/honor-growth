@@ -16,6 +16,7 @@
     var totalConsultants   = safeCount(inputs.totalConsultants);
     var activeProspecting  = Math.min(safeCount(inputs.activeProspecting), totalConsultants);
     var currentListings    = safeCount(inputs.currentListings);
+    var targetListings     = safeCount(inputs.targetListings);
     var monthlySales       = safeCount(inputs.monthlySales);
     var monthlyLeads       = safeCount(inputs.monthlyLeads);
     var totalLeadsDB       = safeCount(inputs.totalLeadsDB);
@@ -36,6 +37,11 @@
     var additionalListings       = Math.max(0, potentialListings - currentListings);
     var additionalSalesFromListings = additionalListings * listingsToSalesRatio;
     var lostFromInactivity       = additionalSalesFromListings * commissionPerSale;
+
+    // ── Listings target analysis ─────────────────────────────
+    var listingsGapToTarget   = Math.max(0, targetListings - currentListings);
+    var salesFromTargetGap    = listingsGapToTarget * listingsToSalesRatio;
+    var potentialFromTarget   = salesFromTargetGap * commissionPerSale;
 
     // ── Conversion analysis ──────────────────────────────────
     var currentConversionRate = monthlyLeads > 0 ? (monthlySales / monthlyLeads) * 100 : 0;
@@ -60,6 +66,7 @@
       activeProspecting:     activeProspecting,
       inactiveConsultants:   inactiveConsultants,
       currentListings:       currentListings,
+      targetListings:        targetListings,
       monthlySales:          monthlySales,
       monthlyLeads:          monthlyLeads,
       totalLeadsDB:          totalLeadsDB,
@@ -74,6 +81,10 @@
       additionalListings:          additionalListings,
       additionalSalesFromListings: additionalSalesFromListings,
       lostFromInactivity:          lostFromInactivity,
+
+      listingsGapToTarget:   listingsGapToTarget,
+      salesFromTargetGap:    salesFromTargetGap,
+      potentialFromTarget:   potentialFromTarget,
 
       currentConversionRate: currentConversionRate,
       minConversionRate:     MIN_CONVERSION_RATE,
