@@ -294,6 +294,11 @@
     return n === 1 ? singular : plural;
   }
 
+  function formatDecimal(value, decimals) {
+    var safe = Number.isFinite(value) ? value : 0;
+    return safe.toFixed(decimals).replace(".", ",");
+  }
+
   // ── Main render ──────────────────────────────────────────────
 
   function renderTeamResults(d) {
@@ -313,6 +318,23 @@
       d.monthlyLeads > 0
         ? (d.currentConversionRate < d.minConversionRate ? "danger" : "ok")
         : "");
+
+    setText("team-sales-at-rates",
+      d.monthlyLeads > 0
+        ? formatInteger(d.salesAtCurrentRate) + " → " + formatInteger(d.salesAtMinRate)
+        : "— → —");
+    setText("team-sales-at-rates-caption",
+      d.monthlyLeads > 0
+        ? formatInteger(d.monthlyLeads) + " leads: " +
+          formatPercent(d.currentConversionRate, 1) + " → " + formatPercent(d.minConversionRate, 0)
+        : "introduz as leads / mês");
+
+    setText("team-listings-per-consultant", formatDecimal(d.listingsPerConsultant, 1));
+    setText("team-listings-per-consultant-caption",
+      d.totalConsultants > 0
+        ? "a " + d.listingsPerHeadTarget + " por consultor: " +
+          formatInteger(d.listingsAtTwoPerHead) + " angariações / mês"
+        : "introduz o número de consultores");
 
     setText("team-current-revenue", formatEUR(d.currentMonthlyRevenue));
     setText("team-cost-per-lead",   d.costPerLead > 0 ? formatEUR(d.costPerLead, 2) : "—");

@@ -1,5 +1,6 @@
 (function (App) {
   var MIN_CONVERSION_RATE = 4;
+  var LISTINGS_PER_HEAD_TARGET = 2;
 
   function safeCount(value) {
     var parsed = parseFloat(value);
@@ -49,6 +50,14 @@
     var additionalSales       = monthlyLeads * (gapToTarget / 100);
     var lostFromConversion    = additionalSales * commissionPerSale;
 
+    // ── Vendas à taxa atual vs mínimo recomendado ────────────
+    var salesAtCurrentRate = monthlySales;
+    var salesAtMinRate     = monthlyLeads * (MIN_CONVERSION_RATE / 100);
+
+    // ── Angariações por consultor (equipa toda) ──────────────
+    var listingsPerConsultant   = totalConsultants > 0 ? currentListings / totalConsultants : 0;
+    var listingsAtTwoPerHead    = totalConsultants * LISTINGS_PER_HEAD_TARGET;
+
     // ── Ads / ROI ────────────────────────────────────────────
     var costPerLead          = monthlyLeads > 0 ? adsInvestment / monthlyLeads : 0;
     var currentMonthlyRevenue = monthlySales * commissionPerSale;
@@ -92,6 +101,13 @@
       additionalSales:       additionalSales,
       lostFromConversion:    lostFromConversion,
 
+      salesAtCurrentRate:    salesAtCurrentRate,
+      salesAtMinRate:        salesAtMinRate,
+
+      listingsPerConsultant:    listingsPerConsultant,
+      listingsPerHeadTarget:    LISTINGS_PER_HEAD_TARGET,
+      listingsAtTwoPerHead:     listingsAtTwoPerHead,
+
       costPerLead:           costPerLead,
       currentMonthlyRevenue: currentMonthlyRevenue,
       roiFromSales:          roiFromSales,
@@ -105,6 +121,7 @@
 
   App.teamCalculator = {
     calculateTeam: calculateTeam,
-    MIN_CONVERSION_RATE: MIN_CONVERSION_RATE
+    MIN_CONVERSION_RATE: MIN_CONVERSION_RATE,
+    LISTINGS_PER_HEAD_TARGET: LISTINGS_PER_HEAD_TARGET
   };
 })((window.App = window.App || {}));
