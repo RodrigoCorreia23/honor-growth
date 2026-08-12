@@ -731,6 +731,13 @@
         box-shadow: 0 40px 100px -30px var(--accent-glow);
     }
 
+    /* Moldura vertical, para VSLs em 9:16. */
+    .hg-vsl-frame--portrait {
+        aspect-ratio: 9/16;
+        max-width: 400px;
+        margin-inline: auto;
+    }
+
     .hg-vsl-frame video,
     .hg-vsl-frame iframe {
         position: absolute;
