@@ -353,10 +353,11 @@
         "Convertendo apenas 1% (" + formatInteger(Math.ceil(d.onePercentSales)) +
         plural(Math.ceil(d.onePercentSales), " venda", " vendas") + "), geras " +
         formatEUR(d.onePercentCommission) + " em comissões. " +
-        "Este é o potencial adormecido da tua base de dados.";
+        "Trabalhada ao longo de 12 meses, são " + formatEUR(d.onePercentCommissionMonthly) +
+        "/mês de potencial adormecido.";
     }
     setText("tl-db-copy", dbCopy);
-    setText("tl-db-amount", formatEUR(d.onePercentCommission), true);
+    setText("tl-db-amount", formatEUR(d.onePercentCommissionMonthly), true);
 
     // ── Card 4: Listings potential ───────────────────────────
     setText("tl-listings-stat",

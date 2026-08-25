@@ -64,11 +64,14 @@
     var roiFromSales          = adsInvestment > 0 ? currentMonthlyRevenue / adsInvestment : 0;
 
     // ── Database potential (1%) ──────────────────────────────
-    var onePercentSales      = totalLeadsDB * 0.01;
-    var onePercentCommission = onePercentSales * commissionPerSale;
+    // O 1% da base é um potencial acumulado (one-off), não uma perda recorrente.
+    // Para entrar num total mensal, dilui-se ao longo de 12 meses.
+    var onePercentSales             = totalLeadsDB * 0.01;
+    var onePercentCommission        = onePercentSales * commissionPerSale;
+    var onePercentCommissionMonthly = onePercentCommission / 12;
 
-    // ── Total monthly loss (inactivity + conversion gap) ─────
-    var totalMonthlyLoss = lostFromInactivity + lostFromConversion + onePercentCommission;
+    // ── Total monthly loss (inactivity + conversion gap + BD/12) ─────
+    var totalMonthlyLoss = lostFromInactivity + lostFromConversion + onePercentCommissionMonthly;
 
     return {
       totalConsultants:      totalConsultants,
@@ -112,8 +115,9 @@
       currentMonthlyRevenue: currentMonthlyRevenue,
       roiFromSales:          roiFromSales,
 
-      onePercentSales:       onePercentSales,
-      onePercentCommission:  onePercentCommission,
+      onePercentSales:              onePercentSales,
+      onePercentCommission:         onePercentCommission,
+      onePercentCommissionMonthly:  onePercentCommissionMonthly,
 
       totalMonthlyLoss:      totalMonthlyLoss
     };
