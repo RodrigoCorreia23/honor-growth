@@ -19,3 +19,5 @@ desktop.ini
 
 # Node (se um dia precisares de Tailwind compilado)
 node_modules/
+
+.wrangler/
